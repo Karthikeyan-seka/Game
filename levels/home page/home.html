@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - 100 Doors</title>
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+    <!-- Homepage -->
+    <div class="homepage-screen">
+      <div class="game-container">
+        <img src="../../assets/home page/SETTING BUTTON.png" class="settings-icon" id="settingsBtn" />
+        <img src="../../assets/home page/100 door tittle.png" class="title-image">
+        <div class="container">
+          <center>
+            <div class="menu">
+              <button class="menu-btn" id="playBtn">PLAY</button>
+              <button class="menu-btn" id="levelsBtn">LEVELS</button>
+              <button class="menu-btn" id="gamesBtn">MOREGAME</button>
+            </div>
+          </center>
+        </div>
+      </div>
+
+      <!-- Settings Popup -->
+      <div class="settings-popup" id="settings">
+        <div class="settings-box">
+          <img src="../../assets/home page/panneldesign/close button.png" class="settings-close-btn" id="closeSettingsBtn" />
+          <h2>Settings</h2>
+          <div class="setting-item">
+            <span>🔊 Sound</span>
+            <img src="../../assets/home page/panneldesign/volume button.png" class="toggle-btn" id="soundToggle" data-active="true" />
+          </div>
+          <div class="setting-item">
+            <span>🎵 Music</span>
+            <img src="../../assets/home page/panneldesign/volume button.png" class="toggle-btn" id="musicToggle" data-active="true" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <script src="home.js"></script>
+</body>
+</html>

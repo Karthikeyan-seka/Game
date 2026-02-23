@@ -1,0 +1,325 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+
+.game-screen {
+    position: relative;
+    width: 360px;
+    height: 640px;
+    overflow: hidden;
+}
+
+.bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.bg-image.blur {
+    filter: blur(6px);
+}
+
+.overlay-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 3;
+    pointer-events: auto;
+}
+
+.overlay-image.hidden {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.inventory-bg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.slot {
+    position: absolute;
+    left: 28px;
+    bottom: 23px;
+    width: 50px;
+    height: 50px;
+}
+
+.inventory-key {
+    width: 100%;
+    cursor: grab;
+    user-select: none;
+}
+
+.inventory-key.dragging {
+    cursor: grabbing;
+    opacity: 0.8;
+}
+
+.handle-area {
+    position: absolute;
+    top: 240px;
+    left: 45%;
+    width: 80px;
+    height: 90px;
+    transform: translateX(-50%);
+    cursor: pointer;
+    z-index: 5;
+}
+
+.final-close-btn {
+    position: absolute;
+    bottom: 500px;
+    left: 290px;
+    width: 50px;
+    height: 50px;
+    z-index: 200;
+    cursor: pointer;
+}
+
+.final-close-btn.hidden {
+    display: none;
+}
+
+.lastoptions {
+    position: absolute;
+    top: 58%;
+    left: 48%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+    z-index: 1001;
+}
+
+.lastButtons {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+}
+
+.popup.show {
+    display: flex;
+}
+
+/* Zoom Container */
+.zoom-container {
+    padding: 30px;
+    animation: fadeInScale 0.3s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#popup-img {
+    width: 150px;
+    cursor: pointer;
+    display: block;
+    user-select: none;
+    transition: transform 0.2s;
+    position: relative;
+    z-index: 101;
+}
+
+#popup-img:hover {
+    transform: scale(1.05);
+}
+
+/* Puzzle Background Container */
+.bg-container {
+    position: relative;
+    width: 360px;
+    height: 360px;
+    overflow: visible;
+    margin-bottom: 140px;
+}
+
+.bg-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Key Images */
+.key-image {
+    position: absolute;
+    width: 25px;
+    height: auto;
+    z-index: 5;
+    transition: all 0.2s ease;
+    display: none;
+    pointer-events: none;
+    user-select: none;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.key-image.active {
+    display: block;
+    animation: keyAppear 0.3s ease-out;
+}
+
+@keyframes keyAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Key Positions */
+#key0  { top: 172px; left: 172px; }
+#key1  { top: 172px; left: 199px; }
+#key2  { top: 172px; left: 237px; }
+#key3  { top: 120px; left: 217px; }
+#key4  { top: 97px; left: 236px; }
+#key5  { top: 135px; left: 270px; }
+#key6  { top: 67px; left: 202px; }
+#key7  { top: 210px; left: 225px; }
+#key8  { top: 172px; left: 268px; }
+#key9  { top: 210px; left: 265px; }
+#key10 { top: 240px; left: 240px; }
+#key11 { top: 272px; left: 202px; }
+#key12 { top: 275px; left: 260px; }
+#key13 { top: 307px; left: 217px; }
+#key14 { top: 307px; left: 172px; }
+#key15 { top: 307px; left: 120px; }
+#key16 { top: 266px; left: 82px; }
+#key17 { top: 266px; left: 120px; }
+#key18 { top: 269px; left: 165px; }
+#key19 { top: 237px; left: 165px; }
+#key20 { top: 237px; left: 192px; }
+#key21 { top: 240px; left: 97px; }
+#key22 { top: 228px; left: 135px; }
+#key23 { top: 202px; left: 109px; }
+#key24 { top: 172px; left: 101px; }
+#key25 { top: 135px; left: 112px; }
+#key26 { top: 105px; left: 157px; }
+#key27 { top: 67px; left: 157px; }
+#key28 { top: 90px; left: 105px; }
+#key29 { top: 74px; left: 66px; }
+#key30 { top: 120px; left: 30px; }
+#key31 { top: 171px; left: 30px; }
+#key32 { top: 222px; left: 30px; }
+
+/* Arrow Control Box */
+.arrow-box {
+    position: absolute;
+    bottom: -160px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(34, 34, 34, 0.95);
+    padding: 15px 35px;
+    border-radius: 12px;
+    border: 3px solid #fff;
+    pointer-events: auto;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.arrow-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 0;
+}
+
+/* Arrow Buttons */
+.arrow-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    outline: none;
+}
+
+.arrow-btn:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.arrow {
+    width: 40px;
+    height: 40px;
+    display: block;
+    pointer-events: none;
+    object-fit: contain;
+    user-select: none;
+}
+
+.arrow-btn:hover {
+    transform: scale(1.1);
+}
+
+.arrow-btn:active {
+    transform: scale(0.95);
+}
+
+.arrow-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.arrow-btn:disabled:hover {
+    transform: none;
+}
+
+/* Position Indicator (Optional) */
+.position-indicator {
+    position: absolute;
+    bottom: -210px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    display: none; /* Set to 'block' if you want to show it */
+}
+
+#current-position {
+    color: #667eea;
+    font-weight: 700;
+}
+
