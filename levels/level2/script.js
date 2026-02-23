@@ -23,7 +23,7 @@ let buttonCollected = false;
 leafArea.addEventListener("click", () => {
     if (!leafMoved) {
         // 1. Swap Image to "Bunched Up" / Open Leaf
-        leaf.src = "images/room2/game play 3@3x.png";
+        leaf.src = "assets/level2/game play 3@3x.png";
 
         // 2. Animate Slide & Blur
         leaf.classList.add("moved");
@@ -52,7 +52,7 @@ leafArea.addEventListener("click", () => {
 // We make this a reusable function so we can call it when collecting the key too
 function resetLeafState() {
     // 1. Reset Image to "Closed" Leaf
-    leaf.src = "images/room2/game play 1@3x.png";
+    leaf.src = "assets/level2/game play 1@3x.png";
 
     // 2. Reset Animation
     leaf.classList.remove("moved");
@@ -87,7 +87,7 @@ buttonArea.addEventListener("click", () => {
 
         // 1. Add to Inventory
         const invItem = document.createElement("img");
-        invItem.src = "images/room2/button_3x-removebg-preview.png";
+        invItem.src = "../../assets/room2/button_3x-removebg-preview.png";
         invItem.id = "inventoryButton";
         invItem.draggable = true;
         invItem.style.width = "40px";
@@ -132,7 +132,7 @@ doorArea.addEventListener("drop", (e) => {
         floorButton.classList.add("hidden");
 
         // 2. Change Background to Win Screen
-        bgImage.src = "images/room2/game over bg@3x.jpg";
+        bgImage.src = "../../assets/room2/game over bg@3x.jpg";
         bgImage.classList.remove("blur-bg");
 
         // 3. Show Level Complete Panel (After 1.5 seconds)
