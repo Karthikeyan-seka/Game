@@ -236,7 +236,7 @@ doorDropZone.addEventListener("drop", (e) => {
         setTimeout(() => {
             levelPanel.classList.remove("hidden");
             bgImage.classList.add("blur-bg");
-        }, 1000);
+        }, 1200);
     }
 });
 
