@@ -98,6 +98,10 @@ homebtn.addEventListener("click", () => {
 });
 
 retrybtn.addEventListener("click", () => {
-    window.location.href = "../level4/demo.html";
+    let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+    if (unlockedLevel < 4) {
+        localStorage.setItem('unlockedLevel', 4);
+    }
+    window.location.href = "../level page/levels1-10.html";
 });
 

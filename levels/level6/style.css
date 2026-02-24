@@ -159,13 +159,13 @@ body{
 
 .button-grid {
     position: absolute;
-    top: 19%;    /* Adjust these % until buttons align with box1's keypad area */
+    top: 5%;    /* Adjust these % until buttons align with box1's keypad area */
     left: 20%;   
-    width: 62%;  
-    height: 40%; 
+    width: 60%;  
+    height: 60%; 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
+    gap: 1px;
     pointer-events: auto;
 }
 
@@ -211,6 +211,17 @@ body{
     z-index: 1000; 
     display: none; 
 }
+
+body::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+    background: url('../../assets/room6/final panel 6.png');
+}
+
 .lastoptions {
     position: absolute;
     top: 58%;

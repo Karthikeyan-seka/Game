@@ -212,5 +212,9 @@ document.querySelector(".homebtn").addEventListener("click", () => {
 });
 
 document.querySelector(".nextbtn").addEventListener("click", () => {
-  window.location.href = "../level8/index.html";
+  let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+  if (unlockedLevel < 8) {
+    localStorage.setItem('unlockedLevel', 8);
+  }
+  window.location.href = "../level page/levels1-10.html";
 });

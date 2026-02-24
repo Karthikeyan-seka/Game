@@ -104,6 +104,11 @@ body {
     cursor: pointer;
   }
 
+.carpet-area.disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+
 .key-area {
     position: absolute;
     bottom: 115px;    

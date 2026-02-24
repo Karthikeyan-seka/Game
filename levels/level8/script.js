@@ -201,5 +201,9 @@ homebtn.addEventListener("click", () => {
 });
 
 playbtn.addEventListener("click", () => {
-  window.location.href = "../level9/room9.html";
+  let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+  if (unlockedLevel < 9) {
+    localStorage.setItem('unlockedLevel', 9);
+  }
+  window.location.href = "../level page/levels1-10.html";
 });

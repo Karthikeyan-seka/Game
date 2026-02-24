@@ -45,6 +45,16 @@ body {
     pointer-events: auto;
 }
 
+body::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+    background: url('../../assets/room2/final panel 2.png');
+}
+
 .overlay-image.hidden {
     display: none;
 }

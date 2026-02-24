@@ -112,9 +112,6 @@ buttons.forEach(btn => {
         // Visual Feedback: Show clicked image (yellow/pressed)
         btn.src = clickedPath;
         
-        // Wait 150ms then swap back to normal (the blink effect)
-        
-
         // Logic for buttons
         if (val !== 'w' && val !== 'e') {
             enteredCode += val;
@@ -255,5 +252,9 @@ homeBtn.addEventListener('click', () => {
 });
 
 nextBtn.addEventListener('click', () => {
-    window.location.href = "../level5/room5.html";
+    let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+    if (unlockedLevel < 5) {
+        localStorage.setItem('unlockedLevel', 5);
+    }
+    window.location.href = "../level page/levels1-10.html";
 });

@@ -191,5 +191,9 @@ document.querySelector(".homebtn").addEventListener("click", () => {
 });
 
 document.querySelector(".nextbtn").addEventListener("click", () => {
+  let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+  if (unlockedLevel < 14) {
+    localStorage.setItem('unlockedLevel', 14);
+  }
   window.location.href = "../level14/room14.html";
 });
