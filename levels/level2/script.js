@@ -21,9 +21,10 @@ let buttonCollected = false;
 // 2. OPEN LEAF LOGIC
 // ==========================================
 leafArea.addEventListener("click", () => {
-    if (!leafMoved) {
+    // Only open if the leaf isn't already open AND the button hasn't been collected
+    if (!leafMoved && !buttonCollected) {
         // 1. Swap Image to "Bunched Up" / Open Leaf
-        leaf.src = "assets/level2/game play 3@3x.png";
+        leaf.src = "../../assets/level2/game play 3@3x.png";
 
         // 2. Animate Slide & Blur
         leaf.classList.add("moved");
@@ -52,7 +53,7 @@ leafArea.addEventListener("click", () => {
 // We make this a reusable function so we can call it when collecting the key too
 function resetLeafState() {
     // 1. Reset Image to "Closed" Leaf
-    leaf.src = "assets/level2/game play 1@3x.png";
+    leaf.src = "../../assets/room2/gameplay 4@3x.png";
 
     // 2. Reset Animation
     leaf.classList.remove("moved");
@@ -65,8 +66,25 @@ function resetLeafState() {
     // 4. Reset State
     leafMoved = false;
 
-    // 5. Bring back the leaf hitbox so we can click it again
-    leafArea.style.display = "block";
+    // 5. Handle Hitbox based on collection state (THE FIX)
+    if (buttonCollected) {
+        // Completely kill pointer events so the browser ignores the leaf
+        leafArea.style.pointerEvents = "none";
+        leaf.style.pointerEvents = "none";
+
+        // Force the CSS cursor back to the standard arrow ("default")
+        leafArea.style.setProperty("cursor", "default", "important");
+        leaf.style.setProperty("cursor", "default", "important");
+
+        // Ensure the hitbox is permanently gone
+        leafArea.style.display = "none";
+
+    } else {
+        // If not collected, bring back the leaf hitbox so we can click it again
+        leafArea.style.display = "block";
+        leafArea.style.pointerEvents = "auto";
+        leafArea.style.cursor = "pointer";
+    }
 }
 
 // Event Listener for the X Button
@@ -76,7 +94,7 @@ closeBtn.addEventListener("click", (e) => {
 });
 
 // ==========================================
-// 4. COLLECT BUTTON LOGIC (UPDATED)
+// 4. COLLECT BUTTON LOGIC
 // ==========================================
 buttonArea.addEventListener("click", () => {
     // Can only collect if leaf is open AND not already collected
@@ -92,7 +110,6 @@ buttonArea.addEventListener("click", () => {
         invItem.draggable = true;
         invItem.style.width = "40px";
         invItem.style.height = "40px";
-        slot1.appendChild(invItem);
 
         // Add Drag Logic
         invItem.addEventListener("dragstart", (e) => {
@@ -101,11 +118,17 @@ buttonArea.addEventListener("click", () => {
             e.dataTransfer.setDragImage(e.target, 20, 20);
         });
 
+        slot1.appendChild(invItem);
+
         // 2. Enable Door
         doorArea.classList.remove("disabled");
 
-        // --- THE FIX: AUTOMATICALLY CLOSE EVERYTHING ---
-        // This hides the close button AND puts the leaf back to normal
+        // --- THE FIX: KILL THE BUTTON HITBOX ---
+        // This stops the hand cursor from showing up through the leaf
+        buttonArea.style.display = "none";
+        buttonArea.style.pointerEvents = "none";
+
+        // 3. AUTOMATICALLY CLOSE EVERYTHING
         resetLeafState();
     }
 });
@@ -115,7 +138,7 @@ buttonArea.addEventListener("click", () => {
 // ==========================================
 doorArea.addEventListener("dragover", (e) => {
     e.preventDefault();
-    e.dataTransfer.dropEffect = "move";
+    e.dataTransfer.dropEffect = "move"; // Shows the correct hand/move cursor over door
 });
 
 doorArea.addEventListener("drop", (e) => {
@@ -133,7 +156,7 @@ doorArea.addEventListener("drop", (e) => {
 
         // 2. Change Background to Win Screen
         bgImage.src = "../../assets/room2/game over bg@3x.jpg";
-        bgImage.classList.remove("blur-bg");
+        bgImage.classList.remove("blur-bg"); // Make sure blur is removed
 
         // 3. Show Level Complete Panel (After 1.5 seconds)
         setTimeout(() => {
@@ -141,29 +164,30 @@ doorArea.addEventListener("drop", (e) => {
                 levelPanel.classList.remove("hidden");
                 bgImage.classList.add("blur-bg");
             }
-        }, 1500);
+        }, 1200);
     }
 });
 
 // ==========================================
-// 6. PANEL BUTTONS
-// ==========================================
-// ==========================================
-// 7. PANEL CLOSE LOGIC
+// 6. PANEL BUTTON LOGIC
 // ==========================================
 const panelCloseBtn = document.getElementById("panelCloseBtn");
+const homeBtn = document.getElementById("homeBtn");
+const nextBtn = document.getElementById("nextBtn");
 
 if (panelCloseBtn) {
     panelCloseBtn.addEventListener("click", () => {
         // Hide the Level Complete Panel
-        const panel = document.getElementById("levelCompletePanel");
-        if (panel) {
-            panel.classList.add("hidden");
+        if (levelPanel) {
+            levelPanel.classList.add("hidden");
         }
-
-        // Optional: If you want to un-blur the background when closing the panel
-        // document.getElementById("bgImage").classList.remove("blur-bg");
     });
 }
-document.getElementById("homeBtn").addEventListener("click", () => location.reload());
-document.getElementById("nextBtn").addEventListener("click", () => location.reload());
+
+if (homeBtn) {
+    homeBtn.addEventListener("click", () => location.reload());
+}
+
+if (nextBtn) {
+    nextBtn.addEventListener("click", () => location.reload());
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room - Level 12</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="game-screen">
+    <img src="../../assets/room12/1 bg.png" class="bg-image" id="bgImage"/>
+
+    <img src="../../assets/room12/lo.png" class="door-knob hidden" id="doorKnobImg"/>
+
+    <div class="door-knob-hitbox" id="doorKnobHitbox"></div>
+1
+    <div id="doorArea" class="door-drop-zone disabled"></div>
+
+    <img src="../../assets/room12/ICONS/CLOSE@3x.png" id="closeButton" class="close-btn hidden" />
+
+    <div class="inventory">
+        <img src="../../assets/room12/game inventry@3x.png" class="inventory-bg" />
+        <div class="slot" id="slot1"></div>
+    </div>
+
+    <div id="mazeOverlay" class="maze-overlay hidden">
+        <div class="maze-container">
+            <canvas id="mazeCanvas"></canvas>
+
+            <div class="controls">
+                <div class="row">
+                    <img src="../../assets/room12/Artboard 1@3x 45 Degree up.png" id="btnUp" class="arrow-btn" />
+                </div>
+                <div class="row">
+                    <img src="../../assets/room12/Artboard 1@3xarroq left.png" id="btnLeft" class="arrow-btn" />
+                    <img src="../../assets/room12/Artboard 1@3xarroq down.png" id="btnDown" class="arrow-btn" />
+                    <img src="../../assets/room12/Artboard 1@3xarroq right.png" id="btnRight" class="arrow-btn" />
+                </div>
+            </div>
+            <p class="instructions">Guide the Key out of the Maze!</p>
+        </div>
+    </div>
+
+    <div id="levelCompletePanel" class="level-complete-container hidden">
+        <img src="../../assets/room12/final panel 12@2x.png" class="panel-bg" />
+
+        <img src="../../assets/room12/ICONS/CLOSE@3x.png" id="panelCloseBtn" class="panel-close-btn" />
+
+        <div class="panel-buttons">
+            <img src="../../assets/room12/ICONS/HOME@3x.png" id="homeBtn" class="panel-btn" />
+            <img src="../../assets/room12/ICONS/PLAY@3x.png" id="nextBtn" class="panel-btn" />
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

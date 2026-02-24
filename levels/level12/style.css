@@ -1,0 +1,205 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    font-family: sans-serif;
+}
+
+.game-screen {
+    position: relative;
+    width: 360px;
+    height: 640px;
+    overflow: hidden;
+    background: #222;
+}
+
+/* --- UTILITIES --- */
+.hidden { display: none !important; }
+.disabled { pointer-events: none; }
+.blur-bg { filter: blur(4px); transition: filter 0.8s ease; }
+
+/* --- 1. BACKGROUND --- */
+.bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* --- 2. DOOR KNOB (Visual) --- */
+.door-knob {
+    position: absolute;
+    bottom: 188px;
+    left: 34%;
+    width: 52%;
+    transform: translateX(-50%);
+    transition: transform 0.6s ease;
+    z-index: 100;
+    cursor: pointer;
+}
+.door-knob.moved {
+    transform: translateX(-15%); /* Slides to the side */
+}
+
+/* --- 3. HITBOXES (Invisible) --- */
+.door-knob-hitbox {
+    position: absolute;
+    bottom: 294px;
+    left: 36%;
+    width: 41px;
+    height: 76px;
+    transform: translateX(-50%);
+    z-index: 200; /* Must be higher than visual knob */
+    cursor: pointer;
+    transition: transform 0.6s ease;
+    /* background: rgba(255,0,0,0.5); /* Uncomment to debug */
+}
+.door-knob-hitbox.moved {
+    transform: translateX(-15%);
+    left: 39%;
+    width: 67px;
+    height: 165px;
+    bottom: 254px;
+}
+
+.door-drop-zone {
+    position: absolute;
+    top: 266px;
+    left: 30%;
+    width: 36px;
+    height: 74px;
+    z-index: 20;
+}
+
+/* --- 4. MAZE OVERLAY --- */
+.maze-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.maze-container { position: relative; text-align: center; }
+
+canvas {
+    border-radius: 50%;
+    background: #fff;
+    max-width: 300px; max-height: 300px; width: 100%;
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
+}
+
+/* Controls */
+.controls { margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.row { display: flex; gap: 15px; }
+
+.arrow-btn {
+    width: 60px; height: 60px;
+    cursor: pointer;
+    filter: brightness(0) invert(1); /* Makes arrows white */
+}
+.arrow-btn:active { transform: scale(0.9); }
+
+/* Rotate Up Arrow */
+#btnUp { transform: rotate(-45deg); }
+#btnUp:active { transform: rotate(-45deg) scale(0.9); }
+
+.instructions { color: #fff; margin-top: 10px; font-size: 14px; }
+
+/* --- 5. UI BUTTONS --- */
+.close-btn {
+    position: absolute;
+    bottom: 400px;
+    left: 70%;
+    width: 40px; height: 40px;
+    z-index: 250;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.close-btn:active { transform: scale(0.9); }
+
+/* --- 6. INVENTORY --- */
+.inventory {
+    position: absolute; bottom: 0; width: 100%; height: 100px;
+    z-index: 300; pointer-events: none;
+}
+.inventory-bg { width: 100%; position: absolute; bottom: 0; pointer-events: none; }
+.slot {
+    position: absolute; left: 28px; bottom: 23px; width: 50px; height: 50px;
+    z-index: 301; pointer-events: auto;
+    display: flex; justify-content: center; align-items: center;
+}
+
+/* --- 7. LEVEL COMPLETE PANEL --- */
+.level-complete-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.panel-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    z-index: -1;
+} /* <--- THIS BRACKET WAS MISSING! */
+
+.panel-buttons {
+    position: absolute;
+    top: 58%;
+    left: 27%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    z-index: 2;
+}
+
+.panel-btn {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    filter: drop-shadow(0 4px 4px rgba(0,0,0,0.3));
+}
+
+.panel-btn:active {
+    transform: scale(0.9);
+}
+
+/* Close Button */
+.panel-close-btn {
+    position: absolute;
+    bottom: 500px;
+    left: 290px;
+    width: 50px;
+    height: 50px;
+    z-index: 200;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.panel-close-btn:active {
+    transform: scale(0.9);
+}
+
+@keyframes popIn {
+    /* Changed this because translate(-50%, -50%) will throw a full-screen panel off-center */
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}

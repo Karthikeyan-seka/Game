@@ -76,7 +76,7 @@ doorlock.addEventListener('drop', (e) =>{
             mainBg.style.filter = "blur(5px)";
             closeBtn2.style.display='block';
             console.log("Success Panel Displayed");
-        }, 1000); 
+        }, 1200);
 
         console.log("finally the door is open !!!");
     }
