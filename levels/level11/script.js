@@ -6,6 +6,10 @@ const popup2 = document.getElementById("popup2");
 const popupImg = document.getElementById("popup-img");
 const arrows = document.querySelectorAll(".arrow-btn");
 
+// Preload background image
+const bg2 = new Image();
+bg2.src = "../../assets/room11/bg 2.png";
+
 const KEY_POSITIONS = [
   { id: 0, top: 172, left: 172 },
   { id: 1, top: 172, left: 199 },
@@ -297,3 +301,16 @@ if (handle) {
     }
   });
 }
+
+
+document.getElementById('panelCloseBtn11').addEventListener('click', () => {
+  window.location.href = '../level page/levels11-15.html';
+});
+
+document.getElementById('homeBtn11').addEventListener('click', () => {
+  window.location.href = '../home page/home.html';
+});
+
+document.getElementById('nextBtn11').addEventListener('click', () => {
+  window.location.href = '../level page/levels11-15.html';
+});

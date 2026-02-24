@@ -11,8 +11,15 @@ const finalPanel = document.getElementById("finalPanel");
 const lastoptions=document.getElementById("lastoptions");
 const homebtn=document.querySelector(".homebtn");
 const retrybtn=document.querySelector(".retrybtn");
-const nextbtn=document.querySelector(".nextbtn");
 const closeBtn2=document.querySelector(".close-btn2");
+
+// Preload images
+const img1 = new Image();
+img1.src = "../../assets/room 3/gameplay 2 @3x@3x.png";
+const img2 = new Image();
+img2.src = "../../assets/room 3/gameplay 3 @3x@3x.png";
+const img3 = new Image();
+img3.src = "../../assets/room 3/game play bg final@3x@3x.jpg";
 
 let isBoxOPen=false;
 let hasKeyBeenTaken=false;
@@ -76,9 +83,21 @@ doorlock.addEventListener('drop', (e) =>{
             mainBg.style.filter = "blur(5px)";
             closeBtn2.style.display='block';
             console.log("Success Panel Displayed");
-        }, 1000); 
+        }, 1200); 
 
         console.log("finally the door is open !!!");
     }
+});
+
+closeBtn2.addEventListener("click", () => {
+    window.location.href = "../level page/levels1-10.html";
+});
+
+homebtn.addEventListener("click", () => {
+    window.location.href = "../home page/home.html";
+});
+
+retrybtn.addEventListener("click", () => {
+    window.location.href = "../level4/demo.html";
 });
 

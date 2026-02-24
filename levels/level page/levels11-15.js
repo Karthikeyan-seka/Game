@@ -20,6 +20,10 @@ levels.forEach((level) => {
         const levelNum = Number(level.dataset.level);
         if (levelNum === 11) {
             window.location.href = "../level11/room11.html";
+        } else if (levelNum === 13) {
+            window.location.href = "../level13/room13.html";
+        } else if (levelNum === 14) {
+            window.location.href = "../level14/room14.html";
         } else if (levelNum === 15) {
             alert(`Level ${levelNum} game coming soon!`);
         } else {

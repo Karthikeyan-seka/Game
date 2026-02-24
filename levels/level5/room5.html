@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>level5</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="game-screen">
+    
+    <div class="scene" id="scene">
+        <img id="sceneImage" src="../../assets/room5/1st bg before collecting key.png" />
+        <div class="click-area disabled" id="clickArea"></div>
+        <div class="key-area disabled" id="key" onclick="collectKey()"></div>
+        <div class="key-area2 disabled" id="key2" onclick="collectKey2(event)"></div>
+        <div class="final-key2 disabled" id="finalKey2"></div>
+        <div class="final-key" id="finalKey"></div>
+        
+    </div>
+
+    <!-- Left pot clickable area -->
+    <div class="left-pot" id = "leftPot" onclick="nextImage()"></div>
+    <div class="blur-layer" id="blur"></div>
+    
+    <!-- <div class="key" id="key" onclick="collectKey()"></div> -->
+
+    <!-- <div class="click-area disabled" id="clickArea" onclick="showOverlay()"></div> -->
+
+    <!-- <div class="overlay hidden" id="overlay">
+        <img src="letter box.png" class="overlay-image" />
+      </div> -->
+    <!-- OVERLAY IMAGE -->
+    
+
+    <!-- <img src="letter box.png" class="overlay-image" id="overlay"> -->
+
+    <!-- <div class="click-area" onclick="showOverlay()"></div> -->
+
+    <!-- <div class="key2" id="key2" onclick="collectKey2()"></div> -->
+   
+
+    <!-- CLOSE BUTTON -->
+    <img
+      src="../../assets/room5/CLOSE BUTTON.png" id="closeBtn" class="close-btn hidden" alt="Close"/>
+
+    <img src="../../assets/room5/final panel 5.png" class="finaloverlay-image hidden" id="finalOverlay"/>
+    <img src="../../assets/room5/letter box.png" class="overlay-image hidden" id="overlay">
+    <img src="../../assets/ICONS/CLOSE@3x.png" id="finalCloseBtn" class="final-close-btn hidden" alt="Close"/>
+
+
+    <div class="lastoptions" id="lastoptions" style="display: none;">
+      <img src="../../assets/ICONS/HOME@3x.png" alt="" class="homebtn" id="lastButtons">
+      <!-- <img src="../../assets/ICONS/SETTING@3x.png" alt="" class="retrybtn" id="lastButtons"> -->
+      <img src="../../assets/ICONS/PLAY@3x.png" alt=""class="nextbtn" id="lastButtons">
+ </div> 
+    <!-- Inventory Panel -->
+    <div class="inventory">
+      <div class="slot" id="slot1">
+        <img src="../../assets/room5/key 2.png" id="inventoryKey" draggable="true" class="inv-key hidden">
+        <img src="../../assets/room5/key.png" id="inventoryKey2" draggable="true" class="inv-key hidden">
+      </div>
+      <div class="slot"></div>
+      <div class="slot"></div>
+      <div class="slot"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

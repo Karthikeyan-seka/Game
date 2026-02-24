@@ -5,13 +5,17 @@ const bgImage = document.getElementById("bgImage");
 const leaf = document.getElementById("leaf");
 const floorButton = document.getElementById("floorButton");
 const closeBtn = document.getElementById("closeButton");
+const overlay = document.getElementById("overlay");
+const finalCloseBtn = document.getElementById("finalCloseBtn");
+const lastoptions = document.getElementById("lastoptions");
+const homeBtn = document.querySelector(".homebtn");
+const nextBtn = document.querySelector(".nextbtn");
 
 // Hitboxes
 const leafArea = document.getElementById("leafArea");
 const buttonArea = document.getElementById("buttonArea");
 const doorArea = document.getElementById("doorArea");
 const slot1 = document.getElementById("slot1");
-const levelPanel = document.getElementById("levelCompletePanel");
 
 // State
 let leafMoved = false;
@@ -137,33 +141,22 @@ doorArea.addEventListener("drop", (e) => {
 
         // 3. Show Level Complete Panel (After 1.5 seconds)
         setTimeout(() => {
-            if (levelPanel) {
-                levelPanel.classList.remove("hidden");
-                bgImage.classList.add("blur-bg");
-            }
-        }, 1500);
+            bgImage.classList.add("blur");
+            overlay.classList.remove("hidden");
+            lastoptions.style.display = 'block';
+            finalCloseBtn.classList.remove("hidden");
+        }, 1200);
     }
 });
 
-// ==========================================
-// 6. PANEL BUTTONS
-// ==========================================
-// ==========================================
-// 7. PANEL CLOSE LOGIC
-// ==========================================
-const panelCloseBtn = document.getElementById("panelCloseBtn");
+finalCloseBtn.addEventListener("click", () => {
+    window.location.href = "../level page/levels1-10.html";
+});
 
-if (panelCloseBtn) {
-    panelCloseBtn.addEventListener("click", () => {
-        // Hide the Level Complete Panel
-        const panel = document.getElementById("levelCompletePanel");
-        if (panel) {
-            panel.classList.add("hidden");
-        }
+homeBtn.addEventListener("click", () => {
+    window.location.href = "../home page/home.html";
+});
 
-        // Optional: If you want to un-blur the background when closing the panel
-        // document.getElementById("bgImage").classList.remove("blur-bg");
-    });
-}
-document.getElementById("homeBtn").addEventListener("click", () => location.reload());
-document.getElementById("nextBtn").addEventListener("click", () => location.reload());
+nextBtn.addEventListener("click", () => {
+    window.location.href = "../level3/index.html";
+});
