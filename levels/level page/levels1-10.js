@@ -39,6 +39,8 @@ levels.forEach((level) => {
         
         if (levelNum === 1) {
             window.location.href = "../level1/index.html";
+        } else if (levelNum === 2) {
+            window.location.href = "../level2/room2.html";
         } else if (levelNum === 3) {
             window.location.href = "../level3/index.html";
         } else if (levelNum === 4) {

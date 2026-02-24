@@ -185,9 +185,17 @@ if (panelCloseBtn) {
 }
 
 if (homeBtn) {
-    homeBtn.addEventListener("click", () => location.reload());
+    homeBtn.addEventListener("click", () => {
+        window.location.href = "../home page/home.html";
+    });
 }
 
 if (nextBtn) {
-    nextBtn.addEventListener("click", () => location.reload());
+    nextBtn.addEventListener("click", () => {
+        let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+        if (unlockedLevel < 3) {
+            localStorage.setItem('unlockedLevel', 3);
+        }
+        window.location.href = "../level page/levels1-10.html";
+    });
 }

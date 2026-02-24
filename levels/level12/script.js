@@ -290,5 +290,13 @@ if (panelCloseBtn) {
 }
 
 // Panel Buttons
-document.getElementById("homeBtn").addEventListener("click", () => location.reload());
-document.getElementById("nextBtn").addEventListener("click", () => location.reload());
+document.getElementById("homeBtn").addEventListener("click", () => {
+    window.location.href = "../home page/home.html";
+});
+document.getElementById("nextBtn").addEventListener("click", () => {
+    let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+    if (unlockedLevel < 13) {
+        localStorage.setItem('unlockedLevel', 13);
+    }
+    window.location.href = "../level page/levels11-15.html";
+});

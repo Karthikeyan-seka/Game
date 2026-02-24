@@ -14,7 +14,7 @@ playBtn.addEventListener("click", (e) => {
     console.log('Last played level:', lastLevel);
     const levelPaths = {
         1: "../level1/index.html",
-        2: "../level2/index.html",
+        2: "../level2/room2.html",
         3: "../level3/index.html",
         4: "../level4/demo.html",
         5: "../level5/room5.html",
@@ -24,7 +24,7 @@ playBtn.addEventListener("click", (e) => {
         9: "../level9/room9.html",
         10: "../level10/demo.html",
         11: "../level11/room11.html",
-        12: "../level11/room11.html",
+        12: "../level12/room12.html",
         13: "../level13/room13.html",
         14: "../level14/room14.html",
         15: "../level14/room14.html"

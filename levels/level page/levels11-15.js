@@ -37,6 +37,8 @@ levels.forEach((level) => {
         localStorage.setItem('lastPlayedLevel', levelNum);
         if (levelNum === 11) {
             window.location.href = "../level11/room11.html";
+        } else if (levelNum === 12) {
+            window.location.href = "../level12/room12.html";
         } else if (levelNum === 13) {
             window.location.href = "../level13/room13.html";
         } else if (levelNum === 14) {
