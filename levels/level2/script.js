@@ -1,6 +1,3 @@
-// ==========================================
-// 1. DOM ELEMENTS
-// ==========================================
 const bgImage = document.getElementById("bgImage");
 const leaf = document.getElementById("leaf");
 const floorButton = document.getElementById("floorButton");
