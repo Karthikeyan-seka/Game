@@ -117,9 +117,10 @@ canvas {
 /* --- 5. UI BUTTONS --- */
 .close-btn {
     position: absolute;
-    bottom: 400px;
-    left: 70%;
-    width: 40px; height: 40px;
+    bottom: 436px;
+    left: 73%;
+    width: 40px;
+    height: 40px;
     z-index: 250;
     cursor: pointer;
     transition: transform 0.2s;
