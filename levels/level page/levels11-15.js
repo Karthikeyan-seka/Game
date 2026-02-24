@@ -3,10 +3,15 @@ let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
 
 const prevBtnLevel = document.getElementById("prevBtnLevel");
 
-// Unlock levels on page load
-for (let i = 11; i <= unlockedLevel; i++) {
-    if (i <= 15) {
-        document.querySelector(`.level${i}`)?.classList.remove("locked");
+// Lock all levels 11-15 initially, only unlock if level 10 is completed
+for (let i = 11; i <= 15; i++) {
+    const levelWrapper = document.querySelector(`.level${i}`);
+    if (levelWrapper) {
+        if (unlockedLevel < 11 || i > unlockedLevel) {
+            levelWrapper.classList.add("locked");
+        } else {
+            levelWrapper.classList.remove("locked");
+        }
     }
 }
 
@@ -18,6 +23,18 @@ levels.forEach((level) => {
     level.addEventListener("click", (e) => {
         e.stopPropagation();
         const levelNum = Number(level.dataset.level);
+        
+        if (unlockedLevel < 11) {
+            alert('Complete Level 10 first!');
+            return;
+        }
+        
+        if (levelNum > unlockedLevel) {
+            alert(`Complete Level ${levelNum - 1} first!`);
+            return;
+        }
+        
+        localStorage.setItem('lastPlayedLevel', levelNum);
         if (levelNum === 11) {
             window.location.href = "../level11/room11.html";
         } else if (levelNum === 13) {

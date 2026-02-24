@@ -52,6 +52,7 @@ keyArea.addEventListener("click", () => {
     slot1.appendChild(inventoryKey);
     bgImage.src = "../../assets/room1/room1img.png"
     carpet.classList.add("hidden")
+    carpetArea.classList.add("disabled")
     doorArea.classList.remove("disabled")
   });
 
@@ -99,6 +100,10 @@ homeBtn.addEventListener("click", () => {
 });
 
 nextBtn.addEventListener("click", () => {
-  window.location.href = "../level2/index.html";
+  let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+  if (unlockedLevel < 2) {
+    localStorage.setItem('unlockedLevel', 2);
+  }
+  window.location.href = "../level page/levels1-10.html";
 });
 

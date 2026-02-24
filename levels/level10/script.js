@@ -13,6 +13,10 @@ homebtn.addEventListener('click', () => {
 });
 
 playbtn.addEventListener('click', () => {
+    let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+    if (unlockedLevel < 11) {
+        localStorage.setItem('unlockedLevel', 11);
+    }
     window.location.href = "../level page/levels11-15.html";
 });
 

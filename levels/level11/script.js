@@ -312,5 +312,9 @@ document.getElementById('homeBtn11').addEventListener('click', () => {
 });
 
 document.getElementById('nextBtn11').addEventListener('click', () => {
+  let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+  if (unlockedLevel < 12) {
+    localStorage.setItem('unlockedLevel', 12);
+  }
   window.location.href = '../level page/levels11-15.html';
 });

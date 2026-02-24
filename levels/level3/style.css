@@ -84,7 +84,7 @@ body{
     left: 48%;
     transform: translateX(-50%);
     display: flex;
-    gap: 30px;
+    gap: 21px;
     z-index: 1001;
 }
 #buttons {

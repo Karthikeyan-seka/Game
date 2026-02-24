@@ -92,6 +92,7 @@ function closeOverlayOnce() {
       overlay.classList.remove("hidden");
       closeBtn.classList.remove("hidden");//new img
       colorButtons.style.display = 'flex';
+      colorButtons.style.top = '40.5%';
     }
     if (isRipBoxOpen===true) 
       // if (!keyCollected) return;
@@ -233,5 +234,9 @@ document.querySelector(".homebtn").addEventListener("click", () => {
 });
 
 document.querySelector(".nextbtn").addEventListener("click", () => {
+  let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+  if (unlockedLevel < 15) {
+    localStorage.setItem('unlockedLevel', 15);
+  }
   window.location.href = "../level page/levels11-15.html";
 });

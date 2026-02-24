@@ -1,7 +1,20 @@
 const levels = document.querySelectorAll(".level");
-
 const homeBtnLevel = document.getElementById("homeBtnLevel");
 const nextBtnLevel = document.getElementById("nextBtnLevel");
+
+let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+
+// Lock/unlock levels on page load
+for (let i = 1; i <= 10; i++) {
+    const levelWrapper = document.querySelector(`.level${i}`);
+    if (levelWrapper) {
+        if (i > unlockedLevel) {
+            levelWrapper.classList.add("locked");
+        } else {
+            levelWrapper.classList.remove("locked");
+        }
+    }
+}
 
 homeBtnLevel.addEventListener("click", () => {
     window.location.replace("../home page/home.html");
@@ -15,6 +28,14 @@ levels.forEach((level) => {
     level.addEventListener("click", (e) => {
         e.stopPropagation();
         const levelNum = Number(level.dataset.level);
+        
+        if (levelNum > unlockedLevel) {
+            alert(`Complete Level ${levelNum - 1} first!`);
+            return;
+        }
+        
+        localStorage.setItem('lastPlayedLevel', levelNum);
+        
         
         if (levelNum === 1) {
             window.location.href = "../level1/index.html";

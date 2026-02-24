@@ -262,7 +262,11 @@ homebtn.addEventListener('click', () => {
 });
 
 playbtn.addEventListener('click', () => {
-    window.location.href = '../level7/room7.html';
+    let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+    if (unlockedLevel < 7) {
+        localStorage.setItem('unlockedLevel', 7);
+    }
+    window.location.href = '../level page/levels1-10.html';
 });
 
 closebtn2.addEventListener('click', () => {

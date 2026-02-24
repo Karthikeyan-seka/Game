@@ -268,6 +268,16 @@
       z-index: 7;
       pointer-events: auto;
     }
+
+    body::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      z-index: -1;
+      background: url('../../assets/room5/final panel 5.png');
+    }
   
   .finaloverlay-image.hidden {
       display: none;

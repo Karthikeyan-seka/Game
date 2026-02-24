@@ -146,6 +146,17 @@ body{
     z-index: 1000; 
     display: none; 
 }
+
+body::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+    background: url('../../assets/room 10/final panel 10@2x.png');
+}
+
 .lastoptions {
     position: absolute;
     top: 58%;

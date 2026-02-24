@@ -135,6 +135,17 @@ body{
     width: 90%;
     z-index: 1000;
 }
+
+body::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+    background: url('../../assets/room8/final panel 8@2x.png');
+}
+
 .lastoptions {
     position: absolute;
     top: 58%;

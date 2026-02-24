@@ -59,9 +59,8 @@ body {
   .overlay-image {
     position: absolute;
     inset: 0;
-    left:18px;
-    width: 90%;
-    height: 85%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     z-index: 1;
     pointer-events: auto;
@@ -79,6 +78,16 @@ body {
     object-fit: contain;
     z-index: 1;
     pointer-events: auto;
+  }
+
+body::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+    background: url('../../assets/room7/final panel 7@2x.png');
   }
 
 .finaloverlay-image.hidden {
@@ -170,8 +179,8 @@ body {
 
   .final-key-area {
     position: absolute;
-    bottom: 375px;    
-    right: 120px;
+    bottom: 335px;    
+    right: 100px;
     width: 60px;
     height: 60px;
     cursor: pointer;
