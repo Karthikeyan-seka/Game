@@ -13,6 +13,17 @@ const closeBtn = document.getElementById("closeBtn");
 const finalCloseBtn= document.getElementById("finalCloseBtn");
 const lastoptions = document.getElementById("lastoptions");
 
+// Show game when background loads
+if (sceneImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  sceneImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 
 
 

@@ -6,6 +6,17 @@ const popup2 = document.getElementById("popup2");
 const popupImg = document.getElementById("popup-img");
 const arrows = document.querySelectorAll(".arrow-btn");
 
+// Show game when background loads
+if (bgImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  bgImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 // Preload background image
 const bg2 = new Image();
 bg2.src = "../../assets/room11/bg 2.png";

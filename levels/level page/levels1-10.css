@@ -24,7 +24,7 @@ body{
     height: 50px;
     cursor: pointer;
     z-index: 100;
-    transition: transform 0.2s;
+    transition: transform 0.05s;
 }
 
 .home-btn-level:active {
@@ -54,6 +54,12 @@ body{
     background-position: center;
     position: relative;
     overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.05s;
+}
+
+.level-page.loaded {
+    opacity: 1;
 }
 
 .Title{

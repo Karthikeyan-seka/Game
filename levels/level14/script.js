@@ -21,6 +21,21 @@ let whiteBtnState = 0;
 let yellowBtnState = 0;
 let keyCollected = false;
 
+// Show game when background loads
+if (sceneImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  sceneImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
+// Preload completion panel image
+const finalPanelImg = new Image();
+finalPanelImg.src = "../../assets/room14/final panel 14@2x.png";
+
 
 
 clueArea.addEventListener("click", () => {

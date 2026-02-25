@@ -23,6 +23,17 @@ const finalCloseBtn = document.getElementById('finalCloseBtn');
 const homeBtn = document.getElementById('homeBtn');
 const nextBtn = document.getElementById('nextBtn');
 
+// Show game when background loads
+if (mainBg.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  mainBg.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 
 // --- Game State Variables ---
 let hasScrollBeenTaken = false;

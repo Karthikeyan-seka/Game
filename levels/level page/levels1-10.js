@@ -1,8 +1,16 @@
 const levels = document.querySelectorAll(".level");
 const homeBtnLevel = document.getElementById("homeBtnLevel");
 const nextBtnLevel = document.getElementById("nextBtnLevel");
+const levelPage = document.querySelector(".level-page");
 
 let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+
+// Preload background image
+const bgImg = new Image();
+bgImg.src = "../../assets/levelpages/home page without tittle.jpg";
+bgImg.onload = () => {
+    levelPage.classList.add("loaded");
+};
 
 // Lock/unlock levels on page load
 for (let i = 1; i <= 10; i++) {

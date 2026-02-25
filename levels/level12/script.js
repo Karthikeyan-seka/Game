@@ -22,6 +22,17 @@ const doorKnobHitbox = document.getElementById("doorKnobHitbox");
 const doorDropZone = document.getElementById("doorArea");
 const slot1 = document.getElementById("slot1");
 
+// Show game when background loads
+if (bgImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  bgImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 // UI Elements
 const closeBtn = document.getElementById("closeButton");
 const levelPanel = document.getElementById("levelCompletePanel");

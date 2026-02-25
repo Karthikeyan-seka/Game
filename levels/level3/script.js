@@ -13,6 +13,17 @@ const homebtn=document.querySelector(".homebtn");
 const retrybtn=document.querySelector(".retrybtn");
 const closeBtn2=document.querySelector(".close-btn2");
 
+// Show game when background loads
+if (mainBg.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  mainBg.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 // Preload images
 const img1 = new Image();
 img1.src = "../../assets/room 3/gameplay 2 @3x@3x.png";

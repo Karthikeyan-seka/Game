@@ -11,6 +11,17 @@ const slot1 = document.getElementById("slot1");
 const inventoryKey = document.getElementById("inventoryKey");
 const finalCloseBtn= document.getElementById("finalCloseBtn");
 
+// Show game when background loads
+if (sceneImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  sceneImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 
 
 

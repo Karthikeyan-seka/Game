@@ -15,6 +15,17 @@ let isBoxOPen = false
 let enteredCode = "";
 let keyCollected = false;
 
+// Show game when background loads
+if (sceneImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  sceneImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 
 clueArea.addEventListener("click", () => {
     nextImage();
@@ -195,5 +206,5 @@ document.querySelector(".nextbtn").addEventListener("click", () => {
   if (unlockedLevel < 14) {
     localStorage.setItem('unlockedLevel', 14);
   }
-  window.location.href = "../level14/room14.html";
+  window.location.href = "../level page/levels11-15.html";
 });

@@ -1,3 +1,10 @@
+// Preload background image
+const bgImage = new Image();
+bgImage.src = "../../assets/home page/home page without tittle.jpg";
+bgImage.onload = () => {
+    document.getElementById("gameContainer").classList.add("loaded");
+};
+
 // Homepage navigation
 const playBtn = document.getElementById("playBtn");
 const levelsBtn = document.getElementById("levelsBtn");

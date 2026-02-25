@@ -1,9 +1,9 @@
+const bgImage = document.getElementById("bgImage");
 const carpet = document.getElementById("carpet");
 const key = document.getElementById("key");
 const carpetArea = document.getElementById("carpetArea");
 const slot1 = document.getElementById("slot1");
 const keyArea = document.getElementById("keyArea");
-const bgImage = document.getElementById("bgImage");
 const doorArea = document.getElementById("doorArea");
 const overlay = document.getElementById("overlay");
 const finalCloseBtn= document.getElementById("finalCloseBtn");
@@ -12,11 +12,26 @@ const lastoptions = document.getElementById("lastoptions");
 const homeBtn = document.querySelector(".homebtn");
 const nextBtn = document.querySelector(".nextbtn");
 
-// Preload images
-const img1 = new Image();
-img1.src = "../../assets/room1/room1img.png";
-const img2 = new Image();
-img2.src = "../../assets/room1/room back ground after game end@3x.jpg";
+// Show game when background loads
+if (bgImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  bgImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
+// Preload other images
+const preloadImages = [
+  "../../assets/room1/room1img.png",
+  "../../assets/room1/room back ground after game end@3x.jpg"
+];
+preloadImages.forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
 
 
 

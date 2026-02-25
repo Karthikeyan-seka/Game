@@ -8,11 +8,28 @@ body {
     height: 100vh;
   }
 
+.loader {
+    border: 4px solid #333;
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    z-index: 9999;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .game-screen {
     position: relative;
     width: 360px;          
     height: 640px;         
     overflow: hidden;
+    transition: opacity 0.3s ease;
   }
   
 #sceneImage {

@@ -2,6 +2,17 @@ const  mainBg = document.getElementById("mainbg");
 const hitbox1 = document.querySelector(".hitbox1");
 const clue1 = document.querySelector(".clue1");
 
+// Show game when background loads
+if (mainBg.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  mainBg.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 const closebtn = document.getElementById("closebtn");
 
 const hitbox2 = document.querySelector(".hitbox2");
