@@ -178,6 +178,18 @@ body {
 .panel-close-btn:active {
     transform: scale(0.9);
 }
+.ad-container {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    width: 90%;
+    min-height: 100px;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
 
 @keyframes popIn {
     /* Changed this because translate(-50%, -50%) will throw a full-screen panel off-center */

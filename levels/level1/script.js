@@ -18,8 +18,6 @@ img1.src = "../../assets/room1/room1img.png";
 const img2 = new Image();
 img2.src = "../../assets/room1/room back ground after game end@3x.jpg";
 
-
-
 let carpetMoved = false;
 let keyCollected = false;
 
@@ -34,76 +32,86 @@ carpetArea.addEventListener("click", () => {
 
         keyArea.classList.remove("disabled")
     }
-  });
+});
 
 // Step 2: Collect key
 keyArea.addEventListener("click", () => {
     if (keyCollected) return;
-  
+
     keyCollected = true;
     key.classList.add("hidden");
-  
+
     const inventoryKey = document.createElement("img");
     inventoryKey.src = "../../assets/room1/key to open the door for room 1.png";
     inventoryKey.style.width = "40px";
     inventoryKey.draggable = true;
     inventoryKey.id = "inventoryKey";
-  
+
     slot1.appendChild(inventoryKey);
     bgImage.src = "../../assets/room1/room1img.png"
     carpet.classList.add("hidden")
     carpetArea.classList.add("disabled")
     doorArea.classList.remove("disabled")
-  });
+});
 
 /* START DRAG */
 document.addEventListener("dragstart", (e) => {
     if (e.target.id === "inventoryKey") {
-      e.dataTransfer.setData("text/plain", "inventoryKey");
+        e.dataTransfer.setData("text/plain", "inventoryKey");
     }
-  });
+});
 
 /* ALLOW DROP */
 doorArea.addEventListener("dragover", (e) => {
     e.preventDefault();
-  });
+});
 
 /* DROP KEY ON DOOR */
 doorArea.addEventListener("drop", (e) => {
     e.preventDefault();
-  
+
     // Open door
     bgImage.src = "../../assets/room1/room back ground after game end@3x.jpg";
-  
+
     //Remove key from inventory
     const inventoryKey = document.getElementById("inventoryKey");
     if (inventoryKey) {
-      inventoryKey.classList.add("hidden");
+        inventoryKey.classList.add("hidden");
     }
 
     setTimeout(() => {
-      bgImage.classList.add("blur");
-      overlay.classList.remove("hidden")
-      lastoptions.style.display = 'block';
+        bgImage.classList.add("blur");
+        overlay.classList.remove("hidden")
+        lastoptions.style.display = 'block';
 
-      finalCloseBtn.classList.remove("hidden")
+        finalCloseBtn.classList.remove("hidden")
+
+        // ==========================================
+        // ADVERTISEMENT TRIGGER ADDED HERE
+        // ==========================================
+        const adContainer = document.getElementById("adContainer");
+        if (adContainer) {
+            adContainer.classList.remove("hidden");
+            try {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            } catch (e) {}
+        }
 
     }, 1200)
-  });
+});
 
 finalCloseBtn.addEventListener("click", () => {
-  window.location.href = "../level page/levels1-10.html";
+    window.location.href = "../level page/levels1-10.html";
 });
 
 homeBtn.addEventListener("click", () => {
-  window.location.href = "../home page/home.html";
+    window.location.href = "../home page/home.html";
 });
 
 nextBtn.addEventListener("click", () => {
-  let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
-  if (unlockedLevel < 2) {
-    localStorage.setItem('unlockedLevel', 2);
-  }
-  window.location.href = "../level page/levels1-10.html";
+    let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+    if (unlockedLevel < 2) {
+        localStorage.setItem('unlockedLevel', 2);
+    }
+    window.location.href = "../level page/levels1-10.html";
 });
-
