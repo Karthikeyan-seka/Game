@@ -1,10 +1,3 @@
-// Preload background image
-const bgImage = new Image();
-bgImage.src = "../../assets/home page/home page without tittle.jpg";
-bgImage.onload = () => {
-    document.getElementById("gameContainer").classList.add("loaded");
-};
-
 // Homepage navigation
 const playBtn = document.getElementById("playBtn");
 const levelsBtn = document.getElementById("levelsBtn");
@@ -63,12 +56,12 @@ closeSettingsBtn.addEventListener("click", () => {
 
 soundToggle.addEventListener("click", function() {
     const isActive = this.dataset.active === "true";
-    this.src = isActive ? "../../assets/home page/PAUSE SMALL SIZE BUTTON.png" : "../../assets/home page/PAUSE BUTTON.png";
+    this.src = isActive ? "../../assets/home page/panneldesign/volume mute button.png" : "../../assets/home page/panneldesign/volume button.png";
     this.dataset.active = !isActive;
 });
 
 musicToggle.addEventListener("click", function() {
     const isActive = this.dataset.active === "true";
-    this.src = isActive ? "../../assets/home page/PAUSE SMALL SIZE BUTTON.png" : "../../assets/home page/PAUSE BUTTON.png";
+    this.src = isActive ? "../../assets/home page/panneldesign/volume mute button.png" : "../../assets/home page/panneldesign/volume button.png";
     this.dataset.active = !isActive;
 });

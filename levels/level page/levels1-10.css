@@ -55,11 +55,11 @@ body{
     position: relative;
     overflow: hidden;
     opacity: 0;
-    transition: opacity 0.05s;
+    animation: fadeIn 0.3s ease-in forwards;
 }
 
-.level-page.loaded {
-    opacity: 1;
+@keyframes fadeIn {
+    to { opacity: 1; }
 }
 
 .Title{

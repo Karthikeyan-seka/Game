@@ -107,7 +107,10 @@ doorArea.addEventListener("drop", (e) => {
   });
 
 finalCloseBtn.addEventListener("click", () => {
-  window.location.href = "../level page/levels1-10.html";
+  overlay.classList.add("hidden");
+  lastoptions.style.display = 'none';
+  finalCloseBtn.classList.add("hidden");
+  bgImage.classList.remove("blur");
 });
 
 homeBtn.addEventListener("click", () => {

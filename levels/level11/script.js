@@ -54,7 +54,11 @@ const KEY_POSITIONS = [
   { id: 29, top: 74, left: 66 },
   { id: 30, top: 120, left: 30 },
   { id: 31, top: 171, left: 30 },
-  { id: 32, top: 222, left: 30 }
+  { id: 32, top: 222, left: 30 },
+  { id: 33, top: 213, left: 68 },
+  { id: 34, top: 176, left: 68 },
+  { id: 35, top: 151, left: 66 },
+  { id: 36, top: 118, left: 74 }
 ];
 
 const VALID_PATHS = [
@@ -101,7 +105,11 @@ const VALID_PATHS = [
   [28,29],
   [29,30],
   [30,31],
-  [31,32]
+  [31,32],
+  [21,33],
+  [33,34],
+  [34,35],
+  [35,36]
 ];
 
 function getValidNextMoves(path) {
@@ -257,6 +265,7 @@ popup2.addEventListener("click", (e) => {
 
 arrows.forEach(arrow => {
   arrow.addEventListener("click", (e) => {
+    e.preventDefault();
     e.stopPropagation();
     const dir = arrow.getAttribute('data-dir');
     console.log('Arrow clicked:', dir);
@@ -315,7 +324,10 @@ if (handle) {
 
 
 document.getElementById('panelCloseBtn11').addEventListener('click', () => {
-  window.location.href = '../level page/levels11-15.html';
+  document.getElementById('finalPanel11').classList.add('hidden');
+  document.getElementById('lastoptions11').style.display = 'none';
+  document.getElementById('panelCloseBtn11').classList.add('hidden');
+  bgImage.classList.remove('blur');
 });
 
 document.getElementById('homeBtn11').addEventListener('click', () => {

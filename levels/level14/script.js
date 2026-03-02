@@ -241,7 +241,10 @@ finalLockArea.addEventListener("drop", (e) => {
 
 
 finalCloseBtn.addEventListener("click", () => {
-  window.location.href = "../level page/levels11-15.html";
+  overlay.classList.add("hidden");
+  lastoptions.style.display = 'none';
+  finalCloseBtn.classList.add("hidden");
+  sceneImage.classList.remove("blur");
 });
 
 document.querySelector(".homebtn").addEventListener("click", () => {

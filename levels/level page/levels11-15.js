@@ -1,15 +1,7 @@
 const levels = document.querySelectorAll(".level");
-const levelPage = document.querySelector(".level-page");
 let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
 
 const prevBtnLevel = document.getElementById("prevBtnLevel");
-
-// Preload background image
-const bgImg = new Image();
-bgImg.src = "../../assets/levelpages/home page without tittle.jpg";
-bgImg.onload = () => {
-    levelPage.classList.add("loaded");
-};
 
 // Lock all levels 11-15 initially, only unlock if level 10 is completed
 for (let i = 11; i <= 15; i++) {

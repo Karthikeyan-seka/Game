@@ -255,7 +255,8 @@ closeDoorBtn.addEventListener('click', () => {
 });
 
 finalCloseBtn.addEventListener('click', () => {
-    window.location.href = "../level page/levels1-10.html";
+    finalOverlay.style.display = 'none';
+    mainBg.classList.remove('blur-bg');
 });
 
 homeBtn.addEventListener('click', () => {

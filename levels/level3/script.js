@@ -101,7 +101,10 @@ doorlock.addEventListener('drop', (e) =>{
 });
 
 closeBtn2.addEventListener("click", () => {
-    window.location.href = "../level page/levels1-10.html";
+    finalPanel.style.display = 'none';
+    lastoptions.style.display = 'none';
+    closeBtn2.style.display = 'none';
+    mainBg.style.filter = 'none';
 });
 
 homebtn.addEventListener("click", () => {

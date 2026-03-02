@@ -193,7 +193,10 @@ function openDoor() {
 
 
 closebtn2.addEventListener("click", () => {
-  window.location.href = "../level page/levels1-10.html";
+  finalPanel.style.display = 'none';
+  lastoptions.style.display = 'none';
+  closebtn2.style.display = 'none';
+  mainbg.style.filter = 'none';
 });
 
 homebtn.addEventListener("click", () => {

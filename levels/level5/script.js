@@ -336,7 +336,10 @@ function collectKey() {
 
 
 finalCloseBtn.addEventListener("click", () => {
-  window.location.href = "../level page/levels1-10.html";
+  finalOverlay.classList.add("hidden");
+  lastoptions.style.display = 'none';
+  finalCloseBtn.classList.add("hidden");
+  overlay.classList.remove("blur");
 });
 
 document.querySelector(".homebtn").addEventListener("click", () => {
