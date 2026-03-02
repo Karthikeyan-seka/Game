@@ -6,6 +6,17 @@ const leaf = document.getElementById("leaf");
 const floorButton = document.getElementById("floorButton");
 const closeBtn = document.getElementById("closeButton");
 
+// Show game when background loads
+if (bgImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  bgImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 // Hitboxes
 const leafArea = document.getElementById("leafArea");
 const buttonArea = document.getElementById("buttonArea");

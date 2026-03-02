@@ -2,6 +2,17 @@ const  mainBg = document.getElementById("mainbg");
 const hitbox1 = document.querySelector(".hitbox1");
 const clue1 = document.querySelector(".clue1");
 
+// Show game when background loads
+if (mainBg.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  mainBg.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 const closebtn = document.getElementById("closebtn");
 
 const hitbox2 = document.querySelector(".hitbox2");
@@ -270,7 +281,10 @@ playbtn.addEventListener('click', () => {
 });
 
 closebtn2.addEventListener('click', () => {
-    window.location.href = "../level page/levels1-10.html";
+    finalPanel.style.display = 'none';
+    lastoptions.style.display = 'none';
+    closebtn2.style.display = 'none';
+    mainBg.style.filter = 'none';
 });
 
 

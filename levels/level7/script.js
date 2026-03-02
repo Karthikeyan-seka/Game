@@ -11,6 +11,17 @@ const slot1 = document.getElementById("slot1");
 const inventoryKey = document.getElementById("inventoryKey");
 const finalCloseBtn= document.getElementById("finalCloseBtn");
 
+// Show game when background loads
+if (sceneImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  sceneImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 
 
 
@@ -204,7 +215,10 @@ finalDoorArea.addEventListener("drop", (e) => {
 
 
 finalCloseBtn.addEventListener("click", () => {
-  window.location.href = "../level page/levels1-10.html";
+  finalOverlay.classList.add("hidden");
+  lastoptions.style.display = 'none';
+  finalCloseBtn.classList.add("hidden");
+  sceneImage.classList.remove("blur");
 });
 
 document.querySelector(".homebtn").addEventListener("click", () => {

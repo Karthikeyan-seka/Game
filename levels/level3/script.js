@@ -13,6 +13,17 @@ const homebtn=document.querySelector(".homebtn");
 const retrybtn=document.querySelector(".retrybtn");
 const closeBtn2=document.querySelector(".close-btn2");
 
+// Show game when background loads
+if (mainBg.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  mainBg.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 // Preload images
 const img1 = new Image();
 img1.src = "../../assets/room 3/gameplay 2 @3x@3x.png";
@@ -90,7 +101,10 @@ doorlock.addEventListener('drop', (e) =>{
 });
 
 closeBtn2.addEventListener("click", () => {
-    window.location.href = "../level page/levels1-10.html";
+    finalPanel.style.display = 'none';
+    lastoptions.style.display = 'none';
+    closeBtn2.style.display = 'none';
+    mainBg.style.filter = 'none';
 });
 
 homebtn.addEventListener("click", () => {

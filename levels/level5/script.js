@@ -13,6 +13,17 @@ const closeBtn = document.getElementById("closeBtn");
 const finalCloseBtn= document.getElementById("finalCloseBtn");
 const lastoptions = document.getElementById("lastoptions");
 
+// Show game when background loads
+if (sceneImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  sceneImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 
 
 
@@ -325,7 +336,10 @@ function collectKey() {
 
 
 finalCloseBtn.addEventListener("click", () => {
-  window.location.href = "../level page/levels1-10.html";
+  finalOverlay.classList.add("hidden");
+  lastoptions.style.display = 'none';
+  finalCloseBtn.classList.add("hidden");
+  overlay.classList.remove("blur");
 });
 
 document.querySelector(".homebtn").addEventListener("click", () => {
