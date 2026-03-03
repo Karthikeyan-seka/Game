@@ -26,11 +26,11 @@ if (mainBg.complete) {
 
 // Preload images
 const img1 = new Image();
-img1.src = "../../assets/room 3/gameplay 2 @3x@3x.png";
+img1.src = "../../assets/room3/gameplay2@3x@3x.png";
 const img2 = new Image();
-img2.src = "../../assets/room 3/gameplay 3 @3x@3x.png";
+img2.src = "../../assets/room3/gameplay3@3x@3x.png";
 const img3 = new Image();
-img3.src = "../../assets/room 3/game play bg final@3x@3x.jpg";
+img3.src = "../../assets/room3/gameplaybgfinal@3x@3x.jpg";
 
 let isBoxOPen=false;
 let hasKeyBeenTaken=false;
@@ -46,12 +46,12 @@ smallBox.addEventListener('click',() =>{
 
 box1.addEventListener('click', function(){
     if(!isBoxOPen){
-        this.src='../../assets/room 3/gameplay 2 @3x@3x.png';
+        this.src='../../assets/room3/gameplay2@3x@3x.png';
         isBoxOPen=true; 
         
     }
     else if(isBoxOPen && !hasKeyBeenTaken){
-        this.src = "../../assets/room 3/gameplay 3 @3x@3x.png";
+        this.src = "../../assets/room3/gameplay3@3x@3x.png";
         inventoryKey.style.display = 'block'; // Show key in inventory
         hasKeyBeenTaken = true;
         
@@ -66,7 +66,7 @@ box1.addEventListener('click', function(){
 
 closeBtn.addEventListener('click',() =>{
     zoomOverlay.style.display='none';
-    box1.src='../../assets/room 3/gameplay 1@3x.png';
+    box1.src='../../assets/room3/gameplay1@3x.png';
 });
 
 // key event to unlock the door
@@ -83,7 +83,7 @@ doorlock.addEventListener('drop', (e) =>{
     const data=e.dataTransfer.getData("text");
 
     if(data === "key"){
-        mainBg.src="../../assets/room 3/game play bg final@3x@3x.jpg";
+        mainBg.src="../../assets/room3/gameplaybgfinal@3x@3x.jpg";
 
         inventoryKey.style.display='none';
 

@@ -22,7 +22,7 @@ hitbox1.addEventListener('click', () => {
 
     scissor.style.display = 'block';
 
-   mainbg.src = "../../assets/room8/2 BG.jpg"
+   mainbg.src = "../../assets/room8/2BG.jpg"
     
     hitbox2.style.pointerEvents = 'auto';
     
@@ -113,7 +113,7 @@ letterbox.addEventListener('drop', (e) => {
 // 3. Logic to open the letter
 function openLetterWithScissor() {
     // Change letter image
-    letterbox.src = '../../assets/room8/key with letter.png';
+    letterbox.src = '../../assets/room8/keywithletter.png';
     
     // Hide scissors
     scissor.style.display = 'none';
@@ -176,7 +176,7 @@ function openDoor() {
     inventoryKey.style.display = 'none';
     
     // Change background to show open door
-    mainbg.src = "../../assets/room8/final bg.jpg"; 
+    mainbg.src = "../../assets/room8/finalbg.jpg"; 
     mainbg.style.opacity = "1";
     mainbg.style.visibility = "visible";
     mainbg.style.zIndex = "10";
