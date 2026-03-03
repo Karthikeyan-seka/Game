@@ -107,10 +107,7 @@ doorArea.addEventListener("drop", (e) => {
   });
 
 finalCloseBtn.addEventListener("click", () => {
-  overlay.classList.add("hidden");
-  lastoptions.style.display = 'none';
-  finalCloseBtn.classList.add("hidden");
-  bgImage.classList.remove("blur");
+  location.reload();
 });
 
 homeBtn.addEventListener("click", () => {

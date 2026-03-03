@@ -56,12 +56,12 @@ closeSettingsBtn.addEventListener("click", () => {
 
 soundToggle.addEventListener("click", function() {
     const isActive = this.dataset.active === "true";
-    this.src = isActive ? "../../assets/home page/panneldesign/volume mute button.png" : "../../assets/home page/panneldesign/volume button.png";
+    this.src = isActive ? "../../assets/home page/panneldesign/volume_mute_btn.png" : "../../assets/home page/panneldesign/volume_btn.png";
     this.dataset.active = !isActive;
 });
 
 musicToggle.addEventListener("click", function() {
     const isActive = this.dataset.active === "true";
-    this.src = isActive ? "../../assets/home page/panneldesign/volume mute button.png" : "../../assets/home page/panneldesign/volume button.png";
+    this.src = isActive ? "../../assets/home page/panneldesign/volume_mute_btn.png" : "../../assets/home page/panneldesign/volume_btn.png";
     this.dataset.active = !isActive;
 });

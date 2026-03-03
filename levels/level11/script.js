@@ -19,7 +19,7 @@ if (bgImage.complete) {
 
 // Preload background image
 const bg2 = new Image();
-bg2.src = "../../assets/room11/bg 2.png";
+bg2.src = "../../assets/room11/bg_2.png";
 
 const KEY_POSITIONS = [
   { id: 0, top: 172, left: 172 },
@@ -309,7 +309,7 @@ if (handle) {
     const item = e.dataTransfer.getData('text/plain');
     if (item === 'doorKey' && !keyUsed) {
       keyUsed = true;
-      bgImage.src = '../../assets/room11/bg 2.png';
+      bgImage.src = '../../assets/room11/bg_2.png';
       inventoryKey.classList.add('hidden');
       
       setTimeout(() => {
@@ -324,10 +324,7 @@ if (handle) {
 
 
 document.getElementById('panelCloseBtn11').addEventListener('click', () => {
-  document.getElementById('finalPanel11').classList.add('hidden');
-  document.getElementById('lastoptions11').style.display = 'none';
-  document.getElementById('panelCloseBtn11').classList.add('hidden');
-  bgImage.classList.remove('blur');
+  location.reload();
 });
 
 document.getElementById('homeBtn11').addEventListener('click', () => {

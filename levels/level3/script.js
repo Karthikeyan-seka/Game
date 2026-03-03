@@ -101,10 +101,7 @@ doorlock.addEventListener('drop', (e) =>{
 });
 
 closeBtn2.addEventListener("click", () => {
-    finalPanel.style.display = 'none';
-    lastoptions.style.display = 'none';
-    closeBtn2.style.display = 'none';
-    mainBg.style.filter = 'none';
+  location.reload();
 });
 
 homebtn.addEventListener("click", () => {

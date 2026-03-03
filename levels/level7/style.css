@@ -230,7 +230,7 @@ body::after {
     left: 290px;
     width: 50px;
     height: 50px;
-    z-index: 200;
+    z-index: 1002;
     cursor: pointer;
   }
 

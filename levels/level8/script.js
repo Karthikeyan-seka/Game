@@ -193,10 +193,7 @@ function openDoor() {
 
 
 closebtn2.addEventListener("click", () => {
-  finalPanel.style.display = 'none';
-  lastoptions.style.display = 'none';
-  closebtn2.style.display = 'none';
-  mainbg.style.filter = 'none';
+  location.reload();
 });
 
 homebtn.addEventListener("click", () => {

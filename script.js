@@ -1,2 +1,1 @@
-// Game page script
-console.log('Game page loaded');
+window.location.href = "levels/home page/home.html";

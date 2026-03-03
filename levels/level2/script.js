@@ -188,10 +188,7 @@ const nextBtn = document.getElementById("nextBtn");
 
 if (panelCloseBtn) {
     panelCloseBtn.addEventListener("click", () => {
-        // Hide the Level Complete Panel
-        if (levelPanel) {
-            levelPanel.classList.add("hidden");
-        }
+        location.reload();
     });
 }
 

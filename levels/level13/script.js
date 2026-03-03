@@ -194,10 +194,7 @@ finalLockArea.addEventListener("drop", (e) => {
 
 
 finalCloseBtn.addEventListener("click", () => {
-  overlay.classList.add("hidden");
-  lastoptions.style.display = 'none';
-  finalCloseBtn.classList.add("hidden");
-  sceneImage.classList.remove("blur");
+  location.reload();
 });
 
 document.querySelector(".homebtn").addEventListener("click", () => {

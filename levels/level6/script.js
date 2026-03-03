@@ -281,11 +281,6 @@ playbtn.addEventListener('click', () => {
 });
 
 closebtn2.addEventListener('click', () => {
-    finalPanel.style.display = 'none';
-    lastoptions.style.display = 'none';
-    closebtn2.style.display = 'none';
-    mainBg.style.filter = 'none';
+    location.reload();
 });
-
-
 

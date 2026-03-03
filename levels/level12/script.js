@@ -292,11 +292,7 @@ const panelCloseBtn = document.getElementById("panelCloseBtn");
 
 if (panelCloseBtn) {
     panelCloseBtn.addEventListener("click", () => {
-        // Hide the panel
-        document.getElementById("levelCompletePanel").classList.add("hidden");
-
-        // Optional: Remove blur if you want to see the clear background
-        // document.getElementById("bgImage").classList.remove("blur-bg");
+        location.reload();
     });
 }
 

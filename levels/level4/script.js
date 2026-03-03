@@ -255,8 +255,7 @@ closeDoorBtn.addEventListener('click', () => {
 });
 
 finalCloseBtn.addEventListener('click', () => {
-    finalOverlay.style.display = 'none';
-    mainBg.classList.remove('blur-bg');
+    location.reload();
 });
 
 homeBtn.addEventListener('click', () => {
