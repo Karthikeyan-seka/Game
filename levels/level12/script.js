@@ -298,12 +298,12 @@ if (panelCloseBtn) {
 
 // Panel Buttons
 document.getElementById("homeBtn").addEventListener("click", () => {
-    window.location.href = "../home page/home.html";
+    window.location.href = "../home_page/home.html";
 });
 document.getElementById("nextBtn").addEventListener("click", () => {
     let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
     if (unlockedLevel < 13) {
         localStorage.setItem('unlockedLevel', 13);
     }
-    window.location.href = "../level page/levels11-15.html";
+    window.location.href = "../level_page/levels11-15.html";
 });

@@ -194,16 +194,18 @@ if (panelCloseBtn) {
 
 if (homeBtn) {
     homeBtn.addEventListener("click", () => {
-        window.location.href = "../home page/home.html";
+        homeBtn.style.opacity = '0.6';
+        window.location.replace("../home_page/home.html");
     });
 }
 
 if (nextBtn) {
     nextBtn.addEventListener("click", () => {
+        nextBtn.style.opacity = '0.6';
         let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
         if (unlockedLevel < 3) {
             localStorage.setItem('unlockedLevel', 3);
         }
-        window.location.href = "../level page/levels1-10.html";
+        window.location.replace("../level_page/levels1-10.html");
     });
 }

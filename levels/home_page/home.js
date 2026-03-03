@@ -10,8 +10,8 @@ const musicToggle = document.getElementById("musicToggle");
 
 playBtn.addEventListener("click", (e) => {
     e.preventDefault();
+    playBtn.style.opacity = '0.6';
     const lastLevel = parseInt(localStorage.getItem('lastPlayedLevel')) || 1;
-    console.log('Last played level:', lastLevel);
     const levelPaths = {
         1: "../level1/index.html",
         2: "../level2/room2.html",
@@ -27,19 +27,15 @@ playBtn.addEventListener("click", (e) => {
         12: "../level12/room12.html",
         13: "../level13/room13.html",
         14: "../level14/room14.html",
-        15: "../level14/room14.html"
+        15: "../level15/room15.html"
     };
-    console.log('Navigating to:', levelPaths[lastLevel]);
-    window.location.href = levelPaths[lastLevel] || "../level1/index.html";
+    window.location.replace(levelPaths[lastLevel] || "../level1/index.html");
 });
 
 levelsBtn.addEventListener("click", () => {
+    levelsBtn.style.opacity = '0.6';
     const unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
-    if (unlockedLevel >= 11) {
-        window.location.href = "../level page/levels11-15.html";
-    } else {
-        window.location.href = "../level page/levels1-10.html";
-    }
+    window.location.replace(unlockedLevel >= 11 ? "../level_page/levels11-15.html" : "../level_page/levels1-10.html");
 });
 
 gamesBtn.addEventListener("click", () => {

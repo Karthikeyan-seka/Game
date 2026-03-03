@@ -203,6 +203,7 @@ function moveKey(dir) {
     else if (dir === "up" && dy < 0) score = Math.abs(dy) * 2 - Math.abs(dx);
     else if (dir === "down" && dy > 0) score = dy * 2 - Math.abs(dx);
     
+    console.log(`Candidate ${nextID}: dx=${dx}, dy=${dy}, dir=${dir}, score=${score}`);
     return { id: nextID, score, distance, isBacktrack };
   }).filter(c => c.score > 0);
   
@@ -328,7 +329,7 @@ document.getElementById('panelCloseBtn11').addEventListener('click', () => {
 });
 
 document.getElementById('homeBtn11').addEventListener('click', () => {
-  window.location.href = '../home page/home.html';
+  window.location.href = '../home_page/home.html';
 });
 
 document.getElementById('nextBtn11').addEventListener('click', () => {
@@ -336,5 +337,5 @@ document.getElementById('nextBtn11').addEventListener('click', () => {
   if (unlockedLevel < 12) {
     localStorage.setItem('unlockedLevel', 12);
   }
-  window.location.href = '../level page/levels11-15.html';
+  window.location.href = '../level_page/levels11-15.html';
 });

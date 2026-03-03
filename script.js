@@ -1,1 +1,3 @@
-window.location.href = "levels/home page/home.html";
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Game loaded successfully');
+});
