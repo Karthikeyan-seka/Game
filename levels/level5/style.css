@@ -142,7 +142,7 @@
       transform: translate(-50%, -50%) scale(3);
     }
 
-  /* .inventory {
+  .inventory {
       position: absolute;
       bottom: 0;
       width: 100%;
@@ -159,16 +159,16 @@
   .slot {
     position: absolute;
     left: 27px;
-    bottom: 12px;
+    bottom: 18px;
     width: 50px;
     height: 50px;
     z-index: 401;
     pointer-events: auto;
-} */
+}
 
 
     /* INVENTORY */
-    .inventory {
+    /* .inventory {
       position: absolute;
       bottom: 0;
       width: 100%;
@@ -187,7 +187,7 @@
       background: #180923;
       border-radius: 40%;
       pointer-events: auto;
-    }
+    } */
 
     /* Key inside inventory */
     .slot img {

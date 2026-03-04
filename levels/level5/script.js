@@ -12,6 +12,11 @@ const finalOverlay = document.getElementById("finalOverlay");
 const closeBtn = document.getElementById("closeBtn");
 const finalCloseBtn= document.getElementById("finalCloseBtn");
 const lastoptions = document.getElementById("lastoptions");
+const slot1 = document.getElementById("slot1");
+
+let keyCollected1 = false;
+let keyCollected2 = false;
+let boxOpened = false
 
 // Show game when background loads
 if (sceneImage.complete) {
@@ -23,30 +28,6 @@ if (sceneImage.complete) {
     document.getElementById('gameScreen').style.opacity = '1';
   };
 }
-
-
-
-
-let keyCollected2 = false;
-
-let boxOpened = false
-
-key.addEventListener("click", () => {
-  keyCollected = true;
-  key.classList.add("hidden");
-
-  inventoryKey.classList.remove("hidden");
-  clickArea.classList.remove("disabled");
-  finalKey2.classList.remove("disabled");
-});
-
-inventoryKey.addEventListener("dragstart", (e) => {
-    e.dataTransfer.setData("text/plain", "key");
-  });
-
-inventoryKey2.addEventListener("dragstart", (e) => {
-    e.dataTransfer.setData("text/plain", "key2");
-  });
 
 finalKey2.addEventListener("dragover", (e) => {
     e.preventDefault();
@@ -67,18 +48,12 @@ finalKey2.addEventListener("drop", (e) => {
     blur.classList.add("active");
     sceneImage.classList.add("blur");
 
-    inventoryKey.classList.add("hidden");
+    slot1.style.display = "none";
     key2.classList.remove("disabled");
     finalKey2.classList.add("disabled");                
   }
 });
 closeBtn.addEventListener("click", closeOverlayOnce);
-
-// closeBtn.addEventListener("click",(e) => {
-//   e.preventDefault();
-//   closeOverlayOnce; 
-// });
-
 
 
 finalKey.addEventListener("drop", (e) => {
@@ -108,28 +83,11 @@ finalKey.addEventListener("drop", (e) => {
 
   });
 
-let keyCollected = false;
-
-key.addEventListener("click", () => {
-    keyCollected = true;
-  
-   
-    key.style.opacity = "0.4";
-  
-    
-    clickArea.classList.remove("disabled");
-  });
-
-// leftPot.addEventListener("click", () => {  
-//     // ENABLE RIGHT BOX
-//     keyArea.classList.remove("disabled");
-//   });
-
 
 
 /*  CLICK RIGHT BOX */
 clickArea.addEventListener("click", () => {
-    if (!keyCollected) return;
+    if (!keyCollected1) return;
   
     sceneImage.classList.add("blur");
     overlay.classList.remove("hidden");
@@ -141,6 +99,7 @@ clickArea.addEventListener("click", () => {
     overlay.style.display = "block"
     clickArea.classList.add("disabled");
     closeBtn.classList.remove("hidden");//new img
+    finalKey2.classList.remove("disabled"); 
   });
 function nextImage() {
     document.getElementById("sceneImage").src = "../../assets/room5/bg_2_while_click_on_pot.png";
@@ -150,50 +109,48 @@ function nextImage() {
     
   }
 
-// function showOverlay() {
-//     const blur = document.getElementById("blur");
-//     const overlay = document.getElementById("overlay");
-
-  
-//     // Blur background
-//     blur.classList.add("active");
-  
-//     // Show overlay image
-//     overlay.style.display = "block";
-// }
-
 
 function collectKey() {
+    keyCollected1 = true
     const key = document.getElementById("key");
-    const inventoryKey = document.getElementById("inventoryKey");
+    // const inventoryKey = document.getElementById("inventoryKey");
     const sceneImage = document.getElementById("sceneImage");
-  
-    // hide key from scene
-    key.style.display = "none";
+
+    const inventoryKey = document.createElement("img");
+    inventoryKey.src = "../../assets/room5/key_2.png";
+    inventoryKey.style.width = "50px";
+    inventoryKey.draggable = true;
+    inventoryKey.id = "inventoryKey";
+    slot1.appendChild(inventoryKey);
+    clickArea.classList.remove("disabled");
+    inventoryKey.addEventListener("dragstart", (e) => {
+          e.dataTransfer.setData("text/plain", "key");
+        });
 
     sceneImage.src = "../../assets/room5/after_3_collected_key.png";
-  
-    // show key in inventory
-    inventoryKey.classList.remove("hidden");
-    // inventoryKey.draggable = true;
   }
   function useKey() {
     document.getElementById("inventoryKey").classList.add("hidden");
   }
 
   function collectKey2(event) {
-    boxOpened = true
+    boxOpened = true;
+    slot1.innerHTML = "";
+    slot1.style.display = "block";
     event.stopPropagation();
-    const key2 = document.getElementById("key2");
-    const inventoryKey2 = document.getElementById("inventoryKey2");
-  
-    // hide key from scene
-    key2.style.display = "none";
-  
+    // const inventoryKey2 = document.getElementById("inventoryKey2");
 
+    const inventoryKey2 = document.createElement("img");
+    inventoryKey2.src = "../../assets/room5/key.png";
+    inventoryKey2.style.width = "50px";
+    inventoryKey2.draggable = true;
+    inventoryKey2.id = "inventoryKey2";
+    slot1.appendChild(inventoryKey2);
   
-    // show key in inventory
-    inventoryKey2.classList.remove("hidden");
+    // clickArea.classList.remove("disabled");
+    inventoryKey2.addEventListener("dragstart", (e) => {
+          e.dataTransfer.setData("text/plain", "key2");
+        });
     
     overlay.src = "../../assets/room5/letter_box_3.png";
 
