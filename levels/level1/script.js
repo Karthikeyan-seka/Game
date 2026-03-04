@@ -25,8 +25,8 @@ if (bgImage.complete) {
 
 // Preload other images
 const preloadImages = [
-  "../../assets/room1/room1img.png",
-  "../../assets/room1/room back ground after game end@3x.jpg"
+  "../../assets/room1/room_1_img.png",
+  "../../assets/room1/room_back_ground_after_game_end_3x.jpg"
 ];
 preloadImages.forEach(src => {
   const img = new Image();
@@ -59,13 +59,13 @@ keyArea.addEventListener("click", () => {
     key.classList.add("hidden");
   
     const inventoryKey = document.createElement("img");
-    inventoryKey.src = "../../assets/room1/key to open the door for room 1.png";
+    inventoryKey.src = "../../assets/room1/key_to_open_the_door_for_room_1.png";
     inventoryKey.style.width = "40px";
     inventoryKey.draggable = true;
     inventoryKey.id = "inventoryKey";
   
     slot1.appendChild(inventoryKey);
-    bgImage.src = "../../assets/room1/room1img.png"
+    bgImage.src = "../../assets/room1/room_1_img.png"
     carpet.classList.add("hidden")
     carpetArea.classList.add("disabled")
     doorArea.classList.remove("disabled")
@@ -88,7 +88,7 @@ doorArea.addEventListener("drop", (e) => {
     e.preventDefault();
   
     // Open door
-    bgImage.src = "../../assets/room1/room back ground after game end@3x.jpg";
+    bgImage.src = "../../assets/room1/room_back_ground_after_game_end_3x.jpg";
   
     //Remove key from inventory
     const inventoryKey = document.getElementById("inventoryKey");

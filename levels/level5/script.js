@@ -54,27 +54,13 @@ finalKey2.addEventListener("dragover", (e) => {
 
 finalKey.addEventListener("dragover", (e) => {
     e.preventDefault();
-  });
-
-// finalKey2.addEventListener("drop", (e) => {
-//     e.preventDefault();
-//     const item = e.dataTransfer.getData("text/plain");
-  
-//     if (item === "key") {
-//       overlay.src = "letter box 2.png"; 
-
-//       inventoryKey.classList.add("hidden"); 
-//       key2.classList.remove("disabled");
-//       finalKey2.classList.add("disabled");
-//     }
-//   });                                                                        //new
-
+  });                            
 finalKey2.addEventListener("drop", (e) => {
   e.preventDefault();
   const item = e.dataTransfer.getData("text/plain");
 
   if (item === "key") {
-    overlay.src = "../../assets/room5/letter box 2.png";
+    overlay.src = "../../assets/room5/letter_box_2.png";
     overlay.classList.remove("hidden");
     closeBtn.classList.remove("hidden");
   
@@ -101,7 +87,7 @@ finalKey.addEventListener("drop", (e) => {
     const item = e.dataTransfer.getData("text/plain");
   
     if (item === "key2") {
-      overlay.src = "../../assets/room5/final bg after door open.png";
+      overlay.src = "../../assets/room5/final_bg_after_door_open.png";
       inventoryKey2.classList.add("hidden"); 
 
 
@@ -147,7 +133,7 @@ clickArea.addEventListener("click", () => {
   
     sceneImage.classList.add("blur");
     overlay.classList.remove("hidden");
-    overlay.src="../../assets/room5/letter box.png";
+    overlay.src="../../assets/room5/letter_box.png";
     
 
     closeBtn.classList.remove("hidden");
@@ -157,7 +143,7 @@ clickArea.addEventListener("click", () => {
     closeBtn.classList.remove("hidden");//new img
   });
 function nextImage() {
-    document.getElementById("sceneImage").src = "../../assets/room5/2nd bg while click on pot.png";
+    document.getElementById("sceneImage").src = "../../assets/room5/bg_2_while_click_on_pot.png";
     const leftPot = document.getElementById("leftPot");
     leftPot.style.display = "none";
     key.classList.remove("disabled");
@@ -185,7 +171,7 @@ function collectKey() {
     // hide key from scene
     key.style.display = "none";
 
-    sceneImage.src = "../../assets/room5/3rd after collected key.png";
+    sceneImage.src = "../../assets/room5/after_3_collected_key.png";
   
     // show key in inventory
     inventoryKey.classList.remove("hidden");
@@ -208,7 +194,7 @@ function collectKey() {
     // show key in inventory
     inventoryKey2.classList.remove("hidden");
     
-    overlay.src = "../../assets/room5/letter box 3.png";
+    overlay.src = "../../assets/room5/letter_box_3.png";
 
     if (!boxOpened) return;
     // Enable click anywhere to close overlay
@@ -226,22 +212,18 @@ function collectKey() {
     // document.getElementById("blur").classList.add("hidden");
     blur.classList.remove("active");
 
-    overlay.src="../../assets/room5/3rd after collected key.png"
+    overlay.src="../../assets/room5/after_3_collected_key.png"
     // finalKey.classList.remove("disabled")  
     document.getElementById("closeBtn").classList.add("hidden")
     clickArea.classList.remove("disabled");
-    // overlay.src = "letter box.png";
-       
-
-
-
+    // overlay.src = "letter_box.png";
     return;}
 
     // Prevent closing if user clicks inventory
     if (e.target.closest(".inventory")) return;         
   
     document.getElementById("overlay").classList.add("hidden");
-    overlay.src = "../../assets/room5/3rd after collected key.png"
+    overlay.src = "../../assets/room5/after_3_collected_key.png"
     document.getElementById("blur").classList.add("hidden");
     finalKey.classList.remove("disabled")                     
     document.getElementById("closeBtn").classList.add("hidden")
@@ -249,16 +231,6 @@ function collectKey() {
     // Remove listener so it happens only once
     document.removeEventListener("click", closeOverlayOnce);
   }                                                              
-
-
-
-    
-
-
-  
-
-
-  
 
   // closeBtn.addEventListener("click", (e) => {
   //   e.stopPropagation(); // prevent document click
@@ -303,7 +275,7 @@ function collectKey() {
 
 
   // finalKey2.addEventListener("click", () => {
-  //   overlay.src = "letter box 2.png";
+  //   overlay.src = "letter_box_2.png";
   
   //   overlay.classList.remove("hidden");
   //   closeBtn.classList.remove("hidden");
