@@ -175,6 +175,7 @@ function collectKey() {
   
     // show key in inventory
     inventoryKey.classList.remove("hidden");
+    // inventoryKey.draggable = true;
   }
   function useKey() {
     document.getElementById("inventoryKey").classList.add("hidden");
