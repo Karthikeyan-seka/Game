@@ -3,13 +3,15 @@
 // ==========================================
 let isKnobRevealed = false;
 let mazeGameActive = false;
-let moveKeys = { Up: false, Down: false, Left: false, Right: false };
+
+// CHANGED: Replaced 'moveKeys' with a math vector for the joystick
+let joystickDelta = { x: 0, y: 0 };
 
 let player = {
     x: 0, y: 0,
-    hitbox: 6,   // Small for collision
-    visual: 30,  // Large for display
-    speed: 2
+    hitbox: 8,   // Small physical body to slide through gaps
+    visual: 30,  // Large visible image
+    speed: 2     // Max speed multiplier
 };
 
 // ==========================================
@@ -40,78 +42,55 @@ mazeImg.src = "../../assets/room12/puzzle.png";
 const keyImg = new Image();
 keyImg.src = "../../assets/room12/puzzle/key.png";
 
-// Debugging
 mazeImg.onerror = () => console.error("Error: puzzle.png not found");
 keyImg.onerror = () => console.error("Error: key image not found");
 
 // ==========================================
 // 4. INTERACTION LOGIC (REVEAL & START)
 // ==========================================
-
 function handleKnobInteraction() {
-    // STEP 1: If knob is hidden -> Reveal it
     if (!isKnobRevealed) {
-        console.log("Step 1: Revealing Knob");
-
-        // Show visuals
         doorKnobImg.classList.remove("hidden");
         closeBtn.classList.remove("hidden");
 
-        // Animate Movement (Image + Hitbox)
         setTimeout(() => {
             doorKnobImg.classList.add("moved");
-            doorKnobHitbox.classList.add("moved"); // Hitbox moves with image
+            doorKnobHitbox.classList.add("moved");
             bgImage.classList.add("blur-bg");
         }, 50);
 
         isKnobRevealed = true;
-    }
-    // STEP 2: If knob is already revealed -> Start Maze
-    else {
-        console.log("Step 2: Starting Maze");
-
-        // Hide close button so it doesn't block maze
+    } else {
         closeBtn.classList.add("hidden");
-
         startMazeGame();
     }
 }
 
-// Attach to both Hitbox (primary) and Image (backup)
 doorKnobHitbox.addEventListener("click", handleKnobInteraction);
 doorKnobImg.addEventListener("click", handleKnobInteraction);
 
-// Close Button Logic
 closeBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); // Don't trigger game start
-
-    // Reset Views
+    e.stopPropagation();
     doorKnobImg.classList.add("hidden");
     closeBtn.classList.add("hidden");
     bgImage.classList.remove("blur-bg");
-
-    // Reset Positions
     doorKnobImg.classList.remove("moved");
     doorKnobHitbox.classList.remove("moved");
-
-    // Reset State
     isKnobRevealed = false;
 });
 
 // ==========================================
 // 5. MAZE ENGINE
 // ==========================================
-
 function startMazeGame() {
     mazeOverlay.classList.remove("hidden");
     mazeGameActive = true;
 
-    mazeCanvas.width = 300;
-    mazeCanvas.height = 300;
+    mazeCanvas.width = 350;
+    mazeCanvas.height = 350;
 
-    // Start Position (Adjusted for puzzle.png)
-    player.x = 150;
-    player.y = 125;
+    player.x = 185;
+    player.y = 160;
 
     requestAnimationFrame(updateMaze);
 }
@@ -119,18 +98,15 @@ function startMazeGame() {
 function updateMaze() {
     if (!mazeGameActive) return;
 
-    // Clear & Draw Maze
     ctx.clearRect(0, 0, mazeCanvas.width, mazeCanvas.height);
+
+    ctx.globalAlpha = 0.8;
     ctx.drawImage(mazeImg, 0, 0, mazeCanvas.width, mazeCanvas.height);
+    ctx.globalAlpha = 1.0;
 
-    // Calculate Movement
-    let nextX = player.x;
-    let nextY = player.y;
-
-    if (moveKeys.Up) nextY -= player.speed;
-    if (moveKeys.Down) nextY += player.speed;
-    if (moveKeys.Left) nextX -= player.speed;
-    if (moveKeys.Right) nextX += player.speed;
+    // CHANGED: Calculate next movement based on Joystick Angle
+    let nextX = player.x + (joystickDelta.x * player.speed);
+    let nextY = player.y + (joystickDelta.y * player.speed);
 
     // Collision Check
     if (!checkCollision(nextX, nextY)) {
@@ -138,19 +114,15 @@ function updateMaze() {
         player.y = nextY;
     }
 
-    // Draw Player (Key) - Centered on hitbox
     let drawX = player.x - (player.visual / 2) + (player.hitbox / 2);
     let drawY = player.y - (player.visual / 2) + (player.hitbox / 2);
     ctx.drawImage(keyImg, drawX, drawY, player.visual, player.visual);
 
-    // Check Win
     checkWin();
-
     requestAnimationFrame(updateMaze);
 }
 
 function checkCollision(x, y) {
-    // Check 4 corners of tiny hitbox
     const points = [
         {x: x, y: y},
         {x: x + player.hitbox, y: y},
@@ -159,11 +131,12 @@ function checkCollision(x, y) {
     ];
 
     for (let point of points) {
-        if (point.x < 0 || point.x >= mazeCanvas.width || point.y < 0 || point.y >= mazeCanvas.height) continue;
+        if (point.x < 0 || point.x >= mazeCanvas.width || point.y < 0 || point.y >= mazeCanvas.height) {
+            return true;
+        }
 
         const pixel = ctx.getImageData(point.x, point.y, 1, 1).data;
-        // Detect Yellow Wall (High Red, High Green, Low Blue)
-        if (pixel[2] < 100 && pixel[0] > 100 && pixel[1] > 100) {
+        if (pixel[3] > 200) {
             return true;
         }
     }
@@ -171,9 +144,11 @@ function checkCollision(x, y) {
 }
 
 function checkWin() {
-    // If player touches edge of circle
-    if (player.x <= 5 || player.x >= mazeCanvas.width - 5 ||
-        player.y <= 5 || player.y >= mazeCanvas.height - 5) {
+    let dx = player.x - (mazeCanvas.width / 2);
+    let dy = player.y - (mazeCanvas.height / 2);
+    let distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
+
+    if (distanceFromCenter > 160) {
         endMazeGame();
     }
 }
@@ -183,9 +158,11 @@ function endMazeGame() {
     mazeOverlay.classList.add("hidden");
     bgImage.classList.remove("blur-bg");
 
-    // Hide Knob visuals completely
     doorKnobImg.classList.add("hidden");
-    doorKnobHitbox.style.display = "none"; // Disable hitbox
+    doorKnobHitbox.style.display = "none";
+
+    // Safety check: reset joystick when game ends
+    handleJoystickEnd();
 
     addKeyToInventory();
 }
@@ -193,7 +170,6 @@ function endMazeGame() {
 // ==========================================
 // 6. INVENTORY & DROP LOGIC
 // ==========================================
-
 function addKeyToInventory() {
     const invKey = document.createElement("img");
     invKey.src = keyImg.src;
@@ -223,16 +199,12 @@ doorDropZone.addEventListener("drop", (e) => {
     const item = document.getElementById(id);
 
     if (item && item.id === "inventoryKey") {
-        item.remove(); // Remove key
+        item.remove();
 
-        // Clean up UI
         doorKnobImg.classList.add("hidden");
         doorKnobHitbox.style.display = "none";
-
-        // Change Background to Open Door
         bgImage.src = "../../assets/room12/2 bg.png";
 
-        // Show Win Panel after delay
         setTimeout(() => {
             levelPanel.classList.remove("hidden");
             bgImage.classList.add("blur-bg");
@@ -241,58 +213,91 @@ doorDropZone.addEventListener("drop", (e) => {
 });
 
 // ==========================================
-// 7. INPUT CONTROLS
+// 7. VIRTUAL JOYSTICK ENGINE
 // ==========================================
+const joystickBase = document.getElementById('joystick-base');
+const joystickStick = document.getElementById('joystick-stick');
+let isDragging = false;
+const maxRadius = 35; // How far the stick can stretch from the center
 
-// Keyboard
-window.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowUp") moveKeys.Up = true;
-    if (e.key === "ArrowDown") moveKeys.Down = true;
-    if (e.key === "ArrowLeft") moveKeys.Left = true;
-    if (e.key === "ArrowRight") moveKeys.Right = true;
-});
-window.addEventListener("keyup", (e) => {
-    if (e.key === "ArrowUp") moveKeys.Up = false;
-    if (e.key === "ArrowDown") moveKeys.Down = false;
-    if (e.key === "ArrowLeft") moveKeys.Left = false;
-    if (e.key === "ArrowRight") moveKeys.Right = false;
-});
-
-// Touch / On-screen Buttons
-const setupBtn = (id, dir) => {
-    const btn = document.getElementById(id);
-    if (!btn) return;
-    const start = (e) => { e.preventDefault(); moveKeys[dir] = true; };
-    const end = (e) => { e.preventDefault(); moveKeys[dir] = false; };
-
-    btn.addEventListener("mousedown", start);
-    btn.addEventListener("mouseup", end);
-    btn.addEventListener("touchstart", start);
-    btn.addEventListener("touchend", end);
-};
-
-setupBtn("btnUp", "Up");
-setupBtn("btnDown", "Down");
-setupBtn("btnLeft", "Left");
-setupBtn("btnRight", "Right");
-
-// Logic to close the Level Complete Panel
-const panelCloseBtn = document.getElementById("panelCloseBtn");
-
-if (panelCloseBtn) {
-    panelCloseBtn.addEventListener("click", () => {
-        // Hide the panel
-        document.getElementById("levelCompletePanel").classList.add("hidden");
-
-        // Optional: Remove blur if you want to see the clear background
-        // document.getElementById("bgImage").classList.remove("blur-bg");
-    });
+function handleJoystickStart(e) {
+    isDragging = true;
+    if (joystickStick) joystickStick.classList.add('dragging');
+    handleJoystickMove(e);
 }
 
-// Panel Buttons
+function handleJoystickMove(e) {
+    if (!isDragging || !joystickBase) return;
+
+    // Get touch or mouse coordinates
+    let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+    // Find the center of the joystick base
+    let rect = joystickBase.getBoundingClientRect();
+    let centerX = rect.left + rect.width / 2;
+    let centerY = rect.top + rect.height / 2;
+
+    // Calculate distance from center
+    let dx = clientX - centerX;
+    let dy = clientY - centerY;
+    let distance = Math.sqrt(dx * dx + dy * dy);
+
+    // Clamp the stick so it doesn't leave the base ring
+    if (distance > maxRadius) {
+        dx = (dx / distance) * maxRadius;
+        dy = (dy / distance) * maxRadius;
+    }
+
+    // Move the visual stick element
+    if (joystickStick) {
+        joystickStick.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
+    }
+
+    // Normalize the values (-1 to 1) and feed them to the game loop
+    joystickDelta.x = dx / maxRadius;
+    joystickDelta.y = dy / maxRadius;
+}
+
+function handleJoystickEnd() {
+    isDragging = false;
+    if (joystickStick) {
+        joystickStick.classList.remove('dragging');
+        joystickStick.style.transform = `translate(-50%, -50%)`; // Snap back to center
+    }
+    joystickDelta = { x: 0, y: 0 }; // Stop player movement
+}
+
+// Attach Joystick Events (Only if the joystick exists in the HTML)
+if (joystickBase) {
+    // Desktop Events
+    joystickBase.addEventListener('mousedown', handleJoystickStart);
+    window.addEventListener('mousemove', handleJoystickMove);
+    window.addEventListener('mouseup', handleJoystickEnd);
+
+    // Mobile Touch Events (with preventDefault to stop screen scrolling)
+    joystickBase.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        handleJoystickStart(e);
+    }, { passive: false });
+
+    window.addEventListener('touchmove', (e) => {
+        if (isDragging) {
+            e.preventDefault();
+            handleJoystickMove(e);
+        }
+    }, { passive: false });
+
+    window.addEventListener('touchend', handleJoystickEnd);
+}
+
+// ==========================================
+// 8. PANEL BUTTONS
+// ==========================================
 document.getElementById("homeBtn").addEventListener("click", () => {
     window.location.href = "../home page/home.html";
 });
+
 document.getElementById("nextBtn").addEventListener("click", () => {
     let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
     if (unlockedLevel < 13) {
