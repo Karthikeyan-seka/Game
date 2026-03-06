@@ -5,8 +5,10 @@ const clue=document.querySelectorAll(".clue");
 const closeBtn = document.querySelector(".closebtn");
 const slots = document.querySelectorAll('.slot');
 const homebtn=document.querySelector(".homebtn");
-const playbtn=document.querySelector(".nextbtn");
+const playbtn=document.querySelector(".playbtn");
 const closeBtn2 = document.querySelector(".closebtn2");
+const finalPanel = document.getElementById("finalPanel");
+const lastoptions = document.getElementById("lastoptions");
 
 let firstSelectedSlot = null;
 
@@ -164,5 +166,20 @@ function handleWin() {
     mainbg.style.filter ="blur(5px)";
    }, 100); 
 
-    
 }
+
+homebtn.addEventListener("click", () => {
+  window.location.href = "../home_page/home.html";
+});
+
+playbtn.addEventListener("click", () => {
+  let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+  if (unlockedLevel < 11) {
+    localStorage.setItem('unlockedLevel', 11);
+  }
+  window.location.href = "../level_page/levels1-10.html";
+});
+
+closeBtn2.addEventListener("click", () => {
+  location.reload();
+});

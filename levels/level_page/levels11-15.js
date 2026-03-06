@@ -16,7 +16,7 @@ for (let i = 11; i <= 15; i++) {
 }
 
 prevBtnLevel.addEventListener("click", () => {
-    window.location.replace("levels1-10.html");
+    window.location.href = "levels1-10.html";
 });
 
 levels.forEach((level) => {
@@ -34,19 +34,17 @@ levels.forEach((level) => {
             return;
         }
         
+        level.style.opacity = '0.6';
         localStorage.setItem('lastPlayedLevel', levelNum);
-        if (levelNum === 11) {
-            window.location.href = "../level11/room11.html";
-        } else if (levelNum === 12) {
-            window.location.href = "../level12/room12.html";
-        } else if (levelNum === 13) {
-            window.location.href = "../level13/room13.html";
-        } else if (levelNum === 14) {
-            window.location.href = "../level14/room14.html";
-        } else if (levelNum === 15) {
-            alert(`Level ${levelNum} game coming soon!`);
-        } else {
-            alert(`Level ${levelNum} clicked! Navigate to room ${levelNum}`);
-        }
+        
+        const levelPaths = {
+            11: "../level11/room11.html",
+            12: "../level12/room12.html",
+            13: "../level13/room13.html",
+            14: "../level14/room14.html",
+            15: "../level15/room15.html"
+        };
+        
+        window.location.href = levelPaths[levelNum];
     });
 });

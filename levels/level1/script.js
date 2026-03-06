@@ -111,14 +111,16 @@ finalCloseBtn.addEventListener("click", () => {
 });
 
 homeBtn.addEventListener("click", () => {
-  window.location.href = "../home page/home.html";
+  homeBtn.style.opacity = '0.6';
+  window.location.replace("../home_page/home.html");
 });
 
 nextBtn.addEventListener("click", () => {
+  nextBtn.style.opacity = '0.6';
   let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
   if (unlockedLevel < 2) {
     localStorage.setItem('unlockedLevel', 2);
   }
-  window.location.href = "../level page/levels1-10.html";
+  window.location.replace("../level_page/levels1-10.html");
 });
 
