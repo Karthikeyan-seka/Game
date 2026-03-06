@@ -276,63 +276,91 @@ body {
     bottom: -160px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(34, 34, 34, 0.95);
-    padding: 15px 35px;
-    border-radius: 12px;
-    border: 3px solid #fff;
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    padding: 12px;
+    border-radius: 8px;
     pointer-events: auto;
     z-index: 10;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 4px;
 }
 
 .arrow-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin: 5px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    gap: 4px;
 }
 
 /* Arrow Buttons */
 .arrow-btn {
-    background: transparent;
-    border: none;
-    padding: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+    border: 2px solid #4a4a4a;
+    border-radius: 6px;
     cursor: pointer;
-    transition: transform 0.1s ease;
-    outline: none;
+    transition: all 0.1s ease;
+    box-shadow: 0 3px 0 #1a1a1a, 0 4px 8px rgba(0, 0, 0, 0.4);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-btn[data-dir="up"] {
+    grid-column: 2;
+}
+
+.arrow-btn[data-dir="left"] {
+    grid-column: 1;
+}
+
+.arrow-btn[data-dir="down"] {
+    grid-column: 2;
+}
+
+.arrow-btn[data-dir="right"] {
+    grid-column: 3;
+}
+
+.arrow-btn:hover {
+    background: linear-gradient(145deg, #4a4a4a, #3a3a3a);
+    border-color: #5a5a5a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 0 #1a1a1a, 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.arrow-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #1a1a1a, 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .arrow-btn:focus {
     outline: 2px solid #667eea;
     outline-offset: 2px;
-    border-radius: 4px;
 }
 
 .arrow {
-    width: 40px;
-    height: 40px;
+    width: 24px;
+    height: 24px;
     display: block;
     pointer-events: none;
     object-fit: contain;
     user-select: none;
-}
-
-.arrow-btn:hover {
-    transform: scale(1.1);
-}
-
-.arrow-btn:active {
-    transform: scale(0.95);
+    filter: brightness(1.2);
 }
 
 .arrow-btn:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
 }
 
 .arrow-btn:disabled:hover {
     transform: none;
+    box-shadow: 0 3px 0 #1a1a1a, 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* Position Indicator (Optional) */

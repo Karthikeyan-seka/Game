@@ -7,10 +7,15 @@ const settingsPopup = document.getElementById("settings");
 const closeSettingsBtn = document.getElementById("closeSettingsBtn");
 const soundToggle = document.getElementById("soundToggle");
 const musicToggle = document.getElementById("musicToggle");
+const loadingOverlay = document.getElementById("loadingOverlay");
+
+function showLoader() {
+    loadingOverlay.style.display = 'flex';
+}
 
 playBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    playBtn.style.opacity = '0.6';
+    showLoader();
     const lastLevel = parseInt(localStorage.getItem('lastPlayedLevel')) || 1;
     const levelPaths = {
         1: "../level1/index.html",
@@ -33,7 +38,7 @@ playBtn.addEventListener("click", (e) => {
 });
 
 levelsBtn.addEventListener("click", () => {
-    levelsBtn.style.opacity = '0.6';
+    showLoader();
     const unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
     window.location.replace(unlockedLevel >= 11 ? "../level_page/levels11-15.html" : "../level_page/levels1-10.html");
 });
@@ -52,12 +57,12 @@ closeSettingsBtn.addEventListener("click", () => {
 
 soundToggle.addEventListener("click", function() {
     const isActive = this.dataset.active === "true";
-    this.src = isActive ? "../../assets/home page/panneldesign/volume_mute_btn.png" : "../../assets/home page/panneldesign/volume_btn.png";
+    this.src = isActive ? "../../assets/home_page/panneldesign/volume_mute_btn.png" : "../../assets/home_page/panneldesign/volume_btn.png";
     this.dataset.active = !isActive;
 });
 
 musicToggle.addEventListener("click", function() {
     const isActive = this.dataset.active === "true";
-    this.src = isActive ? "../../assets/home page/panneldesign/volume_mute_btn.png" : "../../assets/home page/panneldesign/volume_btn.png";
+    this.src = isActive ? "../../assets/home_page/panneldesign/volume_mute_btn.png" : "../../assets/home_page/panneldesign/volume_btn.png";
     this.dataset.active = !isActive;
 });
