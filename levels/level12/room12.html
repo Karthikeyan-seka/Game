@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-<div class="game-screen">
-    <img src="../../assets/room12/1 bg.png" class="bg-image" id="bgImage"/>
+<div id="loader" class="loader"></div>
+<div class="game-screen" id="gameScreen" style="opacity: 0;">
+    <img src="../../assets/room12/1bg.png" class="bg-image" id="bgImage"/>
 
     <img src="../../assets/room12/lo.png" class="door-knob hidden" id="doorKnobImg"/>
 
@@ -17,10 +17,10 @@
 1
     <div id="doorArea" class="door-drop-zone disabled"></div>
 
-    <img src="../../assets/ICONS/CLOSE@3x.png" id="closeButton" class="close-btn hidden" />
+    <img src="../../assets/ICONS/close.png" id="closeButton" class="close-btn hidden" />
 
     <div class="inventory">
-        <img src="../../assets/room12/game inventry@3x.png" class="inventory-bg" />
+        <img src="../../assets/ICONS/game_inventry.png" class="inventory-bg" />
         <div class="slot" id="slot1"></div>
     </div>
 
@@ -38,13 +38,13 @@
     </div>
 
     <div id="levelCompletePanel" class="level-complete-container hidden">
-        <img src="../../assets/room12/final panel 12@2x.png" class="panel-bg" />
+        <img src="../../assets/room12/finalpanel12@2x.png" class="panel-bg" />
 
-        <img src="../../assets/ICONS/CLOSE@3x.png" id="panelCloseBtn" class="panel-close-btn" />
+        <img src="../../assets/ICONS/close.png" id="panelCloseBtn" class="panel-close-btn" />
 
         <div class="panel-buttons">
-            <img src="../../assets/ICONS/HOME@3x.png" id="homeBtn" class="panel-btn" />
-            <img src="../../assets/ICONS/PLAY@3x.png" id="nextBtn" class="panel-btn" />
+            <img src="../../assets/ICONS/home.png" id="homeBtn" class="panel-btn" />
+            <img src="../../assets/ICONS/play.png" id="nextBtn" class="panel-btn" />
         </div>
     </div>
 

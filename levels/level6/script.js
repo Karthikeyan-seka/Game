@@ -2,6 +2,17 @@ const  mainBg = document.getElementById("mainbg");
 const hitbox1 = document.querySelector(".hitbox1");
 const clue1 = document.querySelector(".clue1");
 
+// Show game when background loads
+if (mainBg.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  mainBg.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 const closebtn = document.getElementById("closebtn");
 
 const hitbox2 = document.querySelector(".hitbox2");
@@ -113,8 +124,8 @@ buttons.forEach(btn => {
     const val = btn.getAttribute('data-val');
     
     // Paths for image swapping
-    const normalPath = `../../assets/room6/digital lock croped/${val}@3x.png`;
-    const clickedPath = `../../assets/room6/when we click/${val}@3x.png`;
+    const normalPath = `../../assets/room6/digitallockcroped/${val}@3x.png`;
+    const clickedPath = `../../assets/room6/whenweclick/${val}@3x.png`;
 
     btn.addEventListener('pointerdown', (e) => {
         if (!isBoxOPen) return;
@@ -138,7 +149,7 @@ function checkCode() {
         setTimeout(() => {
         
             
-            clue4.src = '../../assets/room6/lock open.png'; 
+            clue4.src = '../../assets/room6/lockopen.png'; 
             keypadWrapper.style.display = 'none';
         }, 50); // 300ms delay so user sees the last digit click
     } else if (enteredCode.length >= 2) {
@@ -153,7 +164,7 @@ function resetKeypad() {
     enteredCode = "";
     buttons.forEach(btn => {
         const val = btn.getAttribute('data-val');
-        btn.src = `../../assets/room6/digital lock croped/${val}@3x.png`;
+        btn.src = `../../assets/room6/digitallockcroped/${val}@3x.png`;
     });
 }
 hitbox5.addEventListener('click', () => {
@@ -174,13 +185,13 @@ redBtn.addEventListener('click', () => {
 
     // Change the image based on the state
     if (redBtnState === 0) {
-        redBtn.src = "../../assets/room6/red button.png";
+        redBtn.src = "../../assets/room6/redbutton.png";
         console.log("Red Button is now RED");
     } else if (redBtnState === 1) {
         redBtn.src = "../../assets/room6/yellow.png";
         console.log("Red Button is now YELLOW");
     } else if (redBtnState === 2) {
-        redBtn.src = "../../assets/room6/white button.png";
+        redBtn.src = "../../assets/room6/whitebutton.png";
         console.log("Red Button is now WHITE");
     }
     console.log("Red button clicked");
@@ -196,10 +207,10 @@ whiteBtn.addEventListener('click', () => {
 
     // Change the image based on the state
     if (whiteBtnState === 0) {
-        whiteBtn.src = "../../assets/room6/white button.png";
+        whiteBtn.src = "../../assets/room6/whitebutton.png";
         console.log("white Button is now white");
     } else if (whiteBtnState === 1) {
-        whiteBtn.src = "../../assets/room6/red button.png";
+        whiteBtn.src = "../../assets/room6/redbutton.png";
         console.log("white Button is now red");
     } else if (whiteBtnState === 2) {
         whiteBtn.src = "../../assets/room6/yellow.png";
@@ -221,10 +232,10 @@ yellowBtn.addEventListener('click', () => {
         yellowBtn.src = "../../assets/room6/yellow.png";
         console.log("yellow Button is now yellow");
     } else if (yellowBtnState === 1) {
-        yellowBtn.src = "../../assets/room6/red button.png";
+        yellowBtn.src = "../../assets/room6/redbutton.png";
         console.log("yellow Button is now red");
     } else if (yellowBtnState === 2) {
-        yellowBtn.src = "../../assets/room6/white button.png";
+        yellowBtn.src = "../../assets/room6/whitebutton.png";
         console.log("yellow Button is now white");
     }
     console.log("yellow button clicked");
@@ -270,8 +281,6 @@ playbtn.addEventListener('click', () => {
 });
 
 closebtn2.addEventListener('click', () => {
-    window.location.href = "../level page/levels1-10.html";
+    location.reload();
 });
-
-
 

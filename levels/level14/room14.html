@@ -7,32 +7,33 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="game-screen">
+    <div id="loader" class="loader"></div>
+    <div class="game-screen" id="gameScreen" style="opacity: 0;">
         <!-- Background -->
-        <img src="../../assets/room14/1 bg@3x.png" class="bg-image" id = "sceneImage"/>
+        <img src="../../assets/room14/bg_1@3x.png" class="bg-image" id = "sceneImage"/>
         <div class="clue-area" id="clueArea"></div>
-        <img src="../../assets/room14/letter box 14@3x.png" class="overlay-image hidden" id="overlay">
+        <img src="../../assets/room14/letter_box_14@3x.png" class="overlay-image hidden" id="overlay">
         <div class="letter-area disabled" id="letterArea"></div>
         <div class="letter-open-area disabled" id="letterOpenArea"></div>
         <div class="click-area" id="clickArea"></div>
         <div class="color-buttons-container" id="colorButtons" style="display: none;">
-            <img src="../../assets/room14/red button.png" class="color-btn" id="redBtn">
+            <img src="../../assets/room14/red_button.png" class="color-btn" id="redBtn">
             <img src="../../assets/room14/yellow.png" class="color-btn" id="yellowBtn">
-            <img src="../../assets/room14/white button.png" class="color-btn" id="whiteBtn">
+            <img src="../../assets/room14/white_button.png" class="color-btn" id="whiteBtn">
         </div>
         <div class="key-area disabled" id="keyArea"></div>
         <div class="final-lock-area disabled" id="finalLockArea"></div>
 
-        <img src="../../assets/ICONS/CLOSE@3x.png" id="closeBtn" class="close-btn hidden" alt="Close"/>
-        <img src="../../assets/ICONS/CLOSE@3x.png" id="finalCloseBtn" class="final-close-btn hidden" alt="Close"/>
+        <img src="../../assets/ICONS/close.png" id="closeBtn" class="close-btn hidden" alt="Close"/>
+        <img src="../../assets/ICONS/close.png" id="finalCloseBtn" class="final-close-btn hidden" alt="Close"/>
         <div class="lastoptions" id="lastoptions" style="display: none;">
-            <img src="../../assets/ICONS/HOME@3x.png" alt="" class="homebtn" id="lastButtons">
-            <!-- <img src="../../assets/ICONS/SETTING@3x.png" alt="" class="retrybtn" id="lastButtons"> -->
-            <img src="../../assets/ICONS/PLAY@3x.png" alt=""class="nextbtn" id="lastButtons">
+            <img src="../../assets/ICONS/home.png" alt="" class="homebtn" id="lastButtons">
+            <!-- <img src="../../assets/ICONS/setting.png" alt="" class="retrybtn" id="lastButtons"> -->
+            <img src="../../assets/ICONS/play.png" alt=""class="nextbtn" id="lastButtons">
        </div> 
 
         <div class="inventory">
-            <img src="../../assets/room14/game inventry@3x.png" class="inventory-bg" />
+            <img src="../../assets/ICONS/game_inventry.png" class="inventory-bg" />
 
             <div class="slot" id="slot"></div>
         </div>

@@ -21,16 +21,31 @@ let whiteBtnState = 0;
 let yellowBtnState = 0;
 let keyCollected = false;
 
+// Show game when background loads
+if (sceneImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  sceneImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
+// Preload completion panel image
+const finalPanelImg = new Image();
+finalPanelImg.src = "../../assets/room14/final_panel_14@2x.png";
+
 
 
 clueArea.addEventListener("click", () => {
     if (isLetterOpen === false)
         {
-            overlay.src="../../assets/room14/letter box 14@3x.png";
+            overlay.src="../../assets/room14/letter_box_14@3x.png";
         }
     if (isLetterOpen === true)
         {
-            overlay.src="../../assets/room14/letter open 14@3x@3x.png";
+            overlay.src="../../assets/room14/letter_open_14@3x@3x.png";
         }
 
     overlay.style.left= "10px";
@@ -65,7 +80,7 @@ function closeOverlayOnce() {
   }
 
   letterArea.addEventListener("click", () => {
-    overlay.src="../../assets/room14/letter 14@3x.png";
+    overlay.src="../../assets/room14/letter_14@3x.png";
     clueArea.classList.add("disabled");
     letterArea.classList.add("disabled");
     letterOpenArea.classList.remove("disabled");
@@ -75,7 +90,7 @@ function closeOverlayOnce() {
 
   letterOpenArea.addEventListener("click", () => {
     isLetterOpen = true
-    overlay.src="../../assets/room14/letter open 14@3x@3x.png";
+    overlay.src="../../assets/room14/letter_open_14@3x@3x.png";
     letterOpenArea.classList.add("disabled");
     colorButtons.style.top= "40.5%";
   });
@@ -87,7 +102,7 @@ function closeOverlayOnce() {
       sceneImage.classList.add("blur");
       overlay.classList.remove("hidden");
       letterOpenArea.classList.add("disabled");
-      overlay.src="../../assets/room14/rip box 1@3x.png";
+      overlay.src="../../assets/room14/rip_box_1@3x.png";
       closeBtn.classList.remove("hidden");
       overlay.classList.remove("hidden");
       closeBtn.classList.remove("hidden");//new img
@@ -99,7 +114,7 @@ function closeOverlayOnce() {
       {
         sceneImage.classList.add("blur");
         overlay.classList.remove("hidden");
-        overlay.src="../../assets/room14/rip box 3@3x@3x@3x.png";
+        overlay.src="../../assets/room14/rip_box_3@3x@3x@3x.png";
         closeBtn.classList.remove("hidden");
         colorButtons.style.display = 'none';
       }
@@ -115,13 +130,13 @@ redBtn.addEventListener('click', () => {
 
     // Change the image based on the state
     if (redBtnState === 0) {
-        redBtn.src = "../../assets/room14/red button.png";
+        redBtn.src = "../../assets/room14/red_button.png";
         console.log("Red Button is now RED");
     } else if (redBtnState === 1) {
         redBtn.src = "../../assets/room14/yellow.png";
         console.log("Red Button is now YELLOW");
     } else if (redBtnState === 2) {
-        redBtn.src = "../../assets/room14/white button.png";
+        redBtn.src = "../../assets/room14/white_button.png";
         console.log("Red Button is now WHITE");
     }
     console.log("Red button clicked");
@@ -138,10 +153,10 @@ whiteBtn.addEventListener('click', () => {
 
   // Change the image based on the state
   if (whiteBtnState === 0) {
-      whiteBtn.src = "../../assets/room14/white button.png";
+      whiteBtn.src = "../../assets/room14/white_button.png";
       console.log("white Button is now white");
   } else if (whiteBtnState === 1) {
-      whiteBtn.src = "../../assets/room14/red button.png";
+      whiteBtn.src = "../../assets/room14/red_button.png";
       console.log("white Button is now red");
   } else if (whiteBtnState === 2) {
       whiteBtn.src = "../../assets/room14/yellow.png";
@@ -164,10 +179,10 @@ yellowBtn.addEventListener('click', () => {
       yellowBtn.src = "../../assets/room14/yellow.png";
       console.log("yellow Button is now yellow");
   } else if (yellowBtnState === 1) {
-      yellowBtn.src = "../../assets/room14/red button.png";
+      yellowBtn.src = "../../assets/room14/red_button.png";
       console.log("yellow Button is now red");
   } else if (yellowBtnState === 2) {
-      yellowBtn.src = "../../assets/room14/white button.png";
+      yellowBtn.src = "../../assets/room14/white_button.png";
       console.log("yellow Button is now white");
   }
   console.log("yellow button clicked");
@@ -177,23 +192,23 @@ yellowBtn.addEventListener('click', () => {
 function checkColorPuzzle() {
   if (redBtnState === 2  && yellowBtnState === 0 && whiteBtnState === 1 ) { 
       console.log("Puzzle Solved!");
-      overlay.src="../../assets/room14/rip box 2@3x@3x.png";
+      overlay.src="../../assets/room14/rip_box_2@3x@3x.png";
       colorButtons.style.display = 'none';
       keyArea.classList.remove("disabled")
   }
 }
 
 keyArea.addEventListener("click", () => {
-  overlay.src="../../assets/room14/rip box 3@3x@3x@3x.png";
+  overlay.src="../../assets/room14/rip_box_3@3x@3x@3x.png";
   isRipBoxOpen = true;
   const inventoryKey = document.createElement("img");
-  inventoryKey.src = "../../assets/room14/key copy 3.png";
+  inventoryKey.src = "../../assets/room14/key_copy_3.png";
   // inventoryKey.src = "key to open the door for room 1.png";
   inventoryKey.style.width = "30px";
   inventoryKey.draggable = true;
   slot.appendChild(inventoryKey);
   keyCollected = true
-  sceneImage.src = "../../assets/room14/2 bg@3x@3x.png";
+  sceneImage.src = "../../assets/room14/bg_2@3x@3x.png";
   keyArea.classList.add("disabled")
   finalLockArea.classList.remove("disabled")
   slot.addEventListener("dragstart", (e) => {
@@ -209,13 +224,13 @@ finalLockArea.addEventListener("drop", (e) => {
   e.preventDefault();
   const item = e.dataTransfer.getData("text/plain");
   if (item === "finalKey") {
-    sceneImage.src = "../../assets/room14/3 bg@3x@3x@3x.png";
+    sceneImage.src = "../../assets/room14/bg_3@3x@3x@3x.png";
     slot.style.display = "none";
     finalLockArea.classList.add("disabled");
     clickArea.classList.add("disabled");
     setTimeout(() => {
       sceneImage.classList.add("blur");
-      overlay.src = "../../assets/room14/final panel 14@2x.png";
+      overlay.src = "../../assets/room14/final_panel_14@2x.png";
       overlay.classList.remove("hidden");
       lastoptions.style.display = 'block';
       finalCloseBtn.classList.remove("hidden")
@@ -226,7 +241,7 @@ finalLockArea.addEventListener("drop", (e) => {
 
 
 finalCloseBtn.addEventListener("click", () => {
-  window.location.href = "../level page/levels11-15.html";
+  location.reload();
 });
 
 document.querySelector(".homebtn").addEventListener("click", () => {

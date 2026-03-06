@@ -6,9 +6,20 @@ const popup2 = document.getElementById("popup2");
 const popupImg = document.getElementById("popup-img");
 const arrows = document.querySelectorAll(".arrow-btn");
 
+// Show game when background loads
+if (bgImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  bgImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 // Preload background image
 const bg2 = new Image();
-bg2.src = "../../assets/room11/bg 2.png";
+bg2.src = "../../assets/room11/bg_2.png";
 
 const KEY_POSITIONS = [
   { id: 0, top: 172, left: 172 },
@@ -43,7 +54,11 @@ const KEY_POSITIONS = [
   { id: 29, top: 74, left: 66 },
   { id: 30, top: 120, left: 30 },
   { id: 31, top: 171, left: 30 },
-  { id: 32, top: 222, left: 30 }
+  { id: 32, top: 222, left: 30 },
+  { id: 33, top: 213, left: 68 },
+  { id: 34, top: 176, left: 68 },
+  { id: 35, top: 151, left: 66 },
+  { id: 36, top: 118, left: 74 }
 ];
 
 const VALID_PATHS = [
@@ -90,7 +105,11 @@ const VALID_PATHS = [
   [28,29],
   [29,30],
   [30,31],
-  [31,32]
+  [31,32],
+  [21,33],
+  [33,34],
+  [34,35],
+  [35,36]
 ];
 
 function getValidNextMoves(path) {
@@ -246,6 +265,7 @@ popup2.addEventListener("click", (e) => {
 
 arrows.forEach(arrow => {
   arrow.addEventListener("click", (e) => {
+    e.preventDefault();
     e.stopPropagation();
     const dir = arrow.getAttribute('data-dir');
     console.log('Arrow clicked:', dir);
@@ -289,7 +309,7 @@ if (handle) {
     const item = e.dataTransfer.getData('text/plain');
     if (item === 'doorKey' && !keyUsed) {
       keyUsed = true;
-      bgImage.src = '../../assets/room11/bg 2.png';
+      bgImage.src = '../../assets/room11/bg_2.png';
       inventoryKey.classList.add('hidden');
       
       setTimeout(() => {
@@ -304,7 +324,7 @@ if (handle) {
 
 
 document.getElementById('panelCloseBtn11').addEventListener('click', () => {
-  window.location.href = '../level page/levels11-15.html';
+  location.reload();
 });
 
 document.getElementById('homeBtn11').addEventListener('click', () => {

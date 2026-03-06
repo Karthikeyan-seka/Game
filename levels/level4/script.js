@@ -23,6 +23,17 @@ const finalCloseBtn = document.getElementById('finalCloseBtn');
 const homeBtn = document.getElementById('homeBtn');
 const nextBtn = document.getElementById('nextBtn');
 
+// Show game when background loads
+if (mainBg.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  mainBg.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 
 // --- Game State Variables ---
 let hasScrollBeenTaken = false;
@@ -84,7 +95,7 @@ box1.addEventListener('click', function() {
     }
     else if (isBoxOPen && correctCode) {
         // 1. Change safe image to empty version
-        this.src = '../../../assets/room4/clue 5@3x@3x@3x@3x.png';
+        this.src = '../../../assets/room4/clue5@3x@3x@3x@3x.png';
         
         // 2. Show the paper in your inventory bar
         clueItem2.style.display = 'block';
@@ -102,8 +113,8 @@ buttons.forEach(btn => {
     const val = btn.getAttribute('data-val');
     
     // Paths for image swapping
-    const normalPath = `../../assets/room4/digital lock/${val}@3x.png`;
-    const clickedPath = `../../assets/room4/when we click/${val}@3x.png`; // Removed the leading slash
+    const normalPath = `../../assets/room4/digitallock/${val}@3x.png`;
+    const clickedPath = `../../assets/room4/whenweclick/${val}@3x.png`; // Removed the leading slash
 
     btn.addEventListener('pointerdown', (e) => {
         if (!isBoxOPen) return;
@@ -128,7 +139,7 @@ function checkCode() {
         setTimeout(() => {
         
             // Change safe to opened image
-            box1.src = '../../../assets/room4/clue 4@3x@3x@3x.png'; 
+            box1.src = '../../../assets/room4/clue4@3x@3x@3x.png'; 
             keypadWrapper.style.display = 'none';
         }, 300); // 300ms delay so user sees the last digit click
     } else if (enteredCode.length >= 3) {
@@ -143,7 +154,7 @@ function resetKeypad() {
     enteredCode = "";
     buttons.forEach(btn => {
         const val = btn.getAttribute('data-val');
-        btn.src = `../../assets/room4/digital lock/${val}@3x.png`;
+        btn.src = `../../assets/room4/digitallock/${val}@3x.png`;
     });
 }
 
@@ -154,7 +165,7 @@ closebtn2.addEventListener('click', () => {
     
     // Reset Safe/Keypad for next time
     isBoxOPen = false;
-    box1.src = '../../../assets/room4/clue 3@3x@3x.png';
+    box1.src = '../../../assets/room4/clue3@3x@3x.png';
     keypadWrapper.style.display = 'none';
     resetKeypad();
 });
@@ -187,8 +198,8 @@ doorButtons.forEach(btn => {
     const val = btn.getAttribute('data-val');
     
     // Define exact paths for Normal and Clicked states
-    const normalPath = `../../assets/room4/digital lock/${val}@3x.png`;
-    const clickedPath = `../../assets/room4/when we click/${val}@3x.png`;
+    const normalPath = `../../assets/room4/digitallock/${val}@3x.png`;
+    const clickedPath = `../../assets/room4/whenweclick/${val}@3x.png`;
 
     btn.addEventListener('pointerdown', (e) => {
         e.preventDefault();
@@ -212,7 +223,7 @@ function doorcheckCode() {
     if (doorEnteredCode === correctDoorCode) {
         setTimeout(() => {
             doorOverlay.style.display = 'none';
-            mainBg.src  ="../../assets/room4/door open@3x.png";
+            mainBg.src  ="../../assets/room4/dooropen@3x.png";
             hitbox3.style.pointerEvents = 'none';
             doorEnteredCode ="";
             
@@ -232,7 +243,7 @@ function resetKeypad1() {
     doorButtons.forEach(btn => {
         const val = btn.getAttribute('data-val');
         // Force the path back to the base 'digital lock' folder
-        btn.src = `../../assets/room4/digital lock/${val}@3x.png`;
+        btn.src = `../../assets/room4/digitallock/${val}@3x.png`;
     });
     console.log("Keypad Reset - Absolute paths restored.");
 }
@@ -244,7 +255,7 @@ closeDoorBtn.addEventListener('click', () => {
 });
 
 finalCloseBtn.addEventListener('click', () => {
-    window.location.href = "../level page/levels1-10.html";
+    location.reload();
 });
 
 homeBtn.addEventListener('click', () => {

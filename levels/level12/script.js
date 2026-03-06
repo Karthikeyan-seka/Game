@@ -4,8 +4,11 @@
 let isKnobRevealed = false;
 let mazeGameActive = false;
 
-// CHANGED: Replaced 'moveKeys' with a math vector for the joystick
+// Joystick movement vector
 let joystickDelta = { x: 0, y: 0 };
+
+// NEW: Keyboard movement state
+let moveKeys = { Up: false, Down: false, Left: false, Right: false };
 
 let player = {
     x: 0, y: 0,
@@ -23,6 +26,17 @@ const doorKnobImg = document.getElementById("doorKnobImg");
 const doorKnobHitbox = document.getElementById("doorKnobHitbox");
 const doorDropZone = document.getElementById("doorArea");
 const slot1 = document.getElementById("slot1");
+
+// Show game when background loads
+if (bgImage.complete) {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+} else {
+    bgImage.onload = () => {
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('gameScreen').style.opacity = '1';
+    };
+}
 
 // UI Elements
 const closeBtn = document.getElementById("closeButton");
@@ -104,9 +118,26 @@ function updateMaze() {
     ctx.drawImage(mazeImg, 0, 0, mazeCanvas.width, mazeCanvas.height);
     ctx.globalAlpha = 1.0;
 
-    // CHANGED: Calculate next movement based on Joystick Angle
-    let nextX = player.x + (joystickDelta.x * player.speed);
-    let nextY = player.y + (joystickDelta.y * player.speed);
+    // --- COMBINED INPUT CALCULATION ---
+    let dx = joystickDelta.x;
+    let dy = joystickDelta.y;
+
+    // Keyboard overrides joystick if pressed
+    if (moveKeys.Left) dx = -1;
+    if (moveKeys.Right) dx = 1;
+    if (moveKeys.Up) dy = -1;
+    if (moveKeys.Down) dy = 1;
+
+    // Normalize diagonal keyboard movement so the key doesn't speed up diagonally
+    if (dx !== 0 && dy !== 0 && (moveKeys.Up || moveKeys.Down || moveKeys.Left || moveKeys.Right)) {
+        let length = Math.sqrt(dx * dx + dy * dy);
+        dx = dx / length;
+        dy = dy / length;
+    }
+
+    let nextX = player.x + (dx * player.speed);
+    let nextY = player.y + (dy * player.speed);
+    // ----------------------------------
 
     // Collision Check
     if (!checkCollision(nextX, nextY)) {
@@ -161,8 +192,9 @@ function endMazeGame() {
     doorKnobImg.classList.add("hidden");
     doorKnobHitbox.style.display = "none";
 
-    // Safety check: reset joystick when game ends
+    // Safety check: reset joystick/keys when game ends
     handleJoystickEnd();
+    moveKeys = { Up: false, Down: false, Left: false, Right: false };
 
     addKeyToInventory();
 }
@@ -203,7 +235,7 @@ doorDropZone.addEventListener("drop", (e) => {
 
         doorKnobImg.classList.add("hidden");
         doorKnobHitbox.style.display = "none";
-        bgImage.src = "../../assets/room12/2 bg.png";
+        bgImage.src = "../../assets/room12/2bg.png";
 
         setTimeout(() => {
             levelPanel.classList.remove("hidden");
@@ -292,7 +324,29 @@ if (joystickBase) {
 }
 
 // ==========================================
-// 8. PANEL BUTTONS
+// 8. KEYBOARD CONTROLS (Arrows & WASD)
+// ==========================================
+window.addEventListener("keydown", (e) => {
+    // Prevent default scrolling for arrow keys
+    if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+    }
+
+    if (e.key === "ArrowUp" || e.key.toLowerCase() === "w") moveKeys.Up = true;
+    if (e.key === "ArrowDown" || e.key.toLowerCase() === "s") moveKeys.Down = true;
+    if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") moveKeys.Left = true;
+    if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") moveKeys.Right = true;
+});
+
+window.addEventListener("keyup", (e) => {
+    if (e.key === "ArrowUp" || e.key.toLowerCase() === "w") moveKeys.Up = false;
+    if (e.key === "ArrowDown" || e.key.toLowerCase() === "s") moveKeys.Down = false;
+    if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") moveKeys.Left = false;
+    if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") moveKeys.Right = false;
+});
+
+// ==========================================
+// 9. PANEL BUTTONS
 // ==========================================
 document.getElementById("homeBtn").addEventListener("click", () => {
     window.location.href = "../home page/home.html";

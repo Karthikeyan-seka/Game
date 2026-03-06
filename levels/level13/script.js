@@ -15,6 +15,17 @@ let isBoxOPen = false
 let enteredCode = "";
 let keyCollected = false;
 
+// Show game when background loads
+if (sceneImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  sceneImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
+
 
 clueArea.addEventListener("click", () => {
     nextImage();
@@ -40,7 +51,7 @@ function closeOverlayOnce() {
   }
 
 function nextImage() {
-    overlay.src="../../assets/room13/clue paper@3x.png";
+    overlay.src="../../assets/room13/clue_paper@3x.png";
     overlay.style.left= "10px";
     overlay.style.top= "20px";
     overlay.style.width = "95%";
@@ -83,7 +94,7 @@ lockArea.addEventListener('click', () => {
         console.log("Keypad Active");
     }
     else if(isBoxOPen && correctCode){
-        this.src = "../../assets/room13/box@3x 2@3x.png";
+        this.src = "../../assets/room13/box@3x_2@3x.png";
         lockArea.classList.add("disabled");
         keyArea.classList.remove("disabled"); 
     }
@@ -117,7 +128,7 @@ function checkCode() {
     if (enteredCode === correctCode) {
         setTimeout(() => {
         
-            overlay.src = "../../assets/room13/box@3x 2@3x.png";
+            overlay.src = "../../assets/room13/box@3x_2@3x.png";
             lockArea.classList.add("disabled") 
             keypadWrapper.style.display = 'none';
             keyArea.classList.remove("disabled");
@@ -138,7 +149,7 @@ function resetKeypad() {
 }
 
 keyArea.addEventListener("click", () => {
-    overlay.src="../../assets/room13/box@3x 2@3x 3@3x.png";
+    overlay.src="../../assets/room13/box@3x2@3x3@3x.png";
     const inventoryKey = document.createElement("img");
     inventoryKey.src = "../../assets/room13/key@3x.png";
     // inventoryKey.src = "key to open the door for room 1.png";
@@ -146,7 +157,7 @@ keyArea.addEventListener("click", () => {
     inventoryKey.draggable = true;
     slot.appendChild(inventoryKey);
     keyCollected = true
-    sceneImage.src = "../../assets/room13/2bg@3x@3x.png";
+    sceneImage.src = "../../assets/room13/bg2@3x@3x.png";
     boxArea.classList.add("hidden")
     keyArea.classList.add("hidden")
     finalLockArea.classList.remove("disabled")
@@ -163,12 +174,12 @@ finalLockArea.addEventListener("drop", (e) => {
     e.preventDefault();
     const item = e.dataTransfer.getData("text/plain");
     if (item === "finalKey") {
-      sceneImage.src = "../../assets/room13/3bg@3x@3x@3x.png";
+      sceneImage.src = "../../assets/room13/bg3@3x@3x@3x.png";
       slot.style.display = "none";
       finalLockArea.classList.add("disabled")
       setTimeout(() => {
         sceneImage.classList.add("blur");
-        overlay.src = "../../assets/room13/final panel 5.png";
+        overlay.src = "../../assets/room13/final_panel_5.png";
         overlay.classList.remove("hidden");
         lastoptions.style.display = 'block';
         finalCloseBtn.classList.remove("hidden")
@@ -183,7 +194,7 @@ finalLockArea.addEventListener("drop", (e) => {
 
 
 finalCloseBtn.addEventListener("click", () => {
-  window.location.href = "../level page/levels11-15.html";
+  location.reload();
 });
 
 document.querySelector(".homebtn").addEventListener("click", () => {
@@ -195,5 +206,5 @@ document.querySelector(".nextbtn").addEventListener("click", () => {
   if (unlockedLevel < 14) {
     localStorage.setItem('unlockedLevel', 14);
   }
-  window.location.href = "../level14/room14.html";
+  window.location.href = "../level page/levels11-15.html";
 });

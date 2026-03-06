@@ -7,11 +7,28 @@ body {
     background: #000;
 }
 
+.loader {
+    border: 4px solid #333;
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    z-index: 9999;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .game-screen {
     position: relative;
     width: 360px;
     height: 640px;
     overflow: hidden;
+    transition: opacity 0.3s ease;
 }
 
 .bg-image {
@@ -96,7 +113,7 @@ body {
     left: 290px;
     width: 50px;
     height: 50px;
-    z-index: 200;
+    z-index: 1002;
     cursor: pointer;
 }
 
@@ -248,6 +265,10 @@ body {
 #key30 { top: 120px; left: 30px; }
 #key31 { top: 171px; left: 30px; }
 #key32 { top: 222px; left: 30px; }
+#key33 { top: 213px; left: 68px; }
+#key34 { top: 176px; left: 68px; }
+#key35 { top: 151px; left: 66px; }
+#key36 { top: 118px; left: 74px; }
 
 /* Arrow Control Box */
 .arrow-box {

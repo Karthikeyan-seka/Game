@@ -5,24 +5,8 @@ const clue=document.querySelectorAll(".clue");
 const closeBtn = document.querySelector(".closebtn");
 const slots = document.querySelectorAll('.slot');
 const homebtn=document.querySelector(".homebtn");
-const playbtn=document.querySelector(".playbtn");
+const playbtn=document.querySelector(".nextbtn");
 const closeBtn2 = document.querySelector(".closebtn2");
-
-homebtn.addEventListener('click', () => {
-    window.location.href = "../home page/home.html";
-});
-
-playbtn.addEventListener('click', () => {
-    let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
-    if (unlockedLevel < 11) {
-        localStorage.setItem('unlockedLevel', 11);
-    }
-    window.location.href = "../level page/levels11-15.html";
-});
-
-closeBtn2.addEventListener('click', () => {
-    window.location.href = "../level page/levels1-10.html";
-});
 
 let firstSelectedSlot = null;
 
@@ -115,21 +99,46 @@ const winningOrder = [
     'pink',    'red', 'blue',    
     'pink', 'red',   'blue'    
 ];
+const winningOrder2 = [
+    'blue', 'red',    'pink',   
+    'blue',    'red', 'pink',    
+    'blue', 'red',   'pink'    
+];
 function checkWinCondition() {
 
     const currentSlots = document.querySelectorAll('.slot');
-    let isWin = true;
+
+
+    let isMatch1 = true;
 
     currentSlots.forEach((slot, index) => {
+
         if (!slot.classList.contains(winningOrder[index])) {
-            isWin = false;
+
+            isMatch1 = false;
+
         }
+
     });
- 
-    if (isWin) {
+
+    let isMatch2 = true;
+
+    currentSlots.forEach((slot, index) => {
+
+        if (!slot.classList.contains(winningOrder2[index])) {
+
+            isMatch2 = false;
+
+        }
+
+    });
+
+    if (isMatch1 || isMatch2) {
+
         handleWin();
-        console.log("win");
+
     }
+
 }
 function handleWin() {
     console.log("Puzzle Solved!");
@@ -139,13 +148,13 @@ function handleWin() {
     
     // 2. Change the main game background to the "Open Door" version
     // Use '2.jpg' which shows the door with the completed puzzle
-    mainbg.src = "../../assets/room 10/2.jpg"; 
+    mainbg.src = "../../assets/room10/2.jpg"; 
     closeBtn.style.display = 'none';
     mainbg.style.filter = "none";
     // 3. Disable the puzzle hitbox so it can't be clicked again
     hitbox.style.pointerEvents = "none";
    setTimeout(() =>{
-    mainbg.src  ="../../assets/room 10/3.jpg";
+    mainbg.src  ="../../assets/room10/3.jpg";
    },50);
    setTimeout(() => {
     finalPanel.style.display = 'block';

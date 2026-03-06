@@ -12,30 +12,22 @@ const finalOverlay = document.getElementById("finalOverlay");
 const closeBtn = document.getElementById("closeBtn");
 const finalCloseBtn= document.getElementById("finalCloseBtn");
 const lastoptions = document.getElementById("lastoptions");
+const slot1 = document.getElementById("slot1");
 
-
-
-
+let keyCollected1 = false;
 let keyCollected2 = false;
-
 let boxOpened = false
 
-key.addEventListener("click", () => {
-  keyCollected = true;
-  key.classList.add("hidden");
-
-  inventoryKey.classList.remove("hidden");
-  clickArea.classList.remove("disabled");
-  finalKey2.classList.remove("disabled");
-});
-
-inventoryKey.addEventListener("dragstart", (e) => {
-    e.dataTransfer.setData("text/plain", "key");
-  });
-
-inventoryKey2.addEventListener("dragstart", (e) => {
-    e.dataTransfer.setData("text/plain", "key2");
-  });
+// Show game when background loads
+if (sceneImage.complete) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('gameScreen').style.opacity = '1';
+} else {
+  sceneImage.onload = () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('gameScreen').style.opacity = '1';
+  };
+}
 
 finalKey2.addEventListener("dragover", (e) => {
     e.preventDefault();
@@ -43,45 +35,25 @@ finalKey2.addEventListener("dragover", (e) => {
 
 finalKey.addEventListener("dragover", (e) => {
     e.preventDefault();
-  });
-
-// finalKey2.addEventListener("drop", (e) => {
-//     e.preventDefault();
-//     const item = e.dataTransfer.getData("text/plain");
-  
-//     if (item === "key") {
-//       overlay.src = "letter box 2.png"; 
-
-//       inventoryKey.classList.add("hidden"); 
-//       key2.classList.remove("disabled");
-//       finalKey2.classList.add("disabled");
-//     }
-//   });                                                                        //new
-
+  });                            
 finalKey2.addEventListener("drop", (e) => {
   e.preventDefault();
   const item = e.dataTransfer.getData("text/plain");
 
   if (item === "key") {
-    overlay.src = "../../assets/room5/letter box 2.png";
+    overlay.src = "../../assets/room5/letter_box_2.png";
     overlay.classList.remove("hidden");
     closeBtn.classList.remove("hidden");
   
     blur.classList.add("active");
     sceneImage.classList.add("blur");
 
-    inventoryKey.classList.add("hidden");
+    slot1.style.display = "none";
     key2.classList.remove("disabled");
     finalKey2.classList.add("disabled");                
   }
 });
 closeBtn.addEventListener("click", closeOverlayOnce);
-
-// closeBtn.addEventListener("click",(e) => {
-//   e.preventDefault();
-//   closeOverlayOnce; 
-// });
-
 
 
 finalKey.addEventListener("drop", (e) => {
@@ -90,7 +62,7 @@ finalKey.addEventListener("drop", (e) => {
     const item = e.dataTransfer.getData("text/plain");
   
     if (item === "key2") {
-      overlay.src = "../../assets/room5/final bg after door open.png";
+      overlay.src = "../../assets/room5/final_bg_after_door_open.png";
       inventoryKey2.classList.add("hidden"); 
 
 
@@ -111,32 +83,15 @@ finalKey.addEventListener("drop", (e) => {
 
   });
 
-let keyCollected = false;
-
-key.addEventListener("click", () => {
-    keyCollected = true;
-  
-   
-    key.style.opacity = "0.4";
-  
-    
-    clickArea.classList.remove("disabled");
-  });
-
-// leftPot.addEventListener("click", () => {  
-//     // ENABLE RIGHT BOX
-//     keyArea.classList.remove("disabled");
-//   });
-
 
 
 /*  CLICK RIGHT BOX */
 clickArea.addEventListener("click", () => {
-    if (!keyCollected) return;
+    if (!keyCollected1) return;
   
     sceneImage.classList.add("blur");
     overlay.classList.remove("hidden");
-    overlay.src="../../assets/room5/letter box.png";
+    overlay.src="../../assets/room5/letter_box.png";
     
 
     closeBtn.classList.remove("hidden");
@@ -144,60 +99,60 @@ clickArea.addEventListener("click", () => {
     overlay.style.display = "block"
     clickArea.classList.add("disabled");
     closeBtn.classList.remove("hidden");//new img
+    finalKey2.classList.remove("disabled"); 
   });
 function nextImage() {
-    document.getElementById("sceneImage").src = "../../assets/room5/2nd bg while click on pot.png";
+    document.getElementById("sceneImage").src = "../../assets/room5/bg_2_while_click_on_pot.png";
     const leftPot = document.getElementById("leftPot");
     leftPot.style.display = "none";
     key.classList.remove("disabled");
     
   }
 
-// function showOverlay() {
-//     const blur = document.getElementById("blur");
-//     const overlay = document.getElementById("overlay");
-
-  
-//     // Blur background
-//     blur.classList.add("active");
-  
-//     // Show overlay image
-//     overlay.style.display = "block";
-// }
-
 
 function collectKey() {
+    keyCollected1 = true
     const key = document.getElementById("key");
-    const inventoryKey = document.getElementById("inventoryKey");
+    // const inventoryKey = document.getElementById("inventoryKey");
     const sceneImage = document.getElementById("sceneImage");
-  
-    // hide key from scene
-    key.style.display = "none";
 
-    sceneImage.src = "../../assets/room5/3rd after collected key.png";
-  
-    // show key in inventory
-    inventoryKey.classList.remove("hidden");
+    const inventoryKey = document.createElement("img");
+    inventoryKey.src = "../../assets/room5/key_2.png";
+    inventoryKey.style.width = "50px";
+    inventoryKey.draggable = true;
+    inventoryKey.id = "inventoryKey";
+    slot1.appendChild(inventoryKey);
+    clickArea.classList.remove("disabled");
+    inventoryKey.addEventListener("dragstart", (e) => {
+          e.dataTransfer.setData("text/plain", "key");
+        });
+
+    sceneImage.src = "../../assets/room5/after_3_collected_key.png";
   }
   function useKey() {
     document.getElementById("inventoryKey").classList.add("hidden");
   }
 
   function collectKey2(event) {
-    boxOpened = true
+    boxOpened = true;
+    slot1.innerHTML = "";
+    slot1.style.display = "block";
     event.stopPropagation();
-    const key2 = document.getElementById("key2");
-    const inventoryKey2 = document.getElementById("inventoryKey2");
-  
-    // hide key from scene
-    key2.style.display = "none";
-  
+    // const inventoryKey2 = document.getElementById("inventoryKey2");
 
+    const inventoryKey2 = document.createElement("img");
+    inventoryKey2.src = "../../assets/room5/key.png";
+    inventoryKey2.style.width = "50px";
+    inventoryKey2.draggable = true;
+    inventoryKey2.id = "inventoryKey2";
+    slot1.appendChild(inventoryKey2);
   
-    // show key in inventory
-    inventoryKey2.classList.remove("hidden");
+    // clickArea.classList.remove("disabled");
+    inventoryKey2.addEventListener("dragstart", (e) => {
+          e.dataTransfer.setData("text/plain", "key2");
+        });
     
-    overlay.src = "../../assets/room5/letter box 3.png";
+    overlay.src = "../../assets/room5/letter_box_3.png";
 
     if (!boxOpened) return;
     // Enable click anywhere to close overlay
@@ -215,22 +170,18 @@ function collectKey() {
     // document.getElementById("blur").classList.add("hidden");
     blur.classList.remove("active");
 
-    overlay.src="../../assets/room5/3rd after collected key.png"
+    overlay.src="../../assets/room5/after_3_collected_key.png"
     // finalKey.classList.remove("disabled")  
     document.getElementById("closeBtn").classList.add("hidden")
     clickArea.classList.remove("disabled");
-    // overlay.src = "letter box.png";
-       
-
-
-
+    // overlay.src = "letter_box.png";
     return;}
 
     // Prevent closing if user clicks inventory
     if (e.target.closest(".inventory")) return;         
   
     document.getElementById("overlay").classList.add("hidden");
-    overlay.src = "../../assets/room5/3rd after collected key.png"
+    overlay.src = "../../assets/room5/after_3_collected_key.png"
     document.getElementById("blur").classList.add("hidden");
     finalKey.classList.remove("disabled")                     
     document.getElementById("closeBtn").classList.add("hidden")
@@ -238,16 +189,6 @@ function collectKey() {
     // Remove listener so it happens only once
     document.removeEventListener("click", closeOverlayOnce);
   }                                                              
-
-
-
-    
-
-
-  
-
-
-  
 
   // closeBtn.addEventListener("click", (e) => {
   //   e.stopPropagation(); // prevent document click
@@ -292,7 +233,7 @@ function collectKey() {
 
 
   // finalKey2.addEventListener("click", () => {
-  //   overlay.src = "letter box 2.png";
+  //   overlay.src = "letter_box_2.png";
   
   //   overlay.classList.remove("hidden");
   //   closeBtn.classList.remove("hidden");
@@ -325,7 +266,7 @@ function collectKey() {
 
 
 finalCloseBtn.addEventListener("click", () => {
-  window.location.href = "../level page/levels1-10.html";
+  location.reload();
 });
 
 document.querySelector(".homebtn").addEventListener("click", () => {

@@ -7,33 +7,33 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <div class="game-screen">
+  <div id="loader" class="loader"></div>
+  <div class="game-screen" id="gameScreen" style="opacity: 0;">
     
     <div class="scene" id="scene">
-        <img id="sceneImage" src="../../assets/room7/1 bg.jpg" />
+        <img id="sceneImage" src="../../assets/room7/bg_1.jpg" />
         <div class="crowbar" id="crowBar"></div>
         <div class="key-area" id="key"></div>
         <div class="locked-box" id ="lockedBox" onclick="nextImage()"></div>
-        <img src="../../assets/room7/wooden box.png" class="overlay-image hidden" id="overlay">
-        <img src="../../assets/room7/CLOSE BUTTON.png" id="closeBtn" class="close-btn hidden" alt="Close"/>
+        <img src="../../assets/room7/wooden_box.png" class="overlay-image hidden" id="overlay">
+        <img src="../../assets/room7/close_button.png" id="closeBtn" class="close-btn hidden" alt="Close"/>
         <div class="final-crowbar-area disabled" id="finalCrowBarArea"></div> 
         <div class="locked-box-area disabled" id="lockedBoxArea"></div> 
         <div class="locked-box-key-area disabled" id="lockedBoxKeyArea"></div> 
         <div class="final-key-area disabled" id="finalKeyArea"></div>
         <div class="final-door-area disabled" id="finalDoorArea"></div> 
-        <img src="../../assets/room7/final panel 7@2x.png" class="finaloverlay-image hidden" id="finalOverlay"/>
-        <img src="../../assets/ICONS/CLOSE@3x.png" id="finalCloseBtn" class="final-close-btn hidden" alt="Close"/>
+        <img src="../../assets/room7/final_panel_7@2x.png" class="finaloverlay-image hidden" id="finalOverlay"/>
+        <img src="../../assets/ICONS/close.png" id="finalCloseBtn" class="final-close-btn hidden" alt="Close"/>
 
     </div>
     <div class="lastoptions" id="lastoptions" style="display: none;">
-      <img src="../../assets/ICONS/HOME@3x.png" alt="" class="homebtn" id="lastButtons">
-      <!-- <img src="../../assets/ICONS/SETTING@3x.png" alt="" class="retrybtn" id="lastButtons"> -->
-      <img src="../../assets/ICONS/PLAY@3x.png" alt=""class="nextbtn" id="lastButtons">
+      <img src="../../assets/ICONS/home.png" alt="" class="homebtn" id="lastButtons">
+      <!-- <img src="../../assets/ICONS/setting.png" alt="" class="retrybtn" id="lastButtons"> -->
+      <img src="../../assets/ICONS/play.png" alt=""class="nextbtn" id="lastButtons">
  </div> 
 
     <div class="inventory">
-        <img src="../../assets/room7/game inventry@3x.png" class="inventory-bg" id="inventory" />
+        <img src="../../assets/room7/game_inventry@3x.png" class="inventory-bg" id="inventory" />
 
         <div class="slot" id="slot"></div>
         <div class="slot1" id="slot1"></div>

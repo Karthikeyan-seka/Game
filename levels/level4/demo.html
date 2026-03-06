@@ -7,79 +7,80 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div id="loader" class="loader"></div>
+    <div class="container" id="gameScreen" style="opacity: 0;">
         <img src="../../../assets/room4/1@3x.png" alt="" class="bg1" id="mainBg">
         <div class="hitbox"></div> 
 
-        <img src="../../assets/ICONS/game inventry@3x.png" alt="" class="inventry" id="inventry">
+        <img src="../../assets/ICONS/game_inventry.png" alt="" class="inventry" id="inventry">
         <img src="../../../assets/room4/6@3x.png" alt="" class="clue-paper1" id="clueItem">
         <div class="clue-overlay" id="clue-overlay">
             <img src="../../../assets/room4/3@3x.png" class="blur-bg">
-            <img src="../../../assets/room4/clue 2@3x.png" alt="" class="large-clue1">
-            <img src="../../../assets/room4/CLOSE BUTTON.png" class="close-btn" id="closebtn">
+            <img src="../../../assets/room4/clue2@3x.png" alt="" class="large-clue1">
+            <img src="../../../assets/room4/CLOSEBUTTON.png" class="close-btn" id="closebtn">
         </div>
         <div class="hitbox2" id="hitbox2"></div> 
         <div class="box-overlay" id="boxoverlay">
             
             <img src="../../../assets/room4/3@3x.png" class="blur-bg">
-            <img src="../../../assets/room4/clue 3@3x@3x.png" class="box1" id="box1" alt="">
+            <img src="../../../assets/room4/clue3@3x@3x.png" class="box1" id="box1" alt="">
 
             <div  class="keypad-wrapper" id="keypadWrapper" style="display: none;">
             
                 <div class="button-grid">
-                    <img src="../../assets/room4/digital lock/1@3x.png" class="num-btn" data-val="1">
-                    <img src="../../assets/room4/digital lock/2@3x.png" class="num-btn" data-val="2">
-                    <img src="../../assets/room4/digital lock/3@3x.png" class="num-btn" data-val="3">
-                    <img src="../../assets/room4/digital lock/4@3x.png" class="num-btn" data-val="4">
-                    <img src="../../assets/room4/digital lock/5@3x.png" class="num-btn" data-val="5">
-                    <img src="../../assets/room4/digital lock/6@3x.png" class="num-btn" data-val="6">
-                    <img src="../../assets/room4/digital lock/7@3x.png" class="num-btn" data-val="7">
-                    <img src="../../assets/room4/digital lock/8@3x.png" class="num-btn" data-val="8">
-                    <img src="../../assets/room4/digital lock/9@3x.png" class="num-btn" data-val="9">
-                    <img src="../../assets/room4/digital lock/w@3x.png" class="num-btn" data-val="w">
-                    <img src="../../assets/room4/digital lock/0@3x.png" class="num-btn" data-val="0">
-                    <img src="../../assets/room4/digital lock/e@3x.png" class="num-btn" data-val="e">
+                    <img src="../../assets/room4/digitallock/1@3x.png" class="num-btn" data-val="1">
+                    <img src="../../assets/room4/digitallock/2@3x.png" class="num-btn" data-val="2">
+                    <img src="../../assets/room4/digitallock/3@3x.png" class="num-btn" data-val="3">
+                    <img src="../../assets/room4/digitallock/4@3x.png" class="num-btn" data-val="4">
+                    <img src="../../assets/room4/digitallock/5@3x.png" class="num-btn" data-val="5">
+                    <img src="../../assets/room4/digitallock/6@3x.png" class="num-btn" data-val="6">
+                    <img src="../../assets/room4/digitallock/7@3x.png" class="num-btn" data-val="7">
+                    <img src="../../assets/room4/digitallock/8@3x.png" class="num-btn" data-val="8">
+                    <img src="../../assets/room4/digitallock/9@3x.png" class="num-btn" data-val="9">
+                    <img src="../../assets/room4/digitallock/w@3x.png" class="num-btn" data-val="w">
+                    <img src="../../assets/room4/digitallock/0@3x.png" class="num-btn" data-val="0">
+                    <img src="../../assets/room4/digitallock/e@3x.png" class="num-btn" data-val="e">
                 </div>
             </div>
             
-            <img src="../../../assets/room4/CLOSE BUTTON.png" class="close-btn" id="closebtn2">
+            <img src="../../../assets/room4/CLOSEBUTTON.png" class="close-btn" id="closebtn2">
         </div>
         <img src="../../../assets/room4/6@3x.png" alt="" class="clue-paper2" id="clueItem2">
         
         <div class="clue-overlay2" id="clue-overlay2">
             <img src="../../../assets/room4/3@3x.png" class="blur-bg">
             <img src="../../../assets/room4/7@3x.png" alt="" class="large-clue2">
-            <img src="../../../assets/room4/CLOSE BUTTON.png" class="close-btn" id="closebtn3">
+            <img src="../../../assets/room4/CLOSEBUTTON.png" class="close-btn" id="closebtn3">
         </div>
         <div class="box-overlay" id="doorOverlay">
             <img src="../../../assets/room4/3@3x.png" class="blur-bg">
             <img src="../../../assets/room4/8@3x.png" class="doorKeypadImg" id="doorKeypadImg"> 
             
-            <div class="keypad-wrapper" id="doorKeypadWrapper" style="">
+            <div class="keypad-wrapper" id="doorKeypadWrapper" >
                 <div class="doorbutton-grid" id="button-grid">
-                    <img src="../../assets/room4/digital lock/1@3x.png" class="door-btn" data-val="1">
-                    <img src="../../assets/room4/digital lock/2@3x.png" class="door-btn" data-val="2">
-                    <img src="../../assets/room4/digital lock/3@3x.png" class="door-btn" data-val="3">
-                    <img src="../../assets/room4/digital lock/4@3x.png" class="door-btn" data-val="4">
-                    <img src="../../assets/room4/digital lock/5@3x.png" class="door-btn" data-val="5">
-                    <img src="../../assets/room4/digital lock/6@3x.png" class="door-btn" data-val="6">
-                    <img src="../../assets/room4/digital lock/7@3x.png" class="door-btn" data-val="7">
-                    <img src="../../assets/room4/digital lock/8@3x.png" class="door-btn" data-val="8">
-                    <img src="../../assets/room4/digital lock/9@3x.png" class="door-btn" data-val="9">
-                    <img src="../../assets/room4/digital lock/w@3x.png" class="door-btn" data-val="w">
-                    <img src="../../assets/room4/digital lock/0@3x.png" class="door-btn" data-val="0">
-                    <img src="../../assets/room4/digital lock/e@3x.png" class="door-btn" data-val="e">
+                    <img src="../../assets/room4/digitallock/1@3x.png" class="door-btn" data-val="1">
+                    <img src="../../assets/room4/digitallock/2@3x.png" class="door-btn" data-val="2">
+                    <img src="../../assets/room4/digitallock/3@3x.png" class="door-btn" data-val="3">
+                    <img src="../../assets/room4/digitallock/4@3x.png" class="door-btn" data-val="4">
+                    <img src="../../assets/room4/digitallock/5@3x.png" class="door-btn" data-val="5">
+                    <img src="../../assets/room4/digitallock/6@3x.png" class="door-btn" data-val="6">
+                    <img src="../../assets/room4/digitallock/7@3x.png" class="door-btn" data-val="7">
+                    <img src="../../assets/room4/digitallock/8@3x.png" class="door-btn" data-val="8">
+                    <img src="../../assets/room4/digitallock/9@3x.png" class="door-btn" data-val="9">
+                    <img src="../../assets/room4/digitallock/w@3x.png" class="door-btn" data-val="w">
+                    <img src="../../assets/room4/digitallock/0@3x.png" class="door-btn" data-val="0">
+                    <img src="../../assets/room4/digitallock/e@3x.png" class="door-btn" data-val="e">
                 </div>
             </div>
-            <img src="../../../assets/room4/CLOSE BUTTON.png" class="close-btn" id="closeDoorBtn">
+            <img src="../../../assets/room4/CLOSEBUTTON.png" class="close-btn" id="closeDoorBtn">
         </div>
         <div class="hitbox3" id="hitbox3"></div> 
         <div class="final-overlay" id="finalOverlay">
-            <img src="../../assets/room4/final panel 4.png" class="final-panel">
-            <img src="../../assets/ICONS/CLOSE@3x.png" class="final-close-btn" id="finalCloseBtn">
+            <img src="../../assets/room4/finalpanel4.png" class="final-panel">
+            <img src="../../assets/ICONS/close.png" class="final-close-btn" id="finalCloseBtn">
             <div class="lastoptions">
-                <img src="../../assets/ICONS/HOME@3x.png" class="homebtn" id="homeBtn">
-                <img src="../../assets/ICONS/PLAY@3x.png" class="nextbtn" id="nextBtn">
+                <img src="../../assets/ICONS/home.png" class="homebtn" id="homeBtn">
+                <img src="../../assets/ICONS/play.png" class="nextbtn" id="nextBtn">
             </div>
         </div>
     </div>
