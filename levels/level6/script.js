@@ -42,8 +42,10 @@ const lastoptions=document.getElementById("lastoptions");
 const homebtn=document.querySelector(".homebtn");
 const playbtn=document.querySelector(".playbtn");
 const closebtn2 = document.getElementById("closebtn2");
+const toyImage = document.getElementById("toyImage");
 
 let isBoxOPen = false;
+let lockOpened = false;
 let enteredCode = "";
 const correctCode = "68";
 let redBtnState = 0;
@@ -65,11 +67,16 @@ closebtn.addEventListener('click', () => {
     closebtn.style.display = 'none';
     clue2.style.display = 'none';
     clue3.style.display = 'none';
-    clue4.style.display = 'none';
-    clue4.src ='../../assets/room6/lock.png'
-    keypadWrapper.style.display = 'none';
-    isBoxOPen = false;
-    resetKeypad();
+    toyImage.style.display = 'none';
+    if (!isBoxOPen || enteredCode !== correctCode) {
+        clue4.style.display = 'none';
+        clue4.src ='../../assets/room6/lock.png'
+        keypadWrapper.style.display = 'none';
+        isBoxOPen = false;
+        resetKeypad();
+    } else {
+        clue4.style.display = 'none';
+    }
     console.log("closed");
     colorButtons.style.display = 'none';
     
@@ -97,27 +104,20 @@ hitbox3.addEventListener('click', () => {
 hitbox4.addEventListener('click', () => {
     
     clue4.style.display = 'block';
+    clue4.src = '../../assets/room6/8@3x.png';
     closebtn.style.display = 'block';
     mainBg.style.filter = "blur(3px)";
-
-    console.log("clue3");
-
-});
-clue4.addEventListener('click', function() {
+    
     if (!isBoxOPen) {
-        
-        this.src = '../../assets/room6/8@3x.png';
         setTimeout( ()=>{
             keypadWrapper.style.display ='block';
         },500);
-        
         isBoxOPen = true;
         console.log("Keypad Active");
     }
-    else if(isBoxOPen && correctCode){
-        this.src = '../../assets/room6/toy.png';
-        
-    }
+
+    console.log("clue4");
+
 });
 
 buttons.forEach(btn => {
@@ -151,6 +151,8 @@ function checkCode() {
             
             clue4.src = '../../assets/room6/lockopen.png'; 
             keypadWrapper.style.display = 'none';
+            lockOpened = true;
+            clue4.style.pointerEvents = 'auto';
         }, 50); // 300ms delay so user sees the last digit click
     } else if (enteredCode.length >= 2) {
         setTimeout(() => {
@@ -167,6 +169,13 @@ function resetKeypad() {
         btn.src = `../../assets/room6/digitallockcroped/${val}@3x.png`;
     });
 }
+
+clue4.addEventListener('click', () => {
+    if (lockOpened) {
+        clue4.style.display = 'none';
+        toyImage.style.display = 'block';
+    }
+});
 hitbox5.addEventListener('click', () => {
     colorButtons.style.display = 'flex';
     closebtn.style.display = 'block';
