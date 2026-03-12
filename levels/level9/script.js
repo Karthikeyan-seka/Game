@@ -1,6 +1,6 @@
 // Preload the final panel image
 const finalPanelImg = new Image();
-finalPanelImg.src = "../../assets/room9/final_panel_9@2x@2x.png";
+finalPanelImg.src = "../../assets/room9/final_panel_9@2x@2x.webp";
 
 const clueArea = document.getElementById("clueArea");
 const overlay = document.getElementById("overlay");
@@ -35,7 +35,7 @@ function closeOverlayOnce() {
     clueArea.classList.remove("disabled");
     lockArea.classList.add("disabled");
     boxArea.classList.remove("disabled");
-    overlay.src ='lock.png'
+    overlay.src ='lock.webp'
     keypadWrapper.style.display = 'none';
     isBoxOPen = false;
     resetKeypad();
@@ -45,7 +45,7 @@ function closeOverlayOnce() {
   }
 
 function nextImage() {
-    overlay.src="../../assets/room9/clue.png";
+    overlay.src="../../assets/room9/clue.webp";
     overlay.style.left= "10px";
     overlay.style.top= "20px";
     overlay.style.width = "95%";
@@ -57,7 +57,7 @@ function nextImage() {
 }
 
 boxArea.addEventListener("click", () => {
-    overlay.src="../../assets/room9/box.png";
+    overlay.src="../../assets/room9/box.webp";
     overlay.style.left= "10px";
     overlay.style.top= "20px";
     overlay.style.width = "95%";
@@ -75,7 +75,7 @@ boxArea.addEventListener("click", () => {
 lockArea.addEventListener('click', () => {
     if (!isBoxOPen && !keyCollected) {
         
-        overlay.src = '../../assets/room9/lock.png';
+        overlay.src = '../../assets/room9/lock.webp';
         overlay.style.left= "40px";
         overlay.style.top= "100px";
         overlay.style.width = "75%";
@@ -88,7 +88,7 @@ lockArea.addEventListener('click', () => {
         console.log("Keypad Active");
     }
     else if(isBoxOPen && correctCode){
-        this.src = '../../assets/room9/box_2.png';
+        this.src = '../../assets/room9/box_2.webp';
         lockArea.classList.add("disabled");
         keyArea.classList.remove("disabled"); 
     }
@@ -98,8 +98,8 @@ buttons.forEach(btn => {
     const val = btn.getAttribute('data-val');
     
     // Paths for image swapping
-    const normalPath = `../../assets/room9/digital lock croped/${val}@3x.png`;
-    const clickedPath = `../../assets/room9/when we clcik/${val}@3x.png`;
+    const normalPath = `../../assets/room9/digital lock croped/${val}@3x.webp`;
+    const clickedPath = `../../assets/room9/when we clcik/${val}@3x.webp`;
 
     btn.addEventListener('pointerdown', (e) => {
         if (!isBoxOPen) return;
@@ -122,7 +122,7 @@ function checkCode() {
     if (enteredCode === correctCode) {
         setTimeout(() => {
         
-            overlay.src = '../../assets/room9/box_2.png';
+            overlay.src = '../../assets/room9/box_2.webp';
             lockArea.classList.add("disabled") 
             keypadWrapper.style.display = 'none';
             keyArea.classList.remove("disabled");
@@ -138,19 +138,19 @@ function resetKeypad() {
     enteredCode = "";
     buttons.forEach(btn => {
         const val = btn.getAttribute('data-val');
-        btn.src = `../../assets/room9/digital lock croped/${val}@3x.png`;
+        btn.src = `../../assets/room9/digital lock croped/${val}@3x.webp`;
     });
 }
 
 keyArea.addEventListener("click", () => {
-    overlay.src="../../assets/room9/box_3.png";
+    overlay.src="../../assets/room9/box_3.webp";
     const inventoryKey = document.createElement("img");
-    inventoryKey.src = "../../assets/room9/key.png";
+    inventoryKey.src = "../../assets/room9/key.webp";
     inventoryKey.style.width = "50px";
     inventoryKey.draggable = true;
     slot.appendChild(inventoryKey);
     keyCollected = true
-    sceneImage.src = "../../assets/room9/bg_2.jpg";
+    sceneImage.src = "../../assets/room9/bg_2.webp";
     boxArea.classList.add("hidden")
     keyArea.classList.add("hidden")
     finalLockArea.classList.remove("disabled")
@@ -167,12 +167,12 @@ finalLockArea.addEventListener("drop", (e) => {
     e.preventDefault();
     const item = e.dataTransfer.getData("text/plain");
     if (item === "finalKey") {
-      sceneImage.src = "../../assets/room9/bg_3.jpg";
+      sceneImage.src = "../../assets/room9/bg_3.webp";
       slot.style.display = "none";
       finalLockArea.classList.add("disabled")
       setTimeout(() => {
         sceneImage.classList.add("blur");
-        overlay.src = "../../assets/room9/final_panel_9@2x@2x.png";
+        overlay.src = "../../assets/room9/final_panel_9@2x@2x.webp";
         overlay.classList.remove("hidden");
         overlay.style.height = '100%';
         overlay.style.width = '100%';

@@ -41,7 +41,7 @@ function closeOverlayOnce() {
     clueArea.classList.remove("disabled");
     lockArea.classList.add("disabled");
     boxArea.classList.remove("disabled");
-    overlay.src ='../../assets/room13/lock@3x.png'
+    overlay.src ='../../assets/room13/lock@3x.webp'
     keypadWrapper.style.display = 'none';
     isBoxOPen = false;
     resetKeypad();
@@ -51,7 +51,7 @@ function closeOverlayOnce() {
   }
 
 function nextImage() {
-    overlay.src="../../assets/room13/clue_paper@3x.png";
+    overlay.src="../../assets/room13/clue_paper@3x.webp";
     overlay.style.left= "10px";
     overlay.style.top= "20px";
     overlay.style.width = "95%";
@@ -63,7 +63,7 @@ function nextImage() {
 }
 
 boxArea.addEventListener("click", () => {
-    overlay.src="../../assets/room13/box@3x.png";
+    overlay.src="../../assets/room13/box@3x.webp";
     overlay.style.left= "10px";
     overlay.style.top= "20px";
     overlay.style.width = "95%";
@@ -81,7 +81,7 @@ boxArea.addEventListener("click", () => {
 lockArea.addEventListener('click', () => {
     if (!isBoxOPen && !keyCollected) {
         
-        overlay.src ="../../assets/room13/lock@3x.png";
+        overlay.src ="../../assets/room13/lock@3x.webp";
         overlay.style.left= "40px";
         overlay.style.top= "100px";
         overlay.style.width = "75%";
@@ -94,7 +94,7 @@ lockArea.addEventListener('click', () => {
         console.log("Keypad Active");
     }
     else if(isBoxOPen && correctCode){
-        this.src = "../../assets/room13/box@3x_2@3x.png";
+        this.src = "../../assets/room13/box@3x_2@3x.webp";
         lockArea.classList.add("disabled");
         keyArea.classList.remove("disabled"); 
     }
@@ -104,8 +104,8 @@ buttons.forEach(btn => {
     const val = btn.getAttribute('data-val');
     
     // Paths for image swapping
-    const normalPath = `../../assets/room13/digital lock croped/${val}@3x.png`;
-    const clickedPath = `../../assets/room13/when we clcik/${val}@3x.png`;
+    const normalPath = `../../assets/room13/digital lock croped/${val}@3x.webp`;
+    const clickedPath = `../../assets/room13/when we clcik/${val}@3x_1.webp`;
 
     btn.addEventListener('pointerdown', (e) => {
         if (!isBoxOPen) return;
@@ -128,7 +128,7 @@ function checkCode() {
     if (enteredCode === correctCode) {
         setTimeout(() => {
         
-            overlay.src = "../../assets/room13/box@3x_2@3x.png";
+            overlay.src = "../../assets/room13/box@3x_2@3x.webp";
             lockArea.classList.add("disabled") 
             keypadWrapper.style.display = 'none';
             keyArea.classList.remove("disabled");
@@ -144,20 +144,20 @@ function resetKeypad() {
     enteredCode = "";
     buttons.forEach(btn => {
         const val = btn.getAttribute('data-val');
-        btn.src = `../../assets/room13/digital lock croped/${val}@3x.png`;
+        btn.src = `../../assets/room13/digital lock croped/${val}@3x.webp`;
     });
 }
 
 keyArea.addEventListener("click", () => {
-    overlay.src="../../assets/room13/box@3x2@3x3@3x.png";
+    overlay.src="../../assets/room13/box@3x2@3x3@3x.webp";
     const inventoryKey = document.createElement("img");
-    inventoryKey.src = "../../assets/room13/key@3x.png";
+    inventoryKey.src = "../../assets/room13/key@3x.webp";
     // inventoryKey.src = "key to open the door for room 1.png";
     inventoryKey.style.width = "50px";
     inventoryKey.draggable = true;
     slot.appendChild(inventoryKey);
     keyCollected = true
-    sceneImage.src = "../../assets/room13/bg2@3x@3x.png";
+    sceneImage.src = "../../assets/room13/bg2@3x@3x.webp";
     boxArea.classList.add("hidden")
     keyArea.classList.add("hidden")
     finalLockArea.classList.remove("disabled")
@@ -174,12 +174,12 @@ finalLockArea.addEventListener("drop", (e) => {
     e.preventDefault();
     const item = e.dataTransfer.getData("text/plain");
     if (item === "finalKey") {
-      sceneImage.src = "../../assets/room13/bg3@3x@3x@3x.png";
+      sceneImage.src = "../../assets/room13/bg3@3x@3x@3x.webp";
       slot.style.display = "none";
       finalLockArea.classList.add("disabled")
       setTimeout(() => {
         sceneImage.classList.add("blur");
-        overlay.src = "../../assets/room13/final_panel_5.png";
+        overlay.src = "../../assets/room13/final_panel_5.webp";
         overlay.classList.remove("hidden");
         lastoptions.style.display = 'block';
         finalCloseBtn.classList.remove("hidden")

@@ -51,12 +51,12 @@ const ctx = mazeCanvas.getContext('2d', { willReadFrequently: true });
 // 3. IMAGE ASSETS
 // ==========================================
 const mazeImg = new Image();
-mazeImg.src = "../../assets/room12/puzzle.png";
+mazeImg.src = "../../assets/room12/puzzle.webp";
 
 const keyImg = new Image();
-keyImg.src = "../../assets/room12/puzzle/key.png";
+keyImg.src = "../../assets/room12/puzzle/key.webp";
 
-mazeImg.onerror = () => console.error("Error: puzzle.png not found");
+mazeImg.onerror = () => console.error("Error: puzzle.webp not found");
 keyImg.onerror = () => console.error("Error: key image not found");
 
 // ==========================================
@@ -235,7 +235,7 @@ doorDropZone.addEventListener("drop", (e) => {
 
         doorKnobImg.classList.add("hidden");
         doorKnobHitbox.style.display = "none";
-        bgImage.src = "../../assets/room12/2bg.png";
+        bgImage.src = "../../assets/room12/2bg.webp";
 
         setTimeout(() => {
             levelPanel.classList.remove("hidden");

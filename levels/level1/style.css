@@ -1,12 +1,22 @@
+/* --- 1. GLOBAL ALIGNMENT --- */
 body {
     margin: 0;
-    height: 100vh;
+    padding: 20px 0; /* Prevents the game from touching the browser edges */
+    min-height: 100vh; /* CRITICAL: 'min-height' stops the top from getting cut off */
     display: flex;
     justify-content: center;
     align-items: center;
     background: #000;
-  }
+}
 
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- 2. LOADER --- */
 .loader {
     border: 4px solid #333;
     border-top: 4px solid #fff;
@@ -16,47 +26,35 @@ body {
     animation: spin 1s linear infinite;
     position: absolute;
     z-index: 9999;
-  }
+}
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
+}
 
+/* --- 3. GAME SCREEN & BACKGROUND --- */
 .game-screen {
     position: relative;
     width: 360px;
     height: 640px;
     overflow: hidden;
     transition: opacity 0.3s ease;
-  }
-  
+}
+
 .bg-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     pointer-events: none;
     display: block;
-  }
+}
 
 .bg-image.blur {
     filter: blur(6px);
-  }
+}
 
-.overlay-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    z-index: 3;
-    pointer-events: auto;
-  }
-
-.overlay-image.hidden {
-    display: none;
-  }
-
+/* --- 4. GAME OBJECTS --- */
 .carpet {
     position: absolute;
     bottom: 100px;
@@ -64,30 +62,63 @@ body {
     width: 55%;
     transform: translateX(-50%);
     cursor: pointer;
-    /* transition: transform 0.6s ease; */
-  }
+    transition: transform 0.6s ease;
+}
 
-/* Move carpet RIGHT */
 .carpet.moved {
-    transform: translateX(10%);  /* slides to right */
-  }
+    transform: translateX(10%);
+}
 
 .key {
     position: absolute;
     bottom: 100px;
-    /* left: 50%; */
     left: 160px;
     transform: translateX(-50%);
     width: 50px;
     cursor: pointer;
     pointer-events: none;
-    z-index: 3;  
-  }
-  
-.hidden {
-    display: none;
-  }
+    z-index: 3;
+}
 
+/* --- 5. HITBOXES --- */
+.carpet-area {
+    position: absolute;
+    bottom: 115px;
+    right: 22px;
+    width: 170px;
+    height: 47px;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+.carpet-area.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.key-area {
+    position: absolute;
+    bottom: 115px;
+    right: 158px;
+    width: 40px;
+    height: 44px;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+.key-area.disabled {
+    pointer-events: none;
+}
+
+.door-area {
+    position: absolute;
+    top: 240px;
+    left: 65%;
+    width: 80px;
+    height: 100px;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+/* --- 6. INVENTORY --- */
 .inventory {
     position: absolute;
     bottom: 0;
@@ -112,47 +143,24 @@ body {
     pointer-events: auto;
 }
 
-.carpet-area {
+/* --- 7. UI & OVERLAYS --- */
+.overlay-image {
     position: absolute;
-    bottom: 115px;    
-    right: 22px;
-    width: 170px;
-    height: 47px;
-    transform: translateX(-50%);
-    cursor: pointer;
-  }
-
-.carpet-area.disabled {
-    pointer-events: none;
-    cursor: default;
-  }
-
-.key-area {
-    position: absolute;
-    bottom: 115px;    
-    right: 158px;
-    width: 40px;
-    height: 44px;
-    transform: translateX(-50%);
-    cursor: pointer;
-  }
-
-.key-area.disabled {
-  pointer-events: none;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 3;
+    pointer-events: auto;
+}
+.overlay-image.hidden {
+    display: none;
+}
+.hidden {
+    display: none !important;
 }
 
-/* Invisible drop zone */
-.door-area {
-    position: absolute;
-    top: 240px;
-    left: 65%;
-    width: 80px;
-    height: 100px;
-    transform: translateX(-50%);
-    z-index: 5;
-  }
-
-  .final-close-btn {
+.final-close-btn {
     position: absolute;
     bottom: 500px;
     left: 290px;
@@ -160,15 +168,14 @@ body {
     height: 50px;
     z-index: 1002;
     cursor: pointer;
-  }
-
+}
 .final-close-btn.hidden {
     display: none;
-  }
+}
 
-  .lastoptions {
+.lastoptions {
     position: absolute;
-    top: 58%; /* Adjust to match safe height */
+    top: 58%;
     left: 48%;
     transform: translateX(-50%);
     display: flex;
@@ -177,8 +184,11 @@ body {
 }
 
 #lastButtons {
-    width: 60px; /* Adjust size as needed */
+    width: 60px;
     height: 60px;
     cursor: pointer;
     transition: transform 0.1s;
+}
+#lastButtons:active {
+    transform: scale(0.9);
 }

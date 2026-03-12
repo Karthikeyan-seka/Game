@@ -104,7 +104,7 @@ body::after {
     height: 0;
     overflow: hidden;
     z-index: -1;
-    background: url('../../assets/room7/final_panel_7@2x.png');
+    background: url('../../assets/room7/final_panel_7@2x.webp');
   }
 
 .finaloverlay-image.hidden {
