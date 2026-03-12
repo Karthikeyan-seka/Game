@@ -19,7 +19,7 @@ if (bgImage.complete) {
 
 // Preload background image
 const bg2 = new Image();
-bg2.src = "../../assets/room11/bg_2.png";
+bg2.src = "../../assets/room11/bg_2.webp";
 
 const KEY_POSITIONS = [
   { id: 0, top: 172, left: 172 },
@@ -310,7 +310,7 @@ if (handle) {
     const item = e.dataTransfer.getData('text/plain');
     if (item === 'doorKey' && !keyUsed) {
       keyUsed = true;
-      bgImage.src = '../../assets/room11/bg_2.png';
+      bgImage.src = '../../assets/room11/bg_2.webp';
       inventoryKey.classList.add('hidden');
       
       setTimeout(() => {

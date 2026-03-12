@@ -1,7 +1,7 @@
 const levels = document.querySelectorAll(".level");
-let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
-
+const homeBtnLevel = document.getElementById("homeBtnLevel");
 const prevBtnLevel = document.getElementById("prevBtnLevel");
+let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
 
 // Lock all levels 11-15 initially, only unlock if level 10 is completed
 for (let i = 11; i <= 15; i++) {
@@ -14,6 +14,10 @@ for (let i = 11; i <= 15; i++) {
         }
     }
 }
+
+homeBtnLevel.addEventListener("click", () => {
+    window.location.href = "../home_page/home.html";
+});
 
 prevBtnLevel.addEventListener("click", () => {
     window.location.href = "levels1-10.html";

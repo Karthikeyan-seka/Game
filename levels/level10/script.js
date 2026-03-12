@@ -150,13 +150,13 @@ function handleWin() {
     
     // 2. Change the main game background to the "Open Door" version
     // Use '2.jpg' which shows the door with the completed puzzle
-    mainbg.src = "../../assets/room10/2.jpg"; 
+    mainbg.src = "../../assets/room10/2.webp"; 
     closeBtn.style.display = 'none';
     mainbg.style.filter = "none";
     // 3. Disable the puzzle hitbox so it can't be clicked again
     hitbox.style.pointerEvents = "none";
    setTimeout(() =>{
-    mainbg.src  ="../../assets/room10/3.jpg";
+    mainbg.src  ="../../assets/room10/3.webp";
    },50);
    setTimeout(() => {
     finalPanel.style.display = 'block';
