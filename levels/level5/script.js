@@ -41,7 +41,7 @@ finalKey2.addEventListener("drop", (e) => {
   const item = e.dataTransfer.getData("text/plain");
 
   if (item === "key") {
-    overlay.src = "../../assets/room5/letter_box_2.png";
+    overlay.src = "../../assets/room5/letter_box_2.webp";
     overlay.classList.remove("hidden");
     closeBtn.classList.remove("hidden");
   
@@ -62,7 +62,7 @@ finalKey.addEventListener("drop", (e) => {
     const item = e.dataTransfer.getData("text/plain");
   
     if (item === "key2") {
-      overlay.src = "../../assets/room5/final_bg_after_door_open.png";
+      overlay.src = "../../assets/room5/final_bg_after_door_open.webp";
       inventoryKey2.classList.add("hidden"); 
 
 
@@ -91,7 +91,7 @@ clickArea.addEventListener("click", () => {
   
     sceneImage.classList.add("blur");
     overlay.classList.remove("hidden");
-    overlay.src="../../assets/room5/letter_box.png";
+    overlay.src="../../assets/room5/letter_box.webp";
     
 
     closeBtn.classList.remove("hidden");
@@ -102,7 +102,7 @@ clickArea.addEventListener("click", () => {
     finalKey2.classList.remove("disabled"); 
   });
 function nextImage() {
-    document.getElementById("sceneImage").src = "../../assets/room5/bg_2_while_click_on_pot.png";
+    document.getElementById("sceneImage").src = "../../assets/room5/bg_2_while_click_on_pot.webp";
     const leftPot = document.getElementById("leftPot");
     leftPot.style.display = "none";
     key.classList.remove("disabled");
@@ -117,7 +117,7 @@ function collectKey() {
     const sceneImage = document.getElementById("sceneImage");
 
     const inventoryKey = document.createElement("img");
-    inventoryKey.src = "../../assets/room5/key_2.png";
+    inventoryKey.src = "../../assets/room5/key_2.webp";
     inventoryKey.style.width = "50px";
     inventoryKey.draggable = true;
     inventoryKey.id = "inventoryKey";
@@ -127,7 +127,7 @@ function collectKey() {
           e.dataTransfer.setData("text/plain", "key");
         });
 
-    sceneImage.src = "../../assets/room5/after_3_collected_key.png";
+    sceneImage.src = "../../assets/room5/after_3_collected_key.webp";
   }
   function useKey() {
     document.getElementById("inventoryKey").classList.add("hidden");
@@ -141,7 +141,7 @@ function collectKey() {
     // const inventoryKey2 = document.getElementById("inventoryKey2");
 
     const inventoryKey2 = document.createElement("img");
-    inventoryKey2.src = "../../assets/room5/key.png";
+    inventoryKey2.src = "../../assets/room5/key.webp";
     inventoryKey2.style.width = "50px";
     inventoryKey2.draggable = true;
     inventoryKey2.id = "inventoryKey2";
@@ -152,7 +152,7 @@ function collectKey() {
           e.dataTransfer.setData("text/plain", "key2");
         });
     
-    overlay.src = "../../assets/room5/letter_box_3.png";
+    overlay.src = "../../assets/room5/letter_box_3.webp";
 
     if (!boxOpened) return;
     // Enable click anywhere to close overlay
@@ -170,7 +170,7 @@ function collectKey() {
     // document.getElementById("blur").classList.add("hidden");
     blur.classList.remove("active");
 
-    overlay.src="../../assets/room5/after_3_collected_key.png"
+    overlay.src="../../assets/room5/after_3_collected_key.webp"
     // finalKey.classList.remove("disabled")  
     document.getElementById("closeBtn").classList.add("hidden")
     clickArea.classList.remove("disabled");
@@ -181,7 +181,7 @@ function collectKey() {
     if (e.target.closest(".inventory")) return;         
   
     document.getElementById("overlay").classList.add("hidden");
-    overlay.src = "../../assets/room5/after_3_collected_key.png"
+    overlay.src = "../../assets/room5/after_3_collected_key.webp"
     document.getElementById("blur").classList.add("hidden");
     finalKey.classList.remove("disabled")                     
     document.getElementById("closeBtn").classList.add("hidden")

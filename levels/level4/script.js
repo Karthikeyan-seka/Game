@@ -13,7 +13,7 @@ const clueOverlay2 = document.getElementById("clue-overlay2");
 const closeClueBtn2 = document.getElementById("closebtn3");
 const mainBg=document.getElementById("mainBg");
 const doorlockBg=new Image();
-doorlockBg.src='../../assets/room4/1@3x@3x.png';
+doorlockBg.src='../../assets/room4/1@3x@3x.webp';
 const hitbox3 = document.getElementById("hitbox3");
 const doorOverlay = document.getElementById("doorOverlay");
 const closeDoorBtn = document.getElementById("closeDoorBtn");
@@ -89,14 +89,14 @@ hitbox2.addEventListener('click', () => {
 box1.addEventListener('click', function() {
     if (!isBoxOPen) {
         // Change the safe door image to the keypad background
-        this.src = '../../assets/room4/8@3x.png';
+        this.src = '../../assets/room4/8@3x_1.webp';
         keypadWrapper.style.display = 'block';
         isBoxOPen = true;
         console.log("Keypad Active");
     }
     else if (isBoxOPen && isSafeCodeSolved) {
         // 1. Change safe image to empty version
-        this.src = '../../assets/room4/clue5@3x@3x@3x@3x.png';
+        this.src = '../../assets/room4/clue5@3x@3x@3x@3x.webp';
         
         // 2. Show the paper in your inventory bar
         clueItem2.style.display = 'block';
@@ -114,8 +114,8 @@ buttons.forEach(btn => {
     const val = btn.getAttribute('data-val');
     
     // Paths for image swapping
-    const normalPath = `../../assets/room4/digitallock/${val}@3x.png`;
-    const clickedPath = `../../assets/room4/whenweclick/${val}@3x.png`; // Removed the leading slash
+    const normalPath = `../../assets/room4/digitallock/${val}@3x.webp`;
+    const clickedPath = `../../assets/room4/whenweclick/${val}@3x.webp`; // Removed the leading slash
 
     btn.addEventListener('pointerdown', (e) => {
         if (!isBoxOPen) return;
@@ -141,7 +141,7 @@ function checkCode() {
         setTimeout(() => {
         
             // Change safe to opened image
-            box1.src = '../../assets/room4/clue4@3x@3x@3x.png'; 
+            box1.src = '../../assets/room4/clue4@3x@3x@3x.webp'; 
             keypadWrapper.style.display = 'none';
         }, 300); // 300ms delay so user sees the last digit click
     } else if (enteredCode.length >= 3) {
@@ -156,7 +156,7 @@ function resetKeypad() {
     enteredCode = "";
     buttons.forEach(btn => {
         const val = btn.getAttribute('data-val');
-        btn.src = `../../assets/room4/digitallock/${val}@3x.png`;
+        btn.src = `../../assets/room4/digitallock/${val}@3x.webp`;
     });
 }
 
@@ -167,7 +167,7 @@ closebtn2.addEventListener('click', () => {
     
     // Reset Safe/Keypad for next time
     isBoxOPen = false;
-    box1.src = '../../assets/room4/clue3@3x@3x.png';
+    box1.src = '../../assets/room4/clue3@3x@3x.webp';
     keypadWrapper.style.display = 'none';
     resetKeypad();
 });
@@ -185,7 +185,7 @@ clueItem2.addEventListener('click', () => {
 closeClueBtn2.addEventListener('click', () => {
     clueOverlay2.style.display = 'none';
     clueItem2.style.visibility = 'visible';
-    mainBg.src="../../assets/room4/1@3x@3x.png";
+    mainBg.src="../../assets/room4/1@3x@3x.webp";
     console.log("keypad door");
     hitbox3.style.pointerEvents = 'auto';
 });
@@ -200,8 +200,8 @@ doorButtons.forEach(btn => {
     const val = btn.getAttribute('data-val');
     
     // Define exact paths for Normal and Clicked states
-    const normalPath = `../../assets/room4/digitallock/${val}@3x.png`;
-    const clickedPath = `../../assets/room4/whenweclick/${val}@3x.png`;
+    const normalPath = `../../assets/room4/digitallock/${val}@3x.webp`;
+    const clickedPath = `../../assets/room4/whenweclick/${val}@3x.webp`;
 
     btn.addEventListener('pointerdown', (e) => {
         e.preventDefault();
@@ -225,7 +225,7 @@ function doorcheckCode() {
     if (doorEnteredCode === correctDoorCode) {
         setTimeout(() => {
             doorOverlay.style.display = 'none';
-            mainBg.src  ="../../assets/room4/dooropen@3x.png";
+            mainBg.src  ="../../assets/room4/dooropen@3x.webp";
             hitbox3.style.pointerEvents = 'none';
             doorEnteredCode ="";
             
@@ -245,7 +245,7 @@ function resetKeypad1() {
     doorButtons.forEach(btn => {
         const val = btn.getAttribute('data-val');
         // Force the path back to the base 'digital lock' folder
-        btn.src = `../../assets/room4/digitallock/${val}@3x.png`;
+        btn.src = `../../assets/room4/digitallock/${val}@3x.webp`;
     });
     console.log("Keypad Reset - Absolute paths restored.");
 }
