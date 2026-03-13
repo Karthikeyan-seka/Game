@@ -3,47 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>level1</title>
+    <title>Level 1 - Escape Room</title>
     <link rel="stylesheet" href="style.css" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3212604162895578" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="loader" class="loader"></div>
+<div id="loader" class="loader"></div>
+
+<div class="game-wrapper">
+
     <div class="game-screen" id="gameScreen" style="opacity: 0;">
-        <!-- Background -->
-        <img src="../../assets/room1/room_final.png" class="bg-image" id = "bgImage"/>
-        
-
-        <!-- Carpet -->
+        <img src="../../assets/room1/room_final.png" class="bg-image" id="bgImage"/>
         <img src="../../assets/room1/carpet_in_room_1.png" class="carpet" id="carpet"/>
-
-        <!-- Key (hidden initially) -->
         <img src="../../assets/room1/key_to_open_the_door_for_room_1.png" class="key hidden" id="key"/>
 
-
         <div class="carpet-area" id="carpetArea"></div>
-
         <div class="key-area disabled" id="keyArea"></div>
-        <!-- <div class="key-area disabled" id="key" onclick="collectKey()"></div> -->
-
-        <!-- Door drop area -->
         <div id="doorArea" class="door-area disabled"></div>
+
         <img src="../../assets/ICONS/close.png" id="finalCloseBtn" class="final-close-btn hidden" alt="Close"/>
-
-
         <img src="../../assets/room1/final_panel_1.png" class="overlay-image hidden" id="overlay"/>
+
         <div class="lastoptions" id="lastoptions" style="display: none;">
             <img src="../../assets/ICONS/home.png" alt="" class="homebtn" id="lastButtons">
-            <!-- <img src="../../assets/ICONS/setting.png" alt="" class="retrybtn" id="lastButtons"> -->
-            <img src="../../assets/ICONS/play.png" alt=""class="nextbtn" id="lastButtons">
-       </div> 
+            <img src="../../assets/ICONS/play.png" alt="" class="nextbtn" id="lastButtons">
+        </div>
 
         <div class="inventory">
             <img src="../../assets/ICONS/game_inventry.png" class="inventory-bg" />
-
             <div class="slot" id="slot1"></div>
         </div>
-
-        <script src="script.js"></script>
     </div>
+
+    <div style="width: 100%; max-width: 360px; margin-top: 5px; text-align: center;">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3212604162895578"
+             data-ad-slot="1620433269"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

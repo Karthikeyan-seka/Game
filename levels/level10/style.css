@@ -111,9 +111,9 @@ body{
     background-size: cover;
     transition: transform 0.2s ease;
 }
-.pink{background-image: url('../../assets/room10/puzzles/1stRow-1(1)@3x.png') !important;background-size: cover;}
-.blue{background-image: url('../../assets/room10/puzzles/1stRow-1(2)@3x.png') !important;background-size: cover;}
-.red{background-image: url('../../assets/room10/puzzles/1stRow-1(3)@3x.png') !important;background-size: cover;}
+.pink{background-image: url('../../assets/room10/puzzles/1stRow-1(1)@3x.webp') !important;background-size: cover;}
+.blue{background-image: url('../../assets/room10/puzzles/1stRow-1(2)@3x.webp') !important;background-size: cover;}
+.red{background-image: url('../../assets/room10/puzzles/1stRow-1(3)@3x.webp') !important;background-size: cover;}
 
 .selected {
     transform: scale(1.1);
@@ -154,7 +154,7 @@ body::after {
     height: 0;
     overflow: hidden;
     z-index: -1;
-    background: url('../../assets/room 10/finalpanel10@2x.png');
+    background: url('../../assets/room10/finalpanel10@2x.webp');
 }
 
 .lastoptions {

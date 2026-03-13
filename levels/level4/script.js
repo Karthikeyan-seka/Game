@@ -13,7 +13,7 @@ const clueOverlay2 = document.getElementById("clue-overlay2");
 const closeClueBtn2 = document.getElementById("closebtn3");
 const mainBg=document.getElementById("mainBg");
 const doorlockBg=new Image();
-doorlockBg.src='../../../assets/room4/1@3x@3x.png';
+doorlockBg.src='../../assets/room4/1@3x@3x.png';
 const hitbox3 = document.getElementById("hitbox3");
 const doorOverlay = document.getElementById("doorOverlay");
 const closeDoorBtn = document.getElementById("closeDoorBtn");
@@ -37,6 +37,7 @@ if (mainBg.complete) {
 
 // --- Game State Variables ---
 let hasScrollBeenTaken = false;
+let isSafeCodeSolved = false;
 let hasSeenClue = false;
 let isBoxOPen = false; // "false" means looking at the safe, "true" means keypad is active
 let enteredCode = "";
@@ -88,14 +89,14 @@ hitbox2.addEventListener('click', () => {
 box1.addEventListener('click', function() {
     if (!isBoxOPen) {
         // Change the safe door image to the keypad background
-        this.src = '../../../assets/room4/8@3x.png';
+        this.src = '../../assets/room4/8@3x.png';
         keypadWrapper.style.display = 'block';
         isBoxOPen = true;
         console.log("Keypad Active");
     }
-    else if (isBoxOPen && correctCode) {
+    else if (isBoxOPen && isSafeCodeSolved) {
         // 1. Change safe image to empty version
-        this.src = '../../../assets/room4/clue5@3x@3x@3x@3x.png';
+        this.src = '../../assets/room4/clue5@3x@3x@3x@3x.png';
         
         // 2. Show the paper in your inventory bar
         clueItem2.style.display = 'block';
@@ -136,10 +137,11 @@ buttons.forEach(btn => {
 
 function checkCode() {
     if (enteredCode === correctCode) {
+        isSafeCodeSolved = true;
         setTimeout(() => {
         
             // Change safe to opened image
-            box1.src = '../../../assets/room4/clue4@3x@3x@3x.png'; 
+            box1.src = '../../assets/room4/clue4@3x@3x@3x.png'; 
             keypadWrapper.style.display = 'none';
         }, 300); // 300ms delay so user sees the last digit click
     } else if (enteredCode.length >= 3) {
@@ -165,7 +167,7 @@ closebtn2.addEventListener('click', () => {
     
     // Reset Safe/Keypad for next time
     isBoxOPen = false;
-    box1.src = '../../../assets/room4/clue3@3x@3x.png';
+    box1.src = '../../assets/room4/clue3@3x@3x.png';
     keypadWrapper.style.display = 'none';
     resetKeypad();
 });
@@ -183,7 +185,7 @@ clueItem2.addEventListener('click', () => {
 closeClueBtn2.addEventListener('click', () => {
     clueOverlay2.style.display = 'none';
     clueItem2.style.visibility = 'visible';
-    mainBg.src="../../../assets/room4/1@3x@3x.png";
+    mainBg.src="../../assets/room4/1@3x@3x.png";
     console.log("keypad door");
     hitbox3.style.pointerEvents = 'auto';
 });

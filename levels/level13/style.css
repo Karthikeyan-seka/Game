@@ -126,7 +126,7 @@ body::after {
     height: 0;
     overflow: hidden;
     z-index: -1;
-    background: url('../../assets/room13/final panel 5.png');
+    background: url('../../assets/room13/final_panel_5.webp');
   }
 
 .overlay-image.hidden {
