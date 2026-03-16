@@ -38,7 +38,7 @@ leafArea.addEventListener("click", () => {
 
     if (!leafMoved && !buttonCollected) {
 
-        leaf.src = "../../assets/level2/gameplay3@3x.png";
+        leaf.src = "../../assets/room2/gameplay3@3x.png";
 
         leaf.classList.add("moved");
         bgImage.classList.add("blur-bg");
@@ -162,7 +162,7 @@ doorArea.addEventListener("drop", (e) => {
         closeBtn.classList.add("hidden");
         floorButton.classList.add("hidden");
 
-        bgImage.src = "../../assets/room2/gameoverbg@3x.jpg";
+        bgImage.src = "../../assets/room2/gameoverbg@3x.webp";
         bgImage.classList.remove("blur-bg");
 
         setTimeout(() => {

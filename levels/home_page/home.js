@@ -57,12 +57,12 @@ closeSettingsBtn.addEventListener("click", () => {
 
 soundToggle.addEventListener("click", function() {
     const isActive = this.dataset.active === "true";
-    this.src = isActive ? "../../assets/home_page/panneldesign/volume_mute_btn.png" : "../../assets/home_page/panneldesign/volume_btn.png";
+    this.src = isActive ? "../../assets/home_page/panneldesign/volume_mute_btn.webp" : "../../assets/home_page/panneldesign/volume_btn.webp";
     this.dataset.active = !isActive;
 });
 
 musicToggle.addEventListener("click", function() {
     const isActive = this.dataset.active === "true";
-    this.src = isActive ? "../../assets/home_page/panneldesign/volume_mute_btn.png" : "../../assets/home_page/panneldesign/volume_btn.png";
+    this.src = isActive ? "../../assets/home_page/panneldesign/volume_mute_btn.webp" : "../../assets/home_page/panneldesign/volume_btn.webp";
     this.dataset.active = !isActive;
 });

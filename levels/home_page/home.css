@@ -46,7 +46,7 @@ body{
 .game-container {
     width: 100%;
     height: 100%;
-    background: url("../../assets/home_page/home_page_without_title.jpg") no-repeat center/cover;
+    background: url("../../assets/home_page/home_page_without_title.webp") no-repeat center/cover;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
