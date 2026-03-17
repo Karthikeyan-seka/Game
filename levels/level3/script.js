@@ -96,7 +96,9 @@ doorlock.addEventListener('drop', (e) =>{
             
             // Show ad in inventory position after final panel appears
             setTimeout(() => {
-                document.getElementById('panelAdContainer').style.display = 'flex';
+                const panelAd = document.querySelector('.panel-ad');
+                panelAd.style.display = 'block';
+                (adsbygoogle = window.adsbygoogle || []).push({});
             }, 1000);
             
             console.log("Success Panel Displayed");
