@@ -93,6 +93,12 @@ doorlock.addEventListener('drop', (e) =>{
             lastoptions.style.display='flex';
             mainBg.style.filter = "blur(5px)";
             closeBtn2.style.display='block';
+            
+            // Show ad in inventory position after final panel appears
+            setTimeout(() => {
+                document.getElementById('panelAdContainer').style.display = 'flex';
+            }, 1000);
+            
             console.log("Success Panel Displayed");
         }, 1200);
 
