@@ -99,7 +99,7 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%; 
-    z-index: 1000; 
+    z-index: 1005; 
     display: none; 
 }
 .lastoptions {
@@ -109,23 +109,39 @@ body{
     transform: translateX(-50%);
     display: flex;
     gap: 21px;
-    z-index: 1001;
+    z-index: 1010;
 }
-#buttons {
+#homeBtn, #retryBtn {
     width: 60px;
     height: 60px;
-    cursor: pointer;
+    cursor: pointer !important;
     transition: transform 0.1s;
+    pointer-events: auto;
+}
+
+#homeBtn:hover, #retryBtn:hover {
+    transform: scale(1.05);
+    cursor: pointer !important;
+}
+
+.homebtn, .retrybtn {
+    cursor: pointer !important;
+    pointer-events: auto;
 }
 .close-btn2{
     position: absolute;
-    bottom: 500px;
-    left: 290px;
-    width: 50px;
-    height: 50px;
-    z-index: 1002;
+    top: 15%;
+    right: 8%;
+    width: 40px;
+    height: 40px;
+    z-index: 1015;
     cursor: pointer;
     display: none;
+    transition: transform 0.1s;
+}
+
+.close-btn2:hover {
+    transform: scale(1.1);
 }
 
 .small-box{
@@ -173,6 +189,10 @@ body{
     cursor: pointer;
     transform: translate(-50%, -50%);
     z-index: 102;
+}
+
+.adsbygoogle.panel-ad {
+    height: 200px !important;
 }
 .box2{
     position: absolute;

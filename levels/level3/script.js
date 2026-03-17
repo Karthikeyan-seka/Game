@@ -9,8 +9,8 @@ const doorlock=document.getElementById("doorlock")
 const finalPanel = document.getElementById("finalPanel");
 
 const lastoptions=document.getElementById("lastoptions");
-const homebtn=document.querySelector(".homebtn");
-const retrybtn=document.querySelector(".retrybtn");
+const homebtn=document.getElementById("homeBtn");
+const retrybtn=document.getElementById("retryBtn");
 const closeBtn2=document.querySelector(".close-btn2");
 
 // Show game when background loads
@@ -56,7 +56,7 @@ box1.addEventListener('click', function(){
         hasKeyBeenTaken = true;
         
         isBoxActive = false;
-        smallBox.style.pointeerEvents = 'none';
+        smallBox.style.pointerEvents = 'none';
         smallBox.style.cursor = 'default';
     
         
@@ -98,6 +98,9 @@ doorlock.addEventListener('drop', (e) =>{
             setTimeout(() => {
                 const panelAd = document.querySelector('.panel-ad');
                 panelAd.style.display = 'block';
+                panelAd.style.bottom = '10px'; // Move ad lower to avoid button overlap
+                panelAd.style.height = '100px'; // Reduce height to avoid overlap
+                panelAd.style.zIndex = '999'; // Lower z-index than buttons
                 (adsbygoogle = window.adsbygoogle || []).push({});
             }, 1000);
             
@@ -109,7 +112,7 @@ doorlock.addEventListener('drop', (e) =>{
 });
 
 closeBtn2.addEventListener("click", () => {
-  location.reload();
+    location.reload();
 });
 
 homebtn.addEventListener("click", () => {
