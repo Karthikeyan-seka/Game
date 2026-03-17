@@ -99,7 +99,7 @@ doorlock.addEventListener('drop', (e) =>{
                 const panelAd = document.querySelector('.panel-ad');
                 panelAd.style.display = 'block';
                 panelAd.style.bottom = '10px'; // Move ad lower to avoid button overlap
-                panelAd.style.height = '100px'; // Reduce height to avoid overlap
+                panelAd.style.height = '200px'; // Reduce height to avoid overlap
                 panelAd.style.zIndex = '999'; // Lower z-index than buttons
                 (adsbygoogle = window.adsbygoogle || []).push({});
             }, 1000);
