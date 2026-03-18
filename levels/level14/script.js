@@ -237,7 +237,7 @@ finalLockArea.addEventListener("drop", (e) => {
       sceneImage.classList.add("blur");
       overlay.src = "../../assets/room14/final_panel_14@2x.webp";
       overlay.classList.remove("hidden");
-      lastoptions.style.display = 'block';
+      lastoptions.style.display = 'flex';
       finalCloseBtn.classList.remove("hidden")
     }, 1200)
   }            

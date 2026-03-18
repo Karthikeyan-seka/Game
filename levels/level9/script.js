@@ -179,7 +179,7 @@ finalLockArea.addEventListener("drop", (e) => {
         overlay.style.top = '0px';
         overlay.style.left = '0px';
         finalCloseBtn.classList.remove("hidden")
-        lastoptions.style.display = 'block';
+        lastoptions.style.display = 'flex';
 
       }, 1200)
     }            

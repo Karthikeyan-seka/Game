@@ -99,7 +99,7 @@ doorArea.addEventListener("drop", (e) => {
     setTimeout(() => {
       bgImage.classList.add("blur");
       overlay.classList.remove("hidden")
-      lastoptions.style.display = 'block';
+      lastoptions.style.display = 'flex';
 
       finalCloseBtn.classList.remove("hidden")
 

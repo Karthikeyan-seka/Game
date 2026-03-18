@@ -41,6 +41,7 @@ finalKey2.addEventListener("drop", (e) => {
   const item = e.dataTransfer.getData("text/plain");
 
   if (item === "key") {
+    boxOpened = true;
     overlay.src = "../../assets/room5/letter_box_2.webp";
     overlay.classList.remove("hidden");
     closeBtn.classList.remove("hidden");
@@ -67,12 +68,11 @@ finalKey.addEventListener("drop", (e) => {
 
 
       key2.classList.remove("disabled");
-      keyCollected2=true
       // finalKey.classList.remove("disabled");
       setTimeout(() => {
         overlay.classList.add("blur");
         finalOverlay.classList.remove("hidden");
-        lastoptions.style.display = 'block';
+        lastoptions.style.display = 'flex';
 
         finalCloseBtn.classList.remove("hidden")
 
@@ -91,15 +91,28 @@ clickArea.addEventListener("click", () => {
   
     sceneImage.classList.add("blur");
     overlay.classList.remove("hidden");
-    overlay.src="../../assets/room5/letter_box.webp";
+    if(boxOpened && !keyCollected2)
+    {
+      overlay.src="../../assets/room5/letter_box_2.webp";
+      key2.classList.remove("disabled");
+      finalKey2.classList.add("disabled"); 
+    }
+    else if(keyCollected2)
+    {
+      overlay.src="../../assets/room5/letter_box_3.webp";
+    }
+    else
+    {
+      overlay.src="../../assets/room5/letter_box.webp";
+      finalKey2.classList.remove("disabled"); 
+    }
     
 
     closeBtn.classList.remove("hidden");
     blur.classList.add("active");
-    overlay.style.display = "block"
+    overlay.style.display = "block";
     clickArea.classList.add("disabled");
     closeBtn.classList.remove("hidden");//new img
-    finalKey2.classList.remove("disabled"); 
   });
 function nextImage() {
     document.getElementById("sceneImage").src = "../../assets/room5/bg_2_while_click_on_pot.webp";
@@ -134,7 +147,7 @@ function collectKey() {
   }
 
   function collectKey2(event) {
-    boxOpened = true;
+    keyCollected2=true
     slot1.innerHTML = "";
     slot1.style.display = "block";
     event.stopPropagation();
@@ -153,6 +166,7 @@ function collectKey() {
         });
     
     overlay.src = "../../assets/room5/letter_box_3.webp";
+    clickArea.classList.remove("disabled");
 
     if (!boxOpened) return;
     // Enable click anywhere to close overlay
@@ -174,6 +188,7 @@ function collectKey() {
     // finalKey.classList.remove("disabled")  
     document.getElementById("closeBtn").classList.add("hidden")
     clickArea.classList.remove("disabled");
+    finalKey2.classList.add("disabled"); 
     // overlay.src = "letter_box.png";
     return;}
 
@@ -182,7 +197,8 @@ function collectKey() {
   
     document.getElementById("overlay").classList.add("hidden");
     overlay.src = "../../assets/room5/after_3_collected_key.webp"
-    document.getElementById("blur").classList.add("hidden");
+    // document.getElementById("blur").classList.add("hidden");
+    clickArea.classList.remove("disabled");
     finalKey.classList.remove("disabled")                     
     document.getElementById("closeBtn").classList.add("hidden")
     
