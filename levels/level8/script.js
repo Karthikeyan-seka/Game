@@ -25,6 +25,7 @@ hitbox1.addEventListener('click', () => {
    mainbg.src = "../../assets/room8/2BG.webp"
     
     hitbox2.style.pointerEvents = 'auto';
+    hitbox1.style.pointerEvents = 'none';
     
 
     console.log("clue1");
@@ -117,6 +118,7 @@ function openLetterWithScissor() {
     
     // Hide scissors
     scissor.style.display = 'none';
+    hitbox2.style.pointerEvents = 'none';
     
     // Update state
     isBoxOPen = true;

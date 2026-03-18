@@ -148,6 +148,7 @@ buttons.forEach(btn => {
 function checkCode() {
     if (enteredCode === correctCode) {
         isCodeCorrect = true;
+        hitbox5.style.display ='block';
         setTimeout(() => {
         
             
