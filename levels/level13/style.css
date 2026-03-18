@@ -251,6 +251,7 @@ body::after {
     transition: transform 0.1s;
 }
     
+
 .final-close-btn {
     position: absolute;
     bottom: 500px;

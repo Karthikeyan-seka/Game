@@ -30,6 +30,8 @@ let crowbarCollected = false
 let key1CollectedFirst = false
 let crowbarCollectedFirst = false
 let finalKeyCollected = false
+let finalCrowAreaOpened = false
+let lockBoxAreaOpened = false
 
 
 key.addEventListener("click", () => {
@@ -49,6 +51,8 @@ function closeOverlayOnce() {
   sceneImage.classList.remove("blur");
   overlay.classList.add("hidden");
   closeBtn.classList.add("hidden");
+  lockedBoxArea.classList.add("disabled");
+  lockedBoxKeyArea.classList.add("disabled");
 }
 
 function nextImage() {
@@ -56,6 +60,14 @@ function nextImage() {
     sceneImage.classList.add("blur");
     overlay.classList.remove("hidden");
     closeBtn.classList.remove("hidden");
+    if(finalCrowAreaOpened == true)
+    {
+      lockedBoxArea.classList.remove("disabled");
+    }
+    if(lockBoxAreaOpened == true)
+    {
+      lockedBoxKeyArea.classList.remove("disabled");
+    }
   }
 
 function collectKey() {
@@ -123,6 +135,7 @@ finalCrowBarArea.addEventListener("dragover", (e) => {
   });
 
 finalCrowBarArea.addEventListener("drop", (e) => {
+  finalCrowAreaOpened = true
     e.preventDefault();
     const item = e.dataTransfer.getData("text/plain");
     if (item === "crowbar") {
@@ -142,6 +155,7 @@ finalCrowBarArea.addEventListener("drop", (e) => {
 
 lockedBoxArea.addEventListener("click",() => {
     overlay.src = "../../assets/room7/locked_box.png";   
+    lockBoxAreaOpened = true
     lockedBoxArea.classList.add("disabled"); 
     lockedBoxKeyArea.classList.remove("disabled");     
   });

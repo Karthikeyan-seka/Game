@@ -151,7 +151,7 @@ body::after {
 
   .final-crowbar-area {
     position: absolute;
-    bottom: 400px;    
+    bottom: 370px;    
     right: 40px;
     width: 300px;
     height: 100px;
@@ -166,7 +166,7 @@ body::after {
 
   .locked-box-area {
     position: absolute;
-    bottom: 370px;    
+    bottom: 340px;    
     right: 95px;
     width: 200px;
     height: 65px;
@@ -181,7 +181,7 @@ body::after {
 
   .locked-box-key-area {
     position: absolute;
-    bottom: 320px;    
+    bottom: 270px;    
     right: 230px;
     width: 60px;
     height: 60px;

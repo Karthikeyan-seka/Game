@@ -84,15 +84,12 @@ function closeOverlayOnce() {
     clueArea.classList.add("disabled");
     letterArea.classList.add("disabled");
     letterOpenArea.classList.remove("disabled");
-
-
   });
 
   letterOpenArea.addEventListener("click", () => {
     isLetterOpen = true
     overlay.src="../../assets/room14/letter_open_14@3x@3x.png";
     letterOpenArea.classList.add("disabled");
-    colorButtons.style.top= "40.5%";
   });
 
   clickArea.addEventListener("click", () => {
@@ -107,7 +104,15 @@ function closeOverlayOnce() {
       overlay.classList.remove("hidden");
       closeBtn.classList.remove("hidden");//new img
       colorButtons.style.display = 'flex';
-      colorButtons.style.top = '40.5%';
+      colorButtons.style.left = '44.5%';
+      redBtn.style.width = '73.5px';
+      whiteBtn.style.width = '73.5px';
+      yellowBtn.style.width = '73.5px';
+      overlay.style.left= "0px";
+      overlay.style.top= "0px";
+      overlay.style.width = "100%";
+      overlay.style.height = "100%";
+
     }
     if (isRipBoxOpen===true) 
       // if (!keyCollected) return;
