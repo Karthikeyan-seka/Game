@@ -1,8 +1,8 @@
 /* --- 1. GLOBAL ALIGNMENT --- */
 body {
     margin: 0;
-    padding: 20px 0; /* Prevents the game from touching the browser edges */
-    min-height: 100vh; /* CRITICAL: 'min-height' stops the top from getting cut off */
+    padding: 20px 0;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -191,4 +191,13 @@ body {
 }
 #lastButtons:active {
     transform: scale(0.9);
+}
+
+.adsbygoogle.panel-ad {
+    height: 200px !important;
+}
+
+.adsbygoogle.panel-ad div,
+.adsbygoogle.panel-ad iframe {
+    height: 200px !important;
 }

@@ -264,3 +264,12 @@ body::after {
 .final-close-btn.hidden {
     display: none;
   }
+
+.adsbygoogle.panel-ad {
+    height: 200px !important;
+}
+
+.adsbygoogle.panel-ad div,
+.adsbygoogle.panel-ad iframe {
+    height: 200px !important;
+}

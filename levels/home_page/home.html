@@ -22,7 +22,7 @@
             <div class="menu">
               <button class="menu-btn" id="playBtn">PLAY</button>
               <button class="menu-btn" id="levelsBtn">LEVELS</button>
-              <button class="menu-btn" id="gamesBtn">MOREGAME</button>
+              <button class="menu-btn" id="gamesBtn">MORE GAME</button>
             </div>
           </center>
         </div>
@@ -45,6 +45,33 @@
       </div>
     </div>
 
+  <script src="../../assets/js/seamlessMusic.js"></script>
   <script src="home.js"></script>
+  <script>
+    // Set initial sound and music toggle states
+    window.addEventListener('DOMContentLoaded', function() {
+      const soundToggle = document.getElementById('soundToggle');
+      const musicToggle = document.getElementById('musicToggle');
+      
+      // Wait for seamless music manager to initialize
+      setTimeout(() => {
+        const manager = window.seamlessMusicManager || window.globalMusicManager;
+        if (manager) {
+          const soundEnabled = manager.isSoundEnabled();
+          const musicEnabled = manager.isMusicEnabled();
+          
+          if (!soundEnabled) {
+            soundToggle.src = "../../assets/home_page/panneldesign/volume_mute_btn.webp";
+            soundToggle.dataset.active = "false";
+          }
+          
+          if (!musicEnabled) {
+            musicToggle.src = "../../assets/home_page/panneldesign/volume_mute_btn.webp";
+            musicToggle.dataset.active = "false";
+          }
+        }
+      }, 200);
+    });
+  </script>
 </body>
 </html>

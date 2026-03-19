@@ -255,6 +255,15 @@ body::after {
     transition: transform 0.1s;
 }
 
+.adsbygoogle.panel-ad {
+    height: 200px !important;
+}
+
+.adsbygoogle.panel-ad div,
+.adsbygoogle.panel-ad iframe {
+    height: 200px !important;
+}
+
 
 .locked-box {
     position: absolute;

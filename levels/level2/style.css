@@ -200,17 +200,13 @@ body {
     transform: scale(0.9);
 }
 
-.ad-container {
-    position: absolute;
-    top: 15%;
-    left: 5%;
-    width: 90%;
-    min-height: 100px;
-    z-index: 5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+.adsbygoogle.panel-ad {
+    height: 200px !important;
+}
+
+.adsbygoogle.panel-ad div,
+.adsbygoogle.panel-ad iframe {
+    height: 200px !important;
 }
 
 @keyframes popIn {

@@ -164,6 +164,16 @@ function handleWin() {
     closeBtn2.style.display='block';
     console.log("Success Panel Displayed");
     mainbg.style.filter ="blur(5px)";
+    
+    // Show ad in inventory position after final panel appears
+    setTimeout(() => {
+        const panelAd = document.querySelector('.panel-ad');
+        panelAd.style.display = 'block';
+        panelAd.style.bottom = '10px'; // Move ad lower to avoid button overlap
+        panelAd.style.height = '200px'; // Reduce height to avoid overlap
+        panelAd.style.zIndex = '999'; // Lower z-index than buttons
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    }, 1000);
    }, 100); 
 
 }

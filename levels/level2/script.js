@@ -171,6 +171,21 @@ doorArea.addEventListener("drop", (e) => {
 
                 levelPanel.classList.remove("hidden");
                 bgImage.classList.add("blur-bg");
+                
+                // Stop music when final panel appears
+                if (window.gameEndMusicControl) {
+                    window.gameEndMusicControl.stopMusicForGameEnd();
+                }
+                
+                // Show ad in inventory position after final panel appears
+                setTimeout(() => {
+                    const panelAd = document.querySelector('.panel-ad');
+                    panelAd.style.display = 'block';
+                    panelAd.style.bottom = '10px';
+                    panelAd.style.height = '200px';
+                    panelAd.style.zIndex = '999';
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                }, 1000);
 
             }
 
@@ -193,20 +208,91 @@ if (panelCloseBtn) {
 
     panelCloseBtn.addEventListener("click", () => {
 
-        location.reload();
+        console.log('Panel close button clicked'); // Debug log
+        if (window.gameEndMusicControl) {
+            window.gameEndMusicControl.playClickSoundAndResumeMusic();
+        } else {
+            playClickSound();
+        }
+        panelCloseBtn.style.opacity = '0.6';
+        // Add small delay before reload to ensure sound plays
+        setTimeout(() => {
+            location.reload();
+        }, 150);
 
     });
 
 }
 
 
+// Function to play click sound
+function playClickSound() {
+    console.log('playClickSound called'); // Debug log
+    console.log('seamlessMusicManager:', window.seamlessMusicManager); // Debug log
+    console.log('globalMusicManager:', window.globalMusicManager); // Debug log
+    
+    // Try multiple approaches to ensure sound plays
+    const tryPlaySound = () => {
+        if (window.seamlessMusicManager && window.seamlessMusicManager.initialized && window.seamlessMusicManager.clickSound) {
+            console.log('Playing sound via seamlessMusicManager'); // Debug log
+            window.seamlessMusicManager.playClickSound();
+            return true;
+        } else if (window.globalMusicManager && window.globalMusicManager.initialized && window.globalMusicManager.clickSound) {
+            console.log('Playing sound via globalMusicManager'); // Debug log
+            window.globalMusicManager.playClickSound();
+            return true;
+        }
+        console.log('No music manager available or not initialized'); // Debug log
+        return false;
+    };
+    
+    // Fallback: try to play sound directly
+    const playDirectSound = () => {
+        try {
+            console.log('Trying direct sound play'); // Debug log
+            const clickSound = new Audio("../../assets/music/sound1.mp3");
+            clickSound.volume = 0.7;
+            clickSound.play().then(() => {
+                console.log('Direct sound play successful'); // Debug log
+            }).catch(e => {
+                console.log('Direct sound play failed:', e); // Debug log
+            });
+        } catch (e) {
+            console.log('Direct sound creation failed:', e); // Debug log
+        }
+    };
+    
+    // Try immediately
+    if (!tryPlaySound()) {
+        console.log('First attempt failed, retrying...'); // Debug log
+        // If failed, try again after short delays
+        setTimeout(() => {
+            if (!tryPlaySound()) {
+                console.log('Second attempt failed, trying direct sound...'); // Debug log
+                playDirectSound();
+                setTimeout(() => {
+                    tryPlaySound();
+                }, 200);
+            }
+        }, 50);
+    }
+}
+
 // Home button
 if (homeBtn) {
 
     homeBtn.addEventListener("click", () => {
 
+        console.log('Home button clicked'); // Debug log
+        if (window.gameEndMusicControl) {
+            window.gameEndMusicControl.playClickSoundAndResumeMusic();
+        } else {
+            playClickSound();
+        }
         homeBtn.style.opacity = '0.6';
-        window.location.replace("../home_page/home.html");
+        setTimeout(() => {
+            window.location.replace("../home_page/home.html");
+        }, 150);
 
     });
 
@@ -218,18 +304,45 @@ if (nextBtn) {
 
     nextBtn.addEventListener("click", () => {
 
+        console.log('Next button clicked'); // Debug log
+        console.log('nextBtn element:', nextBtn); // Debug log
+        if (window.gameEndMusicControl) {
+            window.gameEndMusicControl.playClickSoundAndResumeMusic();
+        } else {
+            playClickSound();
+        }
         nextBtn.style.opacity = '0.6';
 
-        let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
+        setTimeout(() => {
+            let unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
 
-        if (unlockedLevel < 3) {
+            if (unlockedLevel < 3) {
 
-            localStorage.setItem('unlockedLevel', 3);
+                localStorage.setItem('unlockedLevel', 3);
 
-        }
+            }
 
-        window.location.replace("../level_page/levels1-10.html");
+            window.location.replace("../level_page/levels1-10.html");
+        }, 150);
 
     });
 
 }
+
+// Ensure music manager is initialized
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, checking music managers...'); // Debug log
+    
+    // Wait a bit for music managers to initialize
+    setTimeout(() => {
+        console.log('After timeout - seamlessMusicManager:', window.seamlessMusicManager); // Debug log
+        console.log('After timeout - globalMusicManager:', window.globalMusicManager); // Debug log
+        
+        if (window.seamlessMusicManager) {
+            console.log('seamlessMusicManager initialized:', window.seamlessMusicManager.initialized); // Debug log
+        }
+        if (window.globalMusicManager) {
+            console.log('globalMusicManager initialized:', window.globalMusicManager.initialized); // Debug log
+        }
+    }, 1000);
+});
