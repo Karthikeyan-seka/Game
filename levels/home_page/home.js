@@ -7,7 +7,6 @@ const settingsPopup = document.getElementById("settings");
 const closeSettingsBtn = document.getElementById("closeSettingsBtn");
 const soundToggle = document.getElementById("soundToggle");
 const musicToggle = document.getElementById("musicToggle");
-const loadingOverlay = document.getElementById("loadingOverlay");
 
 // Function to play click sound using seamless manager
 function playClickSound() {
@@ -18,17 +17,11 @@ function playClickSound() {
     }
 }
 
-function showLoader() {
-    loadingOverlay.style.display = 'flex';
-}
-
 playBtn.addEventListener("click", (e) => {
     e.preventDefault();
     playClickSound();
     
-    // Add small delay to ensure sound plays before navigation
     setTimeout(() => {
-        showLoader();
         const lastLevel = parseInt(localStorage.getItem('lastPlayedLevel')) || 1;
         const levelPaths = {
             1: "../level1/index.html",
@@ -47,18 +40,16 @@ playBtn.addEventListener("click", (e) => {
             14: "../level14/room14.html",
             15: "../level15/room15.html"
         };
-        window.location.replace(levelPaths[lastLevel] || "../level1/index.html");
+        navigateWithLoader(levelPaths[lastLevel] || "../level1/index.html");
     }, 100);
 });
 
 levelsBtn.addEventListener("click", () => {
     playClickSound();
     
-    // Add small delay to ensure sound plays before navigation
     setTimeout(() => {
-        showLoader();
         const unlockedLevel = parseInt(localStorage.getItem('unlockedLevel')) || 1;
-        window.location.replace(unlockedLevel >= 11 ? "../level_page/levels11-15.html" : "../level_page/levels1-10.html");
+        navigateWithLoader(unlockedLevel >= 11 ? "../level_page/levels11-15.html" : "../level_page/levels1-10.html");
     }, 100);
 });
 

@@ -216,9 +216,8 @@ homeBtn.addEventListener("click", () => {
       resumeMusicAfterGameEnd();
   }
   homeBtn.style.opacity = '0.6';
-  // Add small delay before navigation to ensure sound plays
   setTimeout(() => {
-    window.location.replace("../home_page/home.html");
+    navigateWithLoader("../home_page/home.html");
   }, 150);
 });
 
@@ -235,9 +234,8 @@ nextBtn.addEventListener("click", () => {
   if (unlockedLevel < 2) {
     localStorage.setItem('unlockedLevel', 2);
   }
-  // Add small delay before navigation to ensure sound plays
   setTimeout(() => {
-    window.location.replace("../level_page/levels1-10.html");
+    navigateWithLoader("../level_page/levels1-10.html");
   }, 150);
 });
 

@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background: #000;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
   <title>Home - 100 Doors</title>
+  <style>
+    /* Prevent white flash - load before CSS */
+    html, body {
+      background: #000 !important;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
   <link rel="stylesheet" href="home.css" />
 </head>
+</head>
 <body>
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-      <div class="spinner"></div>
-    </div>
-
     <!-- Homepage -->
     <div class="homepage-screen">
       <div class="game-container" id="gameContainer">
@@ -46,6 +51,8 @@
     </div>
 
   <script src="../../assets/js/seamlessMusic.js"></script>
+  <script src="../../assets/js/loadingOverlay.js"></script>
+  <script src="../load/loaderUtils.js"></script>
   <script src="home.js"></script>
   <script>
     // Set initial sound and music toggle states

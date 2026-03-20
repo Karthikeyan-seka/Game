@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background: #000;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000" />
     <title>Room 3</title>
+    <style>
+        /* Prevent white flash - load before CSS */
+        html, body {
+            background: #000 !important;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
     <link rel="stylesheet" href="style.css">
     <link rel="preload" as="image" href="../../assets/room3/gameplay2@3x@3x.webp">
     <link rel="preload" as="image" href="../../assets/room3/gameplay3@3x@3x.webp">
@@ -53,6 +62,7 @@
     
     <script src="../../assets/js/seamlessMusic.js"></script>
     <script src="../../assets/js/gameEndMusicControl.js"></script>
+    <script src="../load/loaderUtils.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

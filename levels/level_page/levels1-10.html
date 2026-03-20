@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background: #000;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
   <title>Levels 1-10</title>
+  <style>
+    /* Prevent white flash - load before CSS */
+    html, body {
+      background: #000 !important;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
   <link rel="stylesheet" href="levels1-10.css" />
   <link rel="preload" as="image" href="../../assets/levelpages/home_page_without_title.webp" />
   <link rel="preload" as="image" href="../../assets/home_page/panneldesign/home_btn.webp" />
@@ -73,6 +82,7 @@
     </div>
 
   <script src="../../assets/js/seamlessMusic.js"></script>
+  <script src="../load/loaderUtils.js"></script>
   <script src="levels1-10.js"></script>
 </body>
 </html>

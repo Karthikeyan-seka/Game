@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background: #000 !important;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
     <title>Game</title>
+    <style>
+        html, body {
+            background: #000 !important;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border: 5px solid #333;
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
 
     <script type="application/ld+json">
         {
@@ -28,9 +53,9 @@
 <body>
     <div class="loader"></div>
     <script>
-        window.location.href = 'levels/home_page/home.html';
+        window.location.replace('levels/load/loading.html');
     </script>
-    <div style="width: 100%; max-width: 360px; margin: 10px auto; text-align: center;">
+    <div style="width: 100%; max-width: 360px; margin: 10px auto; text-align: center; display: none;">
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-3212604162895578"

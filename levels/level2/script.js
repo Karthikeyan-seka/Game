@@ -291,7 +291,7 @@ if (homeBtn) {
         }
         homeBtn.style.opacity = '0.6';
         setTimeout(() => {
-            window.location.replace("../home_page/home.html");
+            navigateWithLoader("../home_page/home.html");
         }, 150);
 
     });
@@ -322,7 +322,7 @@ if (nextBtn) {
 
             }
 
-            window.location.replace("../level_page/levels1-10.html");
+            navigateWithLoader("../level_page/levels1-10.html");
         }, 150);
 
     });

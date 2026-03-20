@@ -209,7 +209,7 @@ homebtn.addEventListener("click", () => {
     }
     homebtn.style.opacity = '0.6';
     setTimeout(() => {
-        window.location.href = "../home_page/home.html";
+        navigateWithLoader("../home_page/home.html");
     }, 150);
 });
 
@@ -227,7 +227,7 @@ retrybtn.addEventListener("click", () => {
         if (unlockedLevel < 4) {
             localStorage.setItem('unlockedLevel', 4);
         }
-        window.location.href = "../level_page/levels1-10.html";
+        navigateWithLoader("../level_page/levels1-10.html");
     }, 150);
 });
 

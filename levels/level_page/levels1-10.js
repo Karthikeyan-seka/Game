@@ -28,14 +28,14 @@ for (let i = 1; i <= 10; i++) {
 homeBtnLevel.addEventListener("click", () => {
     playClickSound();
     setTimeout(() => {
-        window.location.href = "../home_page/home.html";
+        navigateWithLoader("../home_page/home.html");
     }, 100);
 });
 
 nextBtnLevel.addEventListener("click", () => {
     playClickSound();
     setTimeout(() => {
-        window.location.href = "levels11-15.html";
+        navigateWithLoader("../level_page/levels11-15.html");
     }, 100);
 });
 
@@ -68,7 +68,7 @@ levels.forEach((level) => {
                 10: "../level10/demo.html"
             };
             
-            window.location.href = levelPaths[levelNum] || "../level1/index.html";
+            navigateWithLoader(levelPaths[levelNum] || "../level1/index.html");
         }, 100);
     });
 });
