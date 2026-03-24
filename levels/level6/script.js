@@ -282,7 +282,7 @@ function checkColorPuzzle() {
 }
 
 homebtn.addEventListener('click', () => {
-    window.location.href = '../home_page/home.html';
+    navigateWithLoader('../home_page/home.html');
 });
 
 playbtn.addEventListener('click', () => {
@@ -290,7 +290,7 @@ playbtn.addEventListener('click', () => {
     if (unlockedLevel < 7) {
         localStorage.setItem('unlockedLevel', 7);
     }
-    window.location.href = '../level_page/levels1-10.html';
+    navigateWithLoader('../level_page/levels1-10.html');
 });
 
 closebtn2.addEventListener('click', () => {

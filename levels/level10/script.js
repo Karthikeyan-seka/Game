@@ -179,7 +179,7 @@ function handleWin() {
 }
 
 homebtn.addEventListener("click", () => {
-  window.location.href = "../home_page/home.html";
+  navigateWithLoader("../home_page/home.html");
 });
 
 playbtn.addEventListener("click", () => {
@@ -187,7 +187,7 @@ playbtn.addEventListener("click", () => {
   if (unlockedLevel < 11) {
     localStorage.setItem('unlockedLevel', 11);
   }
-  window.location.href = "../level_page/levels1-10.html";
+  navigateWithLoader("../level_page/levels1-10.html");
 });
 
 closeBtn2.addEventListener("click", () => {

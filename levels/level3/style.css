@@ -46,7 +46,7 @@ body{
     top: 0;
     left: 0;
     object-fit: cover;
-    z-index: -1;
+    z-index: 1;
 }
 .inventory {
     position: absolute;
@@ -90,7 +90,7 @@ body{
     left: 66%;
     width: 40px;
     height: 80px;
-    z-index: 5;
+    z-index: 50;
     background-color: rgba(255,0,0,0);
 }
 .success-panel {
@@ -152,7 +152,7 @@ body{
     height: 40px;
     background-color: rgba(255,0,0,0);
     cursor: pointer;
-    z-index: 10;
+    z-index: 50;
 }
 .zoomoverlay{
     position: absolute;

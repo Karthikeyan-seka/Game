@@ -271,7 +271,7 @@ finalCloseBtn.addEventListener('click', () => {
 });
 
 homeBtn.addEventListener('click', () => {
-    window.location.href = "../home_page/home.html";
+    navigateWithLoader("../home_page/home.html");
 });
 
 nextBtn.addEventListener('click', () => {
@@ -279,5 +279,5 @@ nextBtn.addEventListener('click', () => {
     if (unlockedLevel < 5) {
         localStorage.setItem('unlockedLevel', 5);
     }
-    window.location.href = "../level_page/levels1-10.html";
+    navigateWithLoader("../level_page/levels1-10.html");
 });

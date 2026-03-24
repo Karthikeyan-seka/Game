@@ -100,11 +100,17 @@ doorlock.addEventListener('drop', (e) =>{
     const data=e.dataTransfer.getData("text");
 
     if(data === "key"){
-        mainBg.src="../../assets/room3/gameplaybgfinal@3x@3x.webp";
-
         inventoryKey.style.display='none';
-
         doorlock.style.display='none';
+        
+        // Load final background image first
+        const finalBg = new Image();
+        finalBg.src = "../../assets/room3/gameplaybgfinal@3x@3x.webp";
+        finalBg.onload = () => {
+            mainBg.src = finalBg.src;
+        };
+        mainBg.src = "../../assets/room3/gameplaybgfinal@3x@3x.webp";
+        
         setTimeout(() => {
             finalPanel.style.display = 'block';
             lastoptions.style.display='flex';

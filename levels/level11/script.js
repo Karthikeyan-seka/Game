@@ -340,7 +340,7 @@ document.getElementById('panelCloseBtn11').addEventListener('click', () => {
 });
 
 document.getElementById('homeBtn11').addEventListener('click', () => {
-  window.location.href = '../home_page/home.html';
+  navigateWithLoader('../home_page/home.html');
 });
 
 document.getElementById('nextBtn11').addEventListener('click', () => {
@@ -348,5 +348,5 @@ document.getElementById('nextBtn11').addEventListener('click', () => {
   if (unlockedLevel < 12) {
     localStorage.setItem('unlockedLevel', 12);
   }
-  window.location.href = '../level_page/levels11-15.html';
+  navigateWithLoader('../level_page/levels11-15.html');
 });

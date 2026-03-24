@@ -22,10 +22,7 @@ body{
     top: 0;
     left: 0;
     object-fit: cover;
-    
-}
-.bg1 {
-    z-index: -2; 
+    z-index: 1;
 }
 
 .bg2 {
@@ -35,10 +32,10 @@ body{
     top: 0;
     left: 0;
     object-fit: cover;
-    z-index: -1;      /* Sits above bg1 which is -2 */
+    z-index: 2;
     opacity: 0;  
     visibility: hidden;
-    transition: opacity 0.1s ease; /* Smooth fade effect */
+    transition: opacity 0.1s ease;
 }
 .inventory {
     position: absolute;
@@ -64,7 +61,7 @@ body{
     height: 50px;
     background-color: rgba(255,0,0,0);
     cursor: pointer;
-    z-index: 30;
+    z-index: 50;
 }
 .scissor{
     position: absolute;
@@ -86,7 +83,7 @@ body{
     background-color: rgba(255,0,0,0);
     cursor: pointer;
     pointer-events: none;
-    z-index: 30;
+    z-index: 50;
 }
 .letterbox{
     position: absolute;
@@ -94,7 +91,7 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50%; 
-    z-index: 5;
+    z-index: 200;
     display: none;
     cursor: pointer;
 }
@@ -105,7 +102,7 @@ body{
     width: 40px;
     cursor: pointer;
     transform: translate(-50%, -50%);
-    z-index: 5;
+    z-index: 201;
     display: none;
 }
 .inventory-key {

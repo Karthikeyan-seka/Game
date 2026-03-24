@@ -359,7 +359,7 @@ window.addEventListener("keyup", (e) => {
 // 9. PANEL BUTTONS
 // ==========================================
 document.getElementById("homeBtn").addEventListener("click", () => {
-    window.location.href = "../home_page/home.html";
+    navigateWithLoader("../home_page/home.html");
 });
 
 document.getElementById("nextBtn").addEventListener("click", () => {
@@ -367,5 +367,5 @@ document.getElementById("nextBtn").addEventListener("click", () => {
     if (unlockedLevel < 13) {
         localStorage.setItem('unlockedLevel', 13);
     }
-    window.location.href = "../level_page/levels11-15.html";
+    navigateWithLoader("../level_page/levels11-15.html");
 });
